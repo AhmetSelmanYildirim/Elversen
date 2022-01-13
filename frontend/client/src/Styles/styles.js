@@ -1,0 +1,43 @@
+export const styles = {
+    headerContainer:{
+        width:"100%",
+        background:"#76429C",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        borderRadius:"0px 0px 20px 20px"
+    },
+    headerInnerContainer:{
+        width:"80%",
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"space-around",
+        alignItems:"center"
+    },
+    headerItem:{
+        textDecoration:"none",
+        color:"#ff6600",
+        fontSize:"20px",
+        fontWeight:"600",
+    },
+    pageContainer:{
+        width:"100%",
+        display:"flex",
+        alignItems:"center",
+        flexDirection:"column"
+    },
+    innerPageContainer:{
+        width:"90%",
+        height:"100vh",
+        background:"#f0f0f0",
+        display:"flex",
+        justifyContent:"center",
+        paddingTop:"50px",
+    },
+    slider:{
+        width:"100%",
+        height:"25vh",
+        background:"gray",
+    },
+
+}
