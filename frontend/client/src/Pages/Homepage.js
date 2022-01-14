@@ -1,14 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Header from '../Components/Header'
 import Slider from '../Components/Slider'
-import { styles } from '../Styles/styles'
+import {AppContext} from "../Contexts/AppContext";
 
 const Homepage = () => {
+    const {} = useContext(AppContext)
+
     return (
         
-        <div className='page-container' style={styles.pageContainer}>
+        <div className='pageContainer' >
             <Header />
-            <div className='innerContainer' style={styles.innerPageContainer}>
+            <div className='innerPageContainer' >
                 <Slider />
             </div>
         </div>

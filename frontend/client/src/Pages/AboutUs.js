@@ -1,13 +1,17 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Header from '../Components/Header'
-import { styles } from '../Styles/styles'
+import {strings} from "../Languages/Strings";
+import {AppContext} from "../Contexts/AppContext";
+import "../Styles/styles.css"
 
 const AboutUs = () => {
+    const {} = useContext(AppContext)
+
     return (
-        <div className='page-container' style={styles.pageContainer}>
+        <div className='pageContainer' >
             <Header />
-            <div className='innerContainer' style={styles.innerPageContainer}>
-                About
+            <div className='innerPageContainer'>
+                {strings.about}
             </div>
         </div>
     )

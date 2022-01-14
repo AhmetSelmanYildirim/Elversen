@@ -9,10 +9,11 @@ export const styles = {
     },
     headerInnerContainer:{
         width:"80%",
+        height:"15vh",
         display:"flex",
         flexDirection:"row",
         justifyContent:"space-around",
-        alignItems:"center"
+        alignItems:"center",
     },
     headerItem:{
         textDecoration:"none",

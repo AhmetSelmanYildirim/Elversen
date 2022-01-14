@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Header from '../Components/Header'
-import { styles } from '../Styles/styles'
+import {strings} from "../Languages/Strings";
+import {AppContext} from "../Contexts/AppContext";
 
 const PatientDetail = () => {
+    const {} = useContext(AppContext)
+
     return (
-        <div className='page-container' style={styles.pageContainer}>
-            <Header />
-            <div className='innerContainer' style={styles.innerPageContainer}>
-                Patient Detail
+        <div className='pageContainer' >
+            <Header/>
+            <div className='innerPageContainer' >
+                {strings.patientdetail}
             </div>
 
         </div>
