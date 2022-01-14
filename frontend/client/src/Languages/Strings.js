@@ -7,6 +7,8 @@ export const strings = new LocalizedStrings({
         addpatient:"SMA Hastası Ekle",
         listpatients:"SMA Hastalarını Listele",
         contact:"İletişim",
+        socialMedia:"Sosyal Medya",
+        navigation:"Navigasyon"
 
     },
     en: {
@@ -15,5 +17,7 @@ export const strings = new LocalizedStrings({
         addpatient:"Add SMA Patient",
         listpatients:"List SMA Patients",
         contact:"Contact",
+        socialMedia:"Social Media",
+        navigation:"Navigation"
     }
 })

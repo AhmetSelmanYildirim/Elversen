@@ -1,7 +1,10 @@
 import React, {useContext} from 'react'
 import Header from '../Components/Header'
-import Slider from '../Components/Slider'
+import HomepageContent from '../Components/HomepageContent';
+import HomepageSlider from '../Components/HomepageSlider'
 import {AppContext} from "../Contexts/AppContext";
+import Footer from "../Components/Footer"
+
 
 const Homepage = () => {
     const {} = useContext(AppContext)
@@ -11,8 +14,12 @@ const Homepage = () => {
         <div className='pageContainer' >
             <Header />
             <div className='innerPageContainer' >
-                <Slider />
+                <HomepageSlider />
+                <HomepageContent />
             </div>
+            
+
+            <Footer/>
         </div>
     )
 }

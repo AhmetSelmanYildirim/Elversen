@@ -2,6 +2,8 @@ import React , {useContext} from 'react'
 import Header from '../Components/Header'
 import {strings} from "../Languages/Strings";
 import {AppContext} from "../Contexts/AppContext";
+import Footer from "../Components/Footer"
+
 
 
 
@@ -13,6 +15,9 @@ const Contact = () => {
             <div className='innerPageContainer' >
                 {strings.contact}
             </div>
+
+
+            <Footer/>
         </div>
     )
 }
