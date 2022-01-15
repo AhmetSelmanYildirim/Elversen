@@ -9,6 +9,7 @@ export const strings = new LocalizedStrings({
         contact:"İletişim",
         socialMedia:"Sosyal Medya",
         navigation:"Navigasyon",
+        headerLogin:"Sorumlu Girişi",
 
         formName:"Ad",
         formSurname:"Soyad",
@@ -34,6 +35,7 @@ export const strings = new LocalizedStrings({
         contact:"Contact",
         socialMedia:"Social Media",
         navigation:"Navigation",
+        headerLogin:"Responsible Login",
 
         formName:"Name",
         formSurname:"Surname",

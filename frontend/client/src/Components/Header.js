@@ -1,12 +1,12 @@
-import React, {useContext} from 'react'
-import {Link} from 'react-router-dom';
-import {strings} from '../Languages/Strings';
-import {AppContext} from "../Contexts/AppContext";
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
+import { strings } from '../Languages/Strings';
+import { AppContext } from "../Contexts/AppContext";
 import "../Styles/styles.css"
 
 const Header = () => {
 
-    const {currentLanguage, changeLanguage,} = useContext(AppContext)
+    const { currentLanguage, changeLanguage, } = useContext(AppContext)
 
     return (
         <div className='headerContainer' >
@@ -47,12 +47,19 @@ const Header = () => {
                     </Link>
                 </div>
                 <div>
+                    <Link
+                        className="headerItem"
+                        to={`/login`}>
+                        <p>{strings.headerLogin}</p>
+                    </Link>
+                </div>
+                <div>
                     {currentLanguage === "en" ?
                         <img className="headerLang" onClick={() => changeLanguage("tr")} src="./img/tr-icon.png"
-                             alt="tr"/>
+                            alt="tr" />
                         :
                         <img className="headerLang" onClick={() => changeLanguage("en")} src="./img/en-icon.png"
-                             alt="en"/>
+                            alt="en" />
                     }
                 </div>
 

@@ -4,6 +4,7 @@ import {strings} from "../Languages/Strings";
 import {AppContext} from "../Contexts/AppContext";
 import "../Styles/styles.css"
 import Footer from "../Components/Footer"
+import HomepageContent from "../Components/HomepageContent"
 
 const AboutUs = () => {
     const {} = useContext(AppContext)
@@ -13,6 +14,7 @@ const AboutUs = () => {
             <Header />
             <div className='innerPageContainer'>
                 {strings.about}
+                <HomepageContent/>
             </div>
 
 
