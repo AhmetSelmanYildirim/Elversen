@@ -13,11 +13,13 @@ export const strings = new LocalizedStrings({
 
         formName:"Ad",
         formSurname:"Soyad",
-        formDateOfBirth:"Yaş",
+        formDateOfBirth:"Doğum tarihi gg/aa/yyyy",
         formResponsibleName:"Sorumlu kişi isim",
         formResponsiblePhone:"Sorumlu kişi telefon numarası",
         formResponsibleEmail:"Sorumlu kişi e-posta",
-        collectedAmount:"Toplanan tutar",
+        formCollectedAmount:"Toplanan tutar",
+        formRequiredAmount:"Gerekli miktar",
+        formWeight:"Ağırlık",
         IBANNumber:"IBAN No",
         governmentPermit:"Valilik izni",
         submitForm:"Gönder",
@@ -25,6 +27,10 @@ export const strings = new LocalizedStrings({
         formPhone:"Telefon",
         formSubject:"Konu",
         formMessage:"Mesaj",
+        formTermsAndConditions:"Şartlar ve Koşulları kabul ediyorum",
+        formPassword:"Şifre",
+
+        termsAndConditions:"Şartlar ve Koşullar",
 
     },
     en: {
@@ -39,11 +45,13 @@ export const strings = new LocalizedStrings({
 
         formName:"Name",
         formSurname:"Surname",
-        formDateOfBirth:"Age",
+        formDateOfBirth:"Date of Birth: dd/mm/yyyy",
         formResponsibleName:"Responsible Person Name",
         formResponsiblePhone:"Responsible Person Phone",
         formResponsibleEmail:"Responsible Person E-Mail",
-        collectedAmount:"Collected Amount",
+        formCollectedAmount:"Collected Amount",
+        formRequiredAmount:"Required Amount",
+        formWeight:"Weight",
         IBANNumber:"IBAN No",
         governmentPermit:"Government Permit",
         submitForm:"Submit",
@@ -51,6 +59,10 @@ export const strings = new LocalizedStrings({
         formPhone:"Phone",
         formSubject:"Subject",
         formMessage:"Message",
+        formTermsAndConditions:"Accept Terms and Conditions",
+        formPassword:"Password",
+
+        termsAndConditions:"Terms and Conditions",
 
 
     }

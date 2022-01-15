@@ -77,13 +77,13 @@
 }
 .footerRight {
 }
-.addPatientForm{
-    display: flex;
-    flex-direction: column;
+.addPatientForm, .contactForm, .loginForm {
+  display: flex;
+  flex-direction: column;
 }
-.addPatientFormField{
-    padding: 5px;
-    margin: 5px 0px;
-    border: 1px solid gray;
-    border-radius: 4px;
+.addPatientFormField, .contactFormField, .loginFormField {
+  padding: 5px;
+  margin: 5px 0px;
+  border: 1px solid gray;
+  border-radius: 4px;
 }

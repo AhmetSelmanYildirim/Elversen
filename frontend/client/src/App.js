@@ -5,6 +5,8 @@ import AboutUs from './Pages/AboutUs';
 import AddPatient from './Pages/AddPatient';
 import ListPatients from './Pages/ListPatients';
 import Contact from './Pages/Contact';
+import TermsAndConditions from './Pages/TermsAndConditions';
+import Login from './Pages/Login';
 
 const App = () => {
   return (
@@ -16,6 +18,9 @@ const App = () => {
           <Route path="/addpatient" element={<AddPatient />} />
           <Route path="/listpatients" element={<ListPatients />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/termsandconditions" element={<TermsAndConditions />} />
+          <Route path="/login" element={<Login />} />
+
         </Routes>
       </Router>
     </div>

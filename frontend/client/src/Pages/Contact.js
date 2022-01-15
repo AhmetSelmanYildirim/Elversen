@@ -24,13 +24,13 @@ const Contact = () => {
                             alert(JSON.stringify(values));
                         }}
                     >
-                        <Form className='addPatientForm'>
-                            <Field className="addPatientFormField" name="name" type="text" placeholder={strings.formName} />
-                            <Field className="addPatientFormField" name="surname" type="text" placeholder={strings.formSurname} />
-                            <Field className="addPatientFormField" name="phone" type="text" placeholder={strings.formPhone} />
-                            <Field className="addPatientFormField" name="email" type="email" placeholder={strings.formEmail} />
-                            <Field className="addPatientFormField" name="subject" type="text" placeholder={strings.formSubject} />
-                            <Field className="addPatientFormField" name="message" type="text" placeholder={strings.formMessage} />
+                        <Form className='contactForm'>
+                            <Field className="contactFormField" name="name" type="text" placeholder={strings.formName} />
+                            <Field className="contactFormField" name="surname" type="text" placeholder={strings.formSurname} />
+                            <Field className="contactFormField" name="phone" type="text" placeholder={strings.formPhone} />
+                            <Field className="contactFormField" name="email" type="email" placeholder={strings.formEmail} />
+                            <Field className="contactFormField" name="subject" type="text" placeholder={strings.formSubject} />
+                            <Field className="contactFormField" name="message" type="text" placeholder={strings.formMessage} />
                             <button type="submit">{strings.submitForm}</button>
                         </Form>
                     </Formik>
