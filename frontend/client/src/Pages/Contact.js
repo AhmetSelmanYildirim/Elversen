@@ -4,7 +4,7 @@ import { strings } from "../Languages/Strings";
 import { AppContext } from "../Contexts/AppContext";
 import Footer from "../Components/Footer"
 import { Formik, Field, Form } from 'formik';
-
+import axios from "axios"
 
 
 
@@ -19,9 +19,19 @@ const Contact = () => {
                 <div className='addPatientFormArea'>
 
                     <Formik
-                        initialValues={{ name: "", surname: "", phone:"", email:"", subject:"", message:"" }}
+                        initialValues={{ name: "", surname: "", phone: "", email: "", subject: "", message: "" }}
                         onSubmit={async (values) => {
-                            alert(JSON.stringify(values));
+                            axios.post(`${process.env.REACT_APP_SERVER_URL}/contact`, JSON.stringify(values))
+                                .then(response => console.log(response))
+                                .catch(err => console.log(err.message))
+
+                            values.name = "";
+                            values.surname = "";
+                            values.phone = "";
+                            values.email = "";
+                            values.subject = "";
+                            values.message = "";
+
                         }}
                     >
                         <Form className='contactForm'>
@@ -39,7 +49,7 @@ const Contact = () => {
 
 
             <Footer />
-        </div>
+        </div >
     )
 }
 

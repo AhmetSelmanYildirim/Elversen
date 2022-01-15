@@ -5,6 +5,7 @@ import { AppContext } from "../Contexts/AppContext";
 import Footer from "../Components/Footer";
 import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -18,11 +19,27 @@ const AddPatient = () => {
                 {strings.addpatient}
 
                 <div className='addPatientFormArea'>
+                    {console.log(process.env.REACT_APP_SERVER_URL)}
 
                     <Formik
                         initialValues={{ name: "", surname: "", dateofbirth: "", resName: "", resPhone: "", resMail: "", amount: "", iban: "", permit: "" }}
                         onSubmit={async (values) => {
-                            alert(JSON.stringify(values));
+                            axios.post(`${process.env.REACT_APP_SERVER_URL}/addpatient`, JSON.stringify(values))
+                                .then(response => console.log(response))
+                                .catch(err => console.log(err.message))
+
+                            values.name = "";
+                            values.surname = "";
+                            values.dateofbirth = "";
+                            values.weight = "";
+                            values.resName = "";
+                            values.resPhone = "";
+                            values.resEmail = "";
+                            values.collectedAmount = "";
+                            values.requiredAmount = "";
+                            values.iban = "";
+                            values.permit = "";
+                            values.iban = "";
                         }}
                     >
                         <Form className='addPatientForm'>

@@ -4,6 +4,7 @@ import Footer from '../Components/Footer'
 import Header from '../Components/Header'
 import { AppContext } from '../Contexts/AppContext'
 import { strings } from '../Languages/Strings'
+import axios from 'axios'
 
 
 const Login = () => {
@@ -19,7 +20,12 @@ const Login = () => {
 
                 <Formik initialValues={{ email:"", password:""}}
                         onSubmit={async (values) => {
-                            alert(JSON.stringify(values));
+                            axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, JSON.stringify(values))
+                            .then(response => console.log(response.data))
+                            .catch(err => console.log(err.message))
+
+                            values.email="";
+                            values.password="";
                         }}
                     >
                         <Form className='loginForm'>
