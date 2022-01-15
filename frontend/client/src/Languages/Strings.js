@@ -8,7 +8,22 @@ export const strings = new LocalizedStrings({
         listpatients:"SMA Hastalarını Listele",
         contact:"İletişim",
         socialMedia:"Sosyal Medya",
-        navigation:"Navigasyon"
+        navigation:"Navigasyon",
+
+        formName:"Ad",
+        formSurname:"Soyad",
+        formDateOfBirth:"Yaş",
+        formResponsibleName:"Sorumlu kişi isim",
+        formResponsiblePhone:"Sorumlu kişi telefon numarası",
+        formResponsibleEmail:"Sorumlu kişi e-posta",
+        collectedAmount:"Toplanan tutar",
+        IBANNumber:"IBAN No",
+        governmentPermit:"Valilik izni",
+        submitForm:"Gönder",
+        formEmail:"E-posta",
+        formPhone:"Telefon",
+        formSubject:"Konu",
+        formMessage:"Mesaj",
 
     },
     en: {
@@ -18,6 +33,23 @@ export const strings = new LocalizedStrings({
         listpatients:"List SMA Patients",
         contact:"Contact",
         socialMedia:"Social Media",
-        navigation:"Navigation"
+        navigation:"Navigation",
+
+        formName:"Name",
+        formSurname:"Surname",
+        formDateOfBirth:"Age",
+        formResponsibleName:"Responsible Person Name",
+        formResponsiblePhone:"Responsible Person Phone",
+        formResponsibleEmail:"Responsible Person E-Mail",
+        collectedAmount:"Collected Amount",
+        IBANNumber:"IBAN No",
+        governmentPermit:"Government Permit",
+        submitForm:"Submit",
+        formEmail:"E-mail",
+        formPhone:"Phone",
+        formSubject:"Subject",
+        formMessage:"Message",
+
+
     }
 })
