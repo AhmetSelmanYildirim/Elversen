@@ -1,17 +1,59 @@
 const express = require("express");
 const app = express();
 const env = require("dotenv").config();
-const cors = require("cors")
+const cors = require("cors");
+const session = require("express-session");
+const passport = require("passport");
 
 app.use(cors());
+
+//db
+require('./src/config/database');
+const MongoDBStore = require('connect-mongodb-session')(session);
+
+const sessionStore = new MongoDBStore({
+    uri: process.env.DB_CONNECTION,
+    collection: 'sessions'
+});
+
+app.use(session(
+    {
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+        cookie: { maxAge: 1000 * 60 * 60 * 24 },              // Cookie resets everyday
+        store: sessionStore
+    },
+))
+
 //for datas from form
 app.use(express.urlencoded({ extended:true }));
 
-app.post('/login', async (req,res,next)=>{
-    let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log(data)
+app.use(session(
+    {
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+        cookie: { maxAge: 1000 * 60 * 60 * 24 },              // Cookie resets everyday
+        store: sessionStore
+    },
+))
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routers
+const commonRouter = require('./src/routers/commonRouter');
+
+app.use('/', commonRouter);
+
+
+// app.post('/login', async (req,res,next)=>{
+//     let data = await JSON.parse(Object.keys(req.body)[0])
+//     console.log(data)
     
-    res.send("data received")
-});
+//     res.send("data received")
+// });
 
 app.listen(process.env.PORT,()=>{console.log(`${process.env.PORT} listening`)})

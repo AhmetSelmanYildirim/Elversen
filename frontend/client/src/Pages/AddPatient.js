@@ -19,10 +19,9 @@ const AddPatient = () => {
                 {strings.addpatient}
 
                 <div className='addPatientFormArea'>
-                    {console.log(process.env.REACT_APP_SERVER_URL)}
 
                     <Formik
-                        initialValues={{ name: "", surname: "", dateofbirth: "", resName: "", resPhone: "", resMail: "", amount: "", iban: "", permit: "" }}
+                        initialValues={{ name: "", surname: "", dateofbirth: "", resName: "", resPhone: "",     iban: "", permit: "" }}
                         onSubmit={async (values) => {
                             axios.post(`${process.env.REACT_APP_SERVER_URL}/addpatient`, JSON.stringify(values))
                                 .then(response => console.log(response))
