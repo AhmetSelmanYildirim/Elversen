@@ -30,6 +30,14 @@ export const strings = new LocalizedStrings({
         formTermsAndConditions:"Şartlar ve Koşulları kabul ediyorum",
         formPassword:"Şifre",
 
+        required:"Zorunlu alan",
+        tooShort:"Çok kısa",
+        tooLong:"Çok uzun",
+        permitRequired:"Valilik izni yüklenmesi zorunludur",
+        termsAndConditionsRequired:"Şartlar ve koşulların kabul edilmesi zorunludur",
+        weightTooLow:"Kilo 0 dan az olamaz",
+        collectedAmountTooLow:"Toplanan miktar 0 dan az olamaz",
+
         termsAndConditions:"Şartlar ve Koşullar",
 
     },
@@ -61,6 +69,14 @@ export const strings = new LocalizedStrings({
         formMessage:"Message",
         formTermsAndConditions:"Accept Terms and Conditions",
         formPassword:"Password",
+
+        required:"Required field",
+        tooShort:"Too short",
+        tooLong:"Too long",
+        permitRequired:"Government permit is required",
+        termsAndConditionsRequired:"The terms and conditions must be accepted",
+        weightTooLow:"Weight cannot lower than 0",
+        collectedAmountTooLow:"Collected amount cannot lower than 0",
 
         termsAndConditions:"Terms and Conditions",
 
