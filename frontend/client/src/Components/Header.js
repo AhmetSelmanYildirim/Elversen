@@ -55,11 +55,19 @@ const Header = () => {
                 </div>
                 <div>
                     {currentLanguage === "en" ?
-                        <img className="headerLang" onClick={() => changeLanguage("tr")} src="./img/tr-icon.png"
-                            alt="tr" />
+                        <span
+                            className="headerItem"
+                            onClick={() => changeLanguage("tr")}
+                        >
+                            <p>TR</p>
+                        </span>
                         :
-                        <img className="headerLang" onClick={() => changeLanguage("en")} src="./img/en-icon.png"
-                            alt="en" />
+                        <span
+                            className="headerItem"
+                            onClick={() => changeLanguage("en")}
+                        >
+                            <p>EN</p>
+                        </span>
                     }
                 </div>
 

@@ -22,6 +22,7 @@
   color: #ff6600;
   font-size: 20px;
   font-weight: 600;
+  cursor: pointer;
 }
 .headerLang {
   width: 25%;
@@ -32,7 +33,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 10vh;
+  margin: 10vh 0vh;
 }
 .innerPageContainer {
   width: 90%;
@@ -40,7 +41,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2vh;
+  padding: 2vh 0vh 2vh 0vh;
 }
 .slider {
   width: 100%;
@@ -56,6 +57,7 @@
 }
 .footerContainer {
   width: 100%;
+  height: 10vh;
   background: #76429c;
   display: flex;
   flex-direction: column;
@@ -64,6 +66,7 @@
   border-radius: 20px 20px 0px 0px;
   position: fixed;
   bottom: 0;
+  padding-bottom: 1vh;
 }
 .footerInnerContainer {
   width: 100%;
@@ -77,11 +80,15 @@
 }
 .footerRight {
 }
-.addPatientForm, .contactForm, .loginForm {
+.addPatientForm,
+.contactForm,
+.loginForm {
   display: flex;
   flex-direction: column;
 }
-.addPatientFormField, .contactFormField, .loginFormField {
+.addPatientFormField,
+.contactFormField,
+.loginFormField {
   padding: 5px;
   margin: 5px 0px;
   border: 1px solid gray;

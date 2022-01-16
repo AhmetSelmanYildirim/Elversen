@@ -1,24 +1,11 @@
 const router = require('express').Router();
+const commonController = require("../controllers/commonController")
 
-router.post('/login', async (req,res,next)=>{
-    let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log(data)
-    
-    res.send("data received")
-});
 
-router.post('/contact', async (req,res,next)=>{
-    let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log(data)
-    
-    res.send("data received")
-});
+router.post('/login', commonController.login );
 
-router.post('/addpatient', async (req,res,next)=>{
-    let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log(data)
-    
-    res.send("data received")
-});
+router.post('/contact', commonController.sendContactMail );
+
+router.post('/addpatient', );
 
 module.exports = router;
