@@ -13,7 +13,7 @@ export const strings = new LocalizedStrings({
 
         formName:"Ad",
         formSurname:"Soyad",
-        formDateOfBirth:"Doğum tarihi gg/aa/yyyy",
+        formDateOfBirth:"Doğum tarihi: gg.aa.yyyy",
         formResponsibleName:"Sorumlu kişi isim",
         formResponsiblePhone:"Sorumlu kişi telefon numarası",
         formResponsibleEmail:"Sorumlu kişi e-posta",
@@ -45,7 +45,7 @@ export const strings = new LocalizedStrings({
 
         formName:"Name",
         formSurname:"Surname",
-        formDateOfBirth:"Date of Birth: dd/mm/yyyy",
+        formDateOfBirth:"Date of Birth: dd.mm.yyyy",
         formResponsibleName:"Responsible Person Name",
         formResponsiblePhone:"Responsible Person Phone",
         formResponsibleEmail:"Responsible Person E-Mail",
