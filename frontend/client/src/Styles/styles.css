@@ -57,7 +57,7 @@
 }
 .footerContainer {
   width: 100%;
-  height: 10vh;
+  height: 5vh;
   background: #76429c;
   display: flex;
   flex-direction: column;
@@ -65,20 +65,40 @@
   color: white;
   border-radius: 20px 20px 0px 0px;
   position: fixed;
-  bottom: 0;
-  padding-bottom: 1vh;
+  bottom: 0px;
+  padding: 2vh 0vh 0vh 0vh;
 }
 .footerInnerContainer {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 2vh 0vh 0vh 0vh;
   color: #ff6600;
 }
 .footerLeft {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .footerRight {
+  width: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.socialMediaIcons {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.socialMediaIcon {
+  text-decoration: none;
+  color: #ff6600;
 }
 .addPatientForm,
 .contactForm,
@@ -93,4 +113,10 @@
   margin: 5px 0px;
   border: 1px solid gray;
   border-radius: 4px;
+}
+.formErrorMessage {
+  text-align: center;
+  color: red;
+  font-size: 14px;
+  margin-bottom: 20px;
 }

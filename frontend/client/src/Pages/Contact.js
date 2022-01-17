@@ -75,27 +75,27 @@ const Contact = () => {
 
                                 <Field className="contactFormField" name="name" type="text" placeholder={strings.formName} />
                                 {errors.name && touched.name ? (
-                                    <div>{errors.name}</div>
+                                    <div className='formErrorMessage'>{errors.name}</div>
                                 ) : null}
                                 <Field className="contactFormField" name="surname" type="text" placeholder={strings.formSurname} />
                                 {errors.surname && touched.surname ? (
-                                    <div>{errors.surname}</div>
+                                    <div className='formErrorMessage'>{errors.surname}</div>
                                 ) : null}
                                 <Field className="contactFormField" name="phone" type="text" placeholder={strings.formPhone} />
                                 {errors.phone && touched.phone ? (
-                                    <div>{errors.phone}</div>
+                                    <div className='formErrorMessage'>{errors.phone}</div>
                                 ) : null}
                                 <Field className="contactFormField" name="email" type="email" placeholder={strings.formEmail} />
                                 {errors.email && touched.email ? (
-                                    <div>{errors.email}</div>
+                                    <div className='formErrorMessage'>{errors.email}</div>
                                 ) : null}
                                 <Field className="contactFormField" name="subject" type="text" placeholder={strings.formSubject} />
                                 {errors.subject && touched.subject ? (
-                                    <div>{errors.subject}</div>
+                                    <div className='formErrorMessage'>{errors.subject}</div>
                                 ) : null}
                                 <Field className="contactFormField" name="message" type="text" placeholder={strings.formMessage} />
                                 {errors.message && touched.message ? (
-                                    <div>{errors.message}</div>
+                                    <div className='formErrorMessage'>{errors.message}</div>
                                 ) : null}
 
 

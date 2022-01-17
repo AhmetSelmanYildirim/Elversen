@@ -48,13 +48,12 @@ const Login = () => {
 
                             <Field className="loginFormField" name="email" type="email" placeholder={strings.formEmail} />
                             {errors.email && touched.email ? (
-                                <div>{errors.email}</div>
+                                <div className='formErrorMessage'>{errors.email}</div>
                             ) : null}
                             <Field className="loginFormField" name="password" type="password" placeholder={strings.formPassword} />
                             {errors.password && touched.password ? (
-                                <div>{errors.password}</div>
+                                <span className='formErrorMessage'>{errors.password}</span>
                             ) : null}
-
                             {/* <Field className="loginFormField" name="email" type="email" placeholder={strings.formEmail} />
                             <Field className="loginFormField" name="password" type="password" placeholder={strings.formPassword} /> */}
                             <button type="submit">{strings.submitForm}</button>

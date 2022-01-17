@@ -6,14 +6,14 @@ const Footer = () => {
         <div className='footerContainer'>
             <div className='footerInnerContainer'>
                 <div className='footerLeft'>
-                    {strings.socialMedia}
+                    <div className='socialMediaIcons'>
+                        <a className='socialMediaIcon' href='#'> <i className="fab fa-facebook fa-lg"></i></a>
+                        <a className='socialMediaIcon' href='#'> <i className="fab fa-instagram fa-lg"></i></a>
+                    </div>
                 </div>
                 <div className='footerRight'>
-                    {strings.navigation}
+                    HHY & ASY
                 </div>
-            </div>
-            <div>
-                <p>ASY & HHY</p>
             </div>
         </div>
     )
