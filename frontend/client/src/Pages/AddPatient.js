@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Header from '../Components/Header'
 import { strings } from "../Languages/Strings";
 import { AppContext } from "../Contexts/AppContext";
@@ -11,6 +11,7 @@ import * as Yup from "yup";
 
 const AddPatient = () => {
     const { } = useContext(AppContext)
+    const [formReceivedMessage, setFormReceivedMessage] = useState("")
 
     const addPatientValidationSchema = Yup.object().shape({
 
@@ -73,26 +74,34 @@ const AddPatient = () => {
                         validationSchema={addPatientValidationSchema}
                         onSubmit={async (values) => {
                             axios.post(`${process.env.REACT_APP_SERVER_URL}/addpatient`, JSON.stringify(values))
-                                .then(response => console.log(response))
+                                .then(response => {
+                                    console.log(response.data)
+                                    response.data.status === "error" ?
+                                        setFormReceivedMessage(strings.mailExists)
+                                        :
+                                        setFormReceivedMessage(strings.accontCreated)
+                                }
+                                )
                                 .catch(err => console.log(err.message))
 
-                            values.name = "";
-                            values.surname = "";
-                            values.dateofbirth = "";
-                            values.weight = "";
-                            values.resName = "";
-                            values.resPhone = "";
-                            values.resEmail = "";
-                            values.collectedAmount = "";
-                            values.requiredAmount = "";
-                            values.iban = "";
-                            values.permit = "";
-                            values.termsandconditions = "";
+                            // values.name = "";
+                            // values.surname = "";
+                            // values.dateofbirth = "";
+                            // values.weight = "";
+                            // values.resName = "";
+                            // values.resPhone = "";
+                            // values.resEmail = "";
+                            // values.collectedAmount = "";
+                            // values.requiredAmount = "";
+                            // values.iban = "";
+                            // values.permit = "";
+                            // values.termsandconditions = "";
                         }}
                     >
                         {({ errors, touched }) => (
                             <Form className='addPatientForm'>
 
+                                {formReceivedMessage && <div style={{color:"white",background:"orange",textAlign:"center"}}>{formReceivedMessage}</div>}
 
 
                                 <Field className="addPatientFormField" name="name" type="text" placeholder={strings.formName} />

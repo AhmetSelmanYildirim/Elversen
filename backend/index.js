@@ -9,10 +9,10 @@ app.use(cors());
 
 //db
 require('./src/config/database');
-const MongoDBStore = require('connect-mongodb-session')(session);
 
+const MongoDBStore = require('connect-mongodb-session')(session);
 const sessionStore = new MongoDBStore({
-    uri: process.env.DB_CONNECTION,
+    uri: process.env.DB_CONNECTION_LOCAL,
     collection: 'sessions'
 });
 
@@ -29,16 +29,6 @@ app.use(session(
 //for datas from form
 app.use(express.urlencoded({ extended:true }));
 
-app.use(session(
-    {
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: true,
-        cookie: { maxAge: 1000 * 60 * 60 * 24 },              // Cookie resets everyday
-        store: sessionStore
-    },
-))
-
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,13 +37,5 @@ app.use(passport.session());
 const commonRouter = require('./src/routers/commonRouter');
 
 app.use('/', commonRouter);
-
-
-// app.post('/login', async (req,res,next)=>{
-//     let data = await JSON.parse(Object.keys(req.body)[0])
-//     console.log(data)
-    
-//     res.send("data received")
-// });
 
 app.listen(process.env.PORT,()=>{console.log(`${process.env.PORT} listening`)})

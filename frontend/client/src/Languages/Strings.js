@@ -40,6 +40,9 @@ export const strings = new LocalizedStrings({
 
         termsAndConditions:"Şartlar ve Koşullar",
 
+        mailExists:"Bu mail zaten kullanımda",
+        accontCreated:"Bilgiler alındı teşekkür ederiz.",
+
     },
     en: {
         homepage:"Homepage",
@@ -79,6 +82,9 @@ export const strings = new LocalizedStrings({
         collectedAmountTooLow:"Collected amount cannot lower than 0",
 
         termsAndConditions:"Terms and Conditions",
+
+        mailExists:"This mail is already in use",
+        accontCreated:"Data received successfully"
 
 
     }
