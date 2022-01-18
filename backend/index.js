@@ -6,7 +6,8 @@ const session = require("express-session");
 const passport = require("passport");
 
 app.use(cors());
-
+//for datas from form
+app.use(express.urlencoded({ extended:true }));
 //db
 require('./src/config/database');
 
@@ -26,8 +27,7 @@ app.use(session(
     },
 ))
 
-//for datas from form
-app.use(express.urlencoded({ extended:true }));
+
 
 // Passport
 app.use(passport.initialize());

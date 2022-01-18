@@ -50,7 +50,7 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="headerItem dropdown">
-                    {strings.responsible} <i class="fas fa-angle-down fa-xs"></i>
+                    {strings.responsible} <i className="fas fa-angle-down fa-xs"></i>
                     <div className='dropdown-content'>
                         <Link
                             className="dropdown-item"
@@ -120,7 +120,7 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="headerItem dropdown">
-                    {strings.responsible} <i class="fas fa-angle-down fa-xs"></i>
+                    {strings.responsible} <i className="fas fa-angle-down fa-xs"></i>
                     <div className='dropdown-content'>
                         <Link
                             className="dropdown-item"

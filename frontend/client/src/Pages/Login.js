@@ -6,33 +6,41 @@ import { AppContext } from '../Contexts/AppContext'
 import { strings } from '../Languages/Strings'
 import axios from 'axios'
 import * as Yup from "yup";
+import { useLocation } from 'react-router-dom';
+import queryString from "query-string"
 
 
 
 
 const Login = () => {
+    const { search } = useLocation();
+    const { error } = queryString.parse(search)
+
 
     const { } = useContext(AppContext)
 
     const loginValidationSchema = Yup.object().shape({
         email: Yup.string()
-            .min(2, strings.tooShort )
+            .min(2, strings.tooShort)
             .max(50, strings.tooLong)
             .required(strings.required),
         password: Yup.string()
-            .min(2, strings.tooShort )
+            .min(2, strings.tooShort)
             .max(50, strings.tooLong)
             .required(strings.required),
     });
 
     return (
         <div className='pageContainer'>
+
             <Header />
 
             <div className='innerPageContainer' >
                 {strings.headerLogin}
-
-                <Formik initialValues={{ email: "", password: "" }}
+                {error && 
+                    <p style={{color:"red"}}>{strings.loginError}</p>
+                }
+                {/* <Formik initialValues={{ email: "", password: "" }}
                     validationSchema={loginValidationSchema}
                     onSubmit={async (values) => {
                         axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, JSON.stringify(values))
@@ -54,12 +62,19 @@ const Login = () => {
                             {errors.password && touched.password ? (
                                 <span className='formErrorMessage'>{errors.password}</span>
                             ) : null}
-                            {/* <Field className="loginFormField" name="email" type="email" placeholder={strings.formEmail} />
-                            <Field className="loginFormField" name="password" type="password" placeholder={strings.formPassword} /> */}
+                            
                             <button type="submit">{strings.submitForm}</button>
                         </Form>
                     )}
-                </Formik>
+
+                </Formik> */}
+
+
+                <form className='loginForm' action={`${process.env.REACT_APP_SERVER_URL}/login`} method='post'>
+                    <input className="loginFormField" name="email" type="email" placeholder={strings.formEmail} />
+                    <input className="loginFormField" name="password" type="password" placeholder={strings.formPassword} />
+                    <button type="submit">{strings.submitForm}</button>
+                </form>
 
             </div>
 

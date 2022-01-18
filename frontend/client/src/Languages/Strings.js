@@ -43,6 +43,7 @@ export const strings = new LocalizedStrings({
         mailExists:"Bu mail zaten kullanımda",
         accontCreated:"Bilgiler alındı teşekkür ederiz.",
         responsible:"Sorumlu",
+        loginError:"Girilen bilgiler hatalı",
 
     },
     en: {
@@ -87,6 +88,8 @@ export const strings = new LocalizedStrings({
         mailExists:"This mail is already in use",
         accontCreated:"Data received successfully",
         responsible:"Responsible",
+        loginError:"The entered information is invalid.",
+
 
 
     }
