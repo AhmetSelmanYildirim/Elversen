@@ -4,8 +4,8 @@ export const strings = new LocalizedStrings({
     tr: {
         homepage:"Anasayfa",
         about:"Hakkımızda",
-        addpatient:"SMA Hastası Ekle",
-        listpatients:"SMA Hastalarını Listele",
+        addpatient:"SMA'lı Çocuk Ekle",
+        listpatients:"SMA'lı Çocukları Listele",
         contact:"İletişim",
         socialMedia:"Sosyal Medya",
         navigation:"Navigasyon",
@@ -42,13 +42,14 @@ export const strings = new LocalizedStrings({
 
         mailExists:"Bu mail zaten kullanımda",
         accontCreated:"Bilgiler alındı teşekkür ederiz.",
+        responsible:"Sorumlu",
 
     },
     en: {
         homepage:"Homepage",
         about:"About",
-        addpatient:"Add SMA Patient",
-        listpatients:"List SMA Patients",
+        addpatient:"Add Child with SMA ",
+        listpatients:"List Children with SMA ",
         contact:"Contact",
         socialMedia:"Social Media",
         navigation:"Navigation",
@@ -84,7 +85,8 @@ export const strings = new LocalizedStrings({
         termsAndConditions:"Terms and Conditions",
 
         mailExists:"This mail is already in use",
-        accontCreated:"Data received successfully"
+        accontCreated:"Data received successfully",
+        responsible:"Responsible",
 
 
     }
