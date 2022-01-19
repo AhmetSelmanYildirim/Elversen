@@ -55,7 +55,8 @@ const addPatient = async (req, res, next) => {
                 requiredAmount: data.requiredAmount,
                 ibanNo: data.iban,
                 governmentPermit: data.permit,
-                termsAndCondition: data.termsandconditions
+                termsAndCondition: data.termsandconditions,
+                isActive:false
             });
             await newPatient.save();
             console.log('Patient Created');

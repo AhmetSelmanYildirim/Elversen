@@ -50,6 +50,13 @@ const PatientSchema = new Schema({
     termsAndCondition: {
         type: Boolean
     },
+    isActive:{
+        type: Boolean,
+        default:false
+    },
+    photo:{
+        type: String
+    }
 }, { collection: "patients", timestamps: true })
 
 const Patient = mongoose.model("Patient", PatientSchema);
