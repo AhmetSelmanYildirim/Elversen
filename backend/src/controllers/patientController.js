@@ -13,7 +13,7 @@ const getPatients = async (req,res,next)=>{
 }
 
 const getPatientById = async (req,res,next)=>{
-    console.log(req.body)
+    // console.log(req.body)
 }
 
 module.exports = {

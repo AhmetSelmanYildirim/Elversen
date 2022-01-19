@@ -44,6 +44,9 @@ export const strings = new LocalizedStrings({
         accontCreated:"Bilgiler alındı teşekkür ederiz.",
         responsible:"Sorumlu",
         loginError:"Girilen bilgiler hatalı",
+        requiredAmount:"Gerekli miktar",
+        remainingAmount:"Kalan miktar",
+        collectedAmount:"Toplanan miktar",
 
     },
     en: {
@@ -89,6 +92,9 @@ export const strings = new LocalizedStrings({
         accontCreated:"Data received successfully",
         responsible:"Responsible",
         loginError:"The entered information is invalid.",
+        requiredAmount:"Required amount",
+        remainingAmount:"Remaining amount",
+        collectedAmount:"Collected amount",
 
 
 
