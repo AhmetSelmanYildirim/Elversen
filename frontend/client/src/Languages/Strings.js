@@ -48,6 +48,10 @@ export const strings = new LocalizedStrings({
         remainingAmount:"Kalan miktar",
         collectedAmount:"Toplanan miktar",
 
+        facebookLink:"Facebook Linki: https://www.facebook.com/kullanıcıadı/",
+        instagramLink:"Instagram Linki: https://www.instagram.com/kullanıcıadı/",
+        photo:"Çocuğumuzun fotoğrafı"
+
     },
     en: {
         homepage:"Homepage",
@@ -95,7 +99,10 @@ export const strings = new LocalizedStrings({
         requiredAmount:"Required amount",
         remainingAmount:"Remaining amount",
         collectedAmount:"Collected amount",
-
+        
+        facebookLink:"Facebook URL: https://www.facebook.com/username/",
+        instagramLink:"Instagram URL: https://www.instagram.com/username/",
+        photo:"The child's photo",
 
 
     }

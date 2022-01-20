@@ -56,7 +56,12 @@ const AddPatient = () => {
 
         termsandconditions: Yup.boolean()
             .required(strings.termsAndConditionsRequired)
-            .oneOf([true], strings.termsAndConditionsRequired)
+            .oneOf([true], strings.termsAndConditionsRequired),
+
+        instagramLink: Yup.string()
+            .max(100, strings.tooLong),
+        facebookLink: Yup.string()
+            .max(100, strings.tooLong)
 
     });
 
@@ -96,12 +101,14 @@ const AddPatient = () => {
                             // values.iban = "";
                             // values.permit = "";
                             // values.termsandconditions = "";
+                            // values.instagramLink = "";
+                            // values.facebookLink = "";
                         }}
                     >
                         {({ errors, touched }) => (
                             <Form className='addPatientForm'>
 
-                                {formReceivedMessage && <div style={{color:"white",background:"orange",textAlign:"center"}}>{formReceivedMessage}</div>}
+                                {formReceivedMessage && <div style={{ color: "white", background: "orange", textAlign: "center" }}>{formReceivedMessage}</div>}
 
 
                                 <Field className="addPatientFormField" name="name" type="text" placeholder={strings.formName} />
@@ -155,15 +162,30 @@ const AddPatient = () => {
                                 {errors.iban && touched.iban ? (
                                     <div className='formErrorMessage'>{errors.iban}</div>
                                 ) : null}
-                                <span style={{ textAlign: "center", margin: "10px 0px" }}>-{strings.governmentPermit}-</span>
 
+                                <Field className="addPatientFormField" name="instagramLink" type="text" placeholder={strings.instagramLink} />
+                                {errors.instagramLink && touched.instagramLink ? (
+                                    <div className='formErrorMessage'>{errors.instagramLink}</div>
+                                ) : null}
+                                <Field className="addPatientFormField" name="facebookLink" type="text" placeholder={strings.facebookLink} />
+                                {errors.facebookLink && touched.facebookLink ? (
+                                    <div className='formErrorMessage'>{errors.facebookLink}</div>
+                                ) : null}
+
+                                <span style={{ textAlign: "center", margin: "10px 0px" }}>-{strings.governmentPermit}-</span>
                                 <Field className="addPatientFormField" name="permit" type="file" placeholder={strings.governmentPermit} />
                                 {errors.permit && touched.permit ? (
                                     <div className='formErrorMessage'>{errors.permit}</div>
                                 ) : null}
+
+                                <span style={{ textAlign: "center", margin: "10px 0px" }}>-{strings.photo}-</span>
+                                <Field className="addPatientFormField" name="photo" type="file" placeholder={strings.photo} />
+                                {errors.photo && touched.photo ? (
+                                    <div className='formErrorMessage'>{errors.photo}</div>
+                                ) : null}
+
+
                                 <Link style={{ textAlign: "center", margin: "10px 0px" }} to={`/termsandconditions`} > {strings.termsAndConditions} </Link>
-
-
                                 <label className="addPatientFormField">
                                     <Field name="termsandconditions" type="checkbox" /> {strings.formTermsAndConditions}
                                 </label>

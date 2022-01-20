@@ -3,7 +3,7 @@ import Header from '../Components/Header'
 import { strings } from "../Languages/Strings";
 import { AppContext } from "../Contexts/AppContext";
 import Footer from "../Components/Footer"
-import { Battery, Heart, Pie } from '@pxblue/react-progress-icons';
+import { Heart } from '@pxblue/react-progress-icons';
 
 
 const ListPatients = () => {
@@ -36,8 +36,8 @@ const ListPatients = () => {
                                     <p>{strings.remainingAmount}: {item.requiredAmount - item.collectedAmount} TL</p>
                                 </div>
                                 <div className='remainingAmount' >
-                                    <p className='heart'><Heart  percent={(item.collectedAmount / item.requiredAmount)*100} size={100}  color={'purple'} outlined={true}/></p>
-                                    <p className='heartText'>{((item.collectedAmount / item.requiredAmount)*100).toFixed(1)}</p>
+                                    <p className='heart'><Heart percent={(item.collectedAmount / item.requiredAmount) * 100} size={100} color={'purple'} outlined={true} /></p>
+                                    <p className='heartText'>{((item.collectedAmount / item.requiredAmount) * 100).toFixed(1)}</p>
                                 </div>
                             </div>
 

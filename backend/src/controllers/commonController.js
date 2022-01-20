@@ -3,6 +3,7 @@ const passport = require("passport");
 const Responsible = require("../model/responsibleModel");
 require("../config/passportLocal")(passport);
 const env = require("dotenv").config();
+const nodemailer = require("nodemailer");
 
 
 
@@ -56,7 +57,10 @@ const addPatient = async (req, res, next) => {
                 ibanNo: data.iban,
                 governmentPermit: data.permit,
                 termsAndCondition: data.termsandconditions,
-                isActive:false
+                isActive:false,
+                instagramLink:data.instagramLink,
+                facebookLink:data.facebookLink,
+                photo:data.photo,
             });
             await newPatient.save();
             console.log('Patient Created');

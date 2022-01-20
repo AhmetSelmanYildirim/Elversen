@@ -17,32 +17,32 @@ const PatientSchema = new Schema({
     },
     weight: {
         type: Number,
-        required:true,
+        required: true,
     },
     responsibleName: {
         type: String,
-        required:true,
+        required: true,
     },
     responsiblePhone: {
         type: String,
-        required:true,
+        required: true,
     },
     responsibleEmail: {
         type: String,
-        required:true,
+        required: true,
     },
     collectedAmount: {
         type: Number,
-        required:true,
-        default:0,
+        required: true,
+        default: 0,
     },
     requiredAmount: {
         type: Number,
-        required:true,
+        required: true,
     },
     ibanNo: {
         type: String,
-        required:true,
+        required: true,
     },
     governmentPermit: {
         type: String,
@@ -50,11 +50,17 @@ const PatientSchema = new Schema({
     termsAndCondition: {
         type: Boolean
     },
-    isActive:{
+    isActive: {
         type: Boolean,
-        default:false
+        default: false
     },
-    photo:{
+    photo: {
+        type: String
+    },
+    facebookLink: {
+        type: String
+    },
+    instagramLink: {
         type: String
     }
 }, { collection: "patients", timestamps: true })
