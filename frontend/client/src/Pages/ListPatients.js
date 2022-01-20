@@ -3,6 +3,7 @@ import Header from '../Components/Header'
 import { strings } from "../Languages/Strings";
 import { AppContext } from "../Contexts/AppContext";
 import Footer from "../Components/Footer"
+import { Battery, Heart, Pie } from '@pxblue/react-progress-icons';
 
 
 const ListPatients = () => {
@@ -14,8 +15,8 @@ const ListPatients = () => {
             <div className='innerPageContainer' >
                 {strings.listpatients}
 
-                {patients && patients.map((item,index) => (
-                    <div key={item+index} className='listItemContainer'>
+                {patients && patients.map((item, index) => (
+                    <div key={item + index} className='listItemContainer'>
                         <div className='listItemInnerContainer'>
 
                             <div className='photoContainer'>
@@ -27,10 +28,16 @@ const ListPatients = () => {
                                 <div className='personalInfo'>
                                     <p>{item.name}</p>
                                     <p>{item.age ? item.age : "Age"}</p>
+                                    <p>{item.weight ? item.weight : "Weight"}kg</p>
                                 </div>
                                 <div className='amountInfo' >
-                                    <p>{strings.collectedAmount}:{item.collectedAmount}</p>
-                                    <p>{strings.remainingAmount}:{item.requiredAmount - item.collectedAmount}</p>
+                                    <p>{strings.requiredAmount}: {item.requiredAmount} TL</p>
+                                    <p>{strings.collectedAmount}: {item.collectedAmount} TL</p>
+                                    <p>{strings.remainingAmount}: {item.requiredAmount - item.collectedAmount} TL</p>
+                                </div>
+                                <div className='remainingAmount' >
+                                    <p className='heart'><Heart  percent={(item.collectedAmount / item.requiredAmount)*100} size={100}  color={'purple'} outlined={true}/></p>
+                                    <p className='heartText'>{((item.collectedAmount / item.requiredAmount)*100).toFixed(1)}</p>
                                 </div>
                             </div>
 
