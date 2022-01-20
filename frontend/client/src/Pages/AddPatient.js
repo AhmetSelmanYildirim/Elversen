@@ -61,7 +61,10 @@ const AddPatient = () => {
         instagramLink: Yup.string()
             .max(100, strings.tooLong),
         facebookLink: Yup.string()
-            .max(100, strings.tooLong)
+            .max(100, strings.tooLong),
+        city: Yup.string()
+            .min(2, strings.tooShort)
+            .max(20, strings.tooLong)
 
     });
 
@@ -130,6 +133,11 @@ const AddPatient = () => {
                                 {errors.weight && touched.weight ? (
                                     <div className='formErrorMessage'>{errors.weight}</div>
                                 ) : null}
+                                <Field className="addPatientFormField" name="city" type="number" placeholder={strings.city} />
+                                {errors.city && touched.city ? (
+                                    <div className='formErrorMessage'>{errors.city}</div>
+                                ) : null}
+
 
 
                                 <Field className="addPatientFormField" name="resName" type="text" placeholder={strings.formResponsibleName} />

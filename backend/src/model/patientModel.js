@@ -62,6 +62,9 @@ const PatientSchema = new Schema({
     },
     instagramLink: {
         type: String
+    },
+    city: {
+        type: String
     }
 }, { collection: "patients", timestamps: true })
 

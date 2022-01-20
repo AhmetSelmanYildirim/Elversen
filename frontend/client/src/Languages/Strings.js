@@ -50,7 +50,8 @@ export const strings = new LocalizedStrings({
 
         facebookLink:"Facebook Linki: https://www.facebook.com/kullanıcıadı/",
         instagramLink:"Instagram Linki: https://www.instagram.com/kullanıcıadı/",
-        photo:"Çocuğumuzun fotoğrafı"
+        photo:"Çocuğumuzun fotoğrafı",
+        city:"Şehir",
 
     },
     en: {
@@ -103,6 +104,7 @@ export const strings = new LocalizedStrings({
         facebookLink:"Facebook URL: https://www.facebook.com/username/",
         instagramLink:"Instagram URL: https://www.instagram.com/username/",
         photo:"The child's photo",
+        city:"City",
 
 
     }
