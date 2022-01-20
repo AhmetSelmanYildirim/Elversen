@@ -1,10 +1,10 @@
-import { Field, Form, Formik } from 'formik'
+// import { Field, Form, Formik } from 'formik'
 import React, { useContext } from 'react'
 import Footer from '../Components/Footer'
 import Header from '../Components/Header'
 import { AppContext } from '../Contexts/AppContext'
 import { strings } from '../Languages/Strings'
-import axios from 'axios'
+// import axios from 'axios'
 import * as Yup from "yup";
 import { useLocation } from 'react-router-dom';
 import queryString from "query-string"
@@ -19,16 +19,16 @@ const Login = () => {
 
     const { } = useContext(AppContext)
 
-    const loginValidationSchema = Yup.object().shape({
-        email: Yup.string()
-            .min(2, strings.tooShort)
-            .max(50, strings.tooLong)
-            .required(strings.required),
-        password: Yup.string()
-            .min(2, strings.tooShort)
-            .max(50, strings.tooLong)
-            .required(strings.required),
-    });
+    // const loginValidationSchema = Yup.object().shape({
+    //     email: Yup.string()
+    //         .min(2, strings.tooShort)
+    //         .max(50, strings.tooLong)
+    //         .required(strings.required),
+    //     password: Yup.string()
+    //         .min(2, strings.tooShort)
+    //         .max(50, strings.tooLong)
+    //         .required(strings.required),
+    // });
 
     return (
         <div className='pageContainer'>
