@@ -133,7 +133,7 @@ const AddPatient = () => {
                                 {errors.weight && touched.weight ? (
                                     <div className='formErrorMessage'>{errors.weight}</div>
                                 ) : null}
-                                <Field className="addPatientFormField" name="city" type="number" placeholder={strings.city} />
+                                <Field className="addPatientFormField" name="city" type="text" placeholder={strings.city} />
                                 {errors.city && touched.city ? (
                                     <div className='formErrorMessage'>{errors.city}</div>
                                 ) : null}
