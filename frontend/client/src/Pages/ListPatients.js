@@ -16,41 +16,59 @@ const options = [
 const ListPatients = () => {
     const { patients } = useContext(AppContext)
     const [sorting, setSorting] = useState({ value: 'choose', label: 'Choose' });
-    let allPatients = []
+    const [allPatients, setAllPatients] = useState([])
+    let everyPatients = []
 
-    if (patients) {
-        allPatients = patients.map(item => {
-            return item
-        });
-    }
+    useEffect(() => {
+        if (patients) {
+            everyPatients = patients.map(item => {
+                return item
+            });
 
+            setAllPatients(everyPatients)
+        }
+        console.log("patients changed")
+    }, [patients])
+
+    // Sorting degisirse allpatient stateini guncelle
     useEffect(() => {
 
         if (sorting.value === "name") {
-            allPatients = allPatients.sort((a, b) => {
-                if (a.name < b.name) { return 1; }
-                if (a.name > b.name) { return -1; }
+            everyPatients = allPatients.sort((a, b) => {
+                if (a.name < b.name) { return -1; }
+                if (a.name > b.name) { return 1; }
                 return 0;
             })
+            setAllPatients(everyPatients)
+            console.log("changed by name")
+
         }
         if (sorting.value === "age") {
-            allPatients = allPatients.sort((a, b) => {
-                if (a.age < b.age) { return 1; }
-                if (a.age > b.age) { return -1; }
+            everyPatients = allPatients.sort((a, b) => {
+                if (a.age < b.age) { return -1; }
+                if (a.age > b.age) { return 1; }
                 return 0;
             })
+            
+            setAllPatients(everyPatients)
+            console.log("changed by age")
+
         }
         if (sorting.value === "weight") {
-            allPatients = allPatients.sort((a, b) => {
+            everyPatients = allPatients.sort((a, b) => {
                 if (a.weight < b.weight) { return 1; }
                 if (a.weight > b.weight) { return -1; }
                 return 0;
             })
+            
+            setAllPatients(everyPatients)
+            console.log("changed by weight")
+
         }
 
     }, [sorting])
 
-    
+
 
 
 
