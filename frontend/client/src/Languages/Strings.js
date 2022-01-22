@@ -52,6 +52,7 @@ export const strings = new LocalizedStrings({
         instagramLink:"Instagram Linki: https://www.instagram.com/kullanıcıadı/",
         photo:"Çocuğumuzun fotoğrafı",
         city:"Şehir",
+        sort:"Sıralama",
 
     },
     en: {
@@ -105,6 +106,7 @@ export const strings = new LocalizedStrings({
         instagramLink:"Instagram URL: https://www.instagram.com/username/",
         photo:"The child's photo",
         city:"City",
+        sort:"Sort by"
 
 
     }

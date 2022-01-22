@@ -12,10 +12,9 @@ const options = [
     { value: 'weight', label: 'Weight' },
 ]
 
-
 const ListPatients = () => {
     const { patients } = useContext(AppContext)
-    const [sorting, setSorting] = useState({ value: 'choose', label: 'Choose' });
+    const [sorting, setSorting] = useState({ value: 'choose', label: strings.sort });
     const [allPatients, setAllPatients] = useState([])
     let everyPatients = []
 
@@ -27,7 +26,6 @@ const ListPatients = () => {
 
             setAllPatients(everyPatients)
         }
-        console.log("patients changed")
     }, [patients])
 
     // Sorting degisirse allpatient stateini guncelle
@@ -35,23 +33,20 @@ const ListPatients = () => {
 
         if (sorting.value === "name") {
             everyPatients = allPatients.sort((a, b) => {
-                if (a.name < b.name) { return -1; }
-                if (a.name > b.name) { return 1; }
+                if (a.name < b.name) { return 1; }
+                if (a.name > b.name) { return -1; }
                 return 0;
             })
-            setAllPatients(everyPatients)
-            console.log("changed by name")
+            setAllPatients([...allPatients], everyPatients)
 
         }
         if (sorting.value === "age") {
             everyPatients = allPatients.sort((a, b) => {
-                if (a.age < b.age) { return -1; }
-                if (a.age > b.age) { return 1; }
+                if (a.age < b.age) { return 1; }
+                if (a.age > b.age) { return -1; }
                 return 0;
             })
-            
-            setAllPatients(everyPatients)
-            console.log("changed by age")
+            setAllPatients([...allPatients], everyPatients)
 
         }
         if (sorting.value === "weight") {
@@ -60,33 +55,25 @@ const ListPatients = () => {
                 if (a.weight > b.weight) { return -1; }
                 return 0;
             })
-            
-            setAllPatients(everyPatients)
-            console.log("changed by weight")
+            setAllPatients([...allPatients], everyPatients)
 
         }
 
     }, [sorting])
 
 
-
-
-
-
-
     return (
         <div className='pageContainer' >
             <Header />
+            
+
+            <div className='innerPageContainer' >
             <Select
-                placeholder={"Choose"}
+                placeholder={strings.sort}
                 defaultValue={sorting}
                 onChange={setSorting}
                 options={options}
             />
-
-
-            <div className='innerPageContainer' >
-                {strings.listpatients}
 
                 {allPatients && allPatients.map((item, index) => (
                     <div key={item + index} className='listItemContainer'>
@@ -94,14 +81,14 @@ const ListPatients = () => {
 
                             <div className='photoContainer'>
                                 <img src="./img/child.png"
-                                    alt='photophoto'
+                                    alt='childsphoto'
                                 />
                             </div>
                             <div className='infoArea'>
                                 <div className='personalInfo'>
                                     <p>{item.name}</p>
-                                    <p>{item.age ? item.age : "Age"}</p>
-                                    <p>{item.weight ? item.weight : "Weight"}kg</p>
+                                    <p>{item.age}</p>
+                                    <p>{item.weight}kg</p>
                                 </div>
                                 <div className='amountInfo' >
                                     <p>{strings.requiredAmount}: {item.requiredAmount} TL</p>
