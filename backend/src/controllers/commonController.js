@@ -12,10 +12,30 @@ const login = async (req, res, next) => {
     let data = await req.body
     console.log(data)
 
-    passport.authenticate('local', {
-        successRedirect: `${process.env.LOGIN_SUCCESS_URL}`,
-        failureRedirect: `${process.env.LOGIN_FAIL_URL}`,
-    })(req, res, next)
+    const _responsible = await Responsible.findOne({ email: data.email });
+    console.log(_responsible)
+
+    if (!_responsible) {
+        passport.authenticate('local', {
+            successRedirect: `${process.env.LOGIN_SUCCESS_URL}`,
+            failureRedirect: `${process.env.LOGIN_FAIL_URL}1`,
+        })(req, res, next)
+    }
+    else {
+        if (_responsible && _responsible.isActive == true) {
+            passport.authenticate('local', {
+                successRedirect: `${process.env.LOGIN_SUCCESS_URL}`,
+                failureRedirect: `${process.env.LOGIN_FAIL_URL}1`,
+            })(req, res, next)
+        }
+        else if(_responsible && _responsible.isActive == false){
+            passport.authenticate('local', {
+                successRedirect: `${process.env.LOGIN_FAIL_URL}2`,
+            })(req, res, next)
+        }
+    }
+
+
 
 }
 
@@ -107,8 +127,6 @@ const addPatient = async (req, res, next) => {
                     transporter.close();
                 }
             })
-
-
 
 
 

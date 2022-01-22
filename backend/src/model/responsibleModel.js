@@ -18,6 +18,10 @@ const ResponsibleSchema = new Schema({
     email: {
         type: String,
         required: true
+    },
+    isActive: {
+        type: Boolean,
+        default: false
     }
 
 }, { collection: "responsibles", timestamps: true })
