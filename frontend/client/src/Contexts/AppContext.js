@@ -6,7 +6,7 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
-    const [currentLanguage, setCurrentLanguage] = useState(strings.getLanguage())
+    const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem("language"))
     const [isResponsibleLogin, setisResponsibleLogin] = useState(false)
     const [patients, setPatients] = useState("")
     const [patient, setPatient] = useState("")
@@ -18,6 +18,8 @@ export const AppProvider = ({ children }) => {
     }
 
     useEffect(() => {
+
+        changeLanguage(currentLanguage)
         
         const getPatients = async () => {
             const { data } = await axios(`${process.env.REACT_APP_PATIENT_URL}/getPatients`)
