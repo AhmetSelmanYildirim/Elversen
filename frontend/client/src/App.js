@@ -7,7 +7,7 @@ import ListPatients from './Pages/ListPatients';
 import Contact from './Pages/Contact';
 import TermsAndConditions from './Pages/TermsAndConditions';
 import Login from './Pages/Login';
-import UpdatePatient from './Pages/Responsible/UpdatePatient';
+import ResponsibleProfile from './Pages/Responsible/ResponsibleProfile';
 
 const App = () => {
   return (
@@ -21,7 +21,8 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/termsandconditions" element={<TermsAndConditions />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/r/udpatePatient" element={<UpdatePatient />} />
+          <Route path="/r/profile/:id" element={<ResponsibleProfile authorized={false}/>} />
+          {/* <Route path="/r/profile/:id" element={<ResponsibleProfile authorized={false}/>} /> */}
         </Routes>
       </Router>
     </div>

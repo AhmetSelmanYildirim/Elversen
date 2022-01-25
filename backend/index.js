@@ -36,8 +36,10 @@ app.use(passport.session());
 // Routers
 const commonRouter = require('./src/routers/commonRouter');
 const patientRouter = require("./src/routers/patientRouter");
+const responsibleRouter = require("./src/routers/responsibleRouter");
 
 app.use('/', commonRouter);
 app.use("/p/", patientRouter);
+app.use("/r/", responsibleRouter);
 
 app.listen(process.env.PORT,()=>{console.log(`${process.env.PORT} listening`)})

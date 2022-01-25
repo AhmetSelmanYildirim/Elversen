@@ -30,6 +30,11 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
+.headerItemResponsible{
+  background-color: pink;
+  cursor: pointer;
+  border-radius: 10px;
+}
 .headerLang {
   width: 25%;
   cursor: pointer;
@@ -283,6 +288,12 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+  }
+  .headerItemResponsible{
+    background-color: pink;
+    color: #ff6600;
+    cursor: pointer;
+    border-radius: 10px;
   }
   .headerContainer {
     display: flex;

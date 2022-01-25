@@ -10,6 +10,8 @@ export const AppProvider = ({ children }) => {
     const [isResponsibleLogin, setisResponsibleLogin] = useState(false)
     const [patients, setPatients] = useState("")
     const [patient, setPatient] = useState("")
+    const [responsibles, setResponsibles] = useState("")
+    const [currentResponsible, setCurrentResponsible] = useState("")
 
     const changeLanguage = (newLanguage) => {
         strings.setLanguage(newLanguage)
@@ -20,15 +22,22 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
 
         changeLanguage(currentLanguage)
-        
+
+        const getResponsibles = async () => {
+            const { data } = await axios(`${process.env.REACT_APP_RESPONSIBLE_URL}/getResponsibles`)
+            // console.log(data)
+            setResponsibles(data);
+        }
+        getResponsibles();
+
         const getPatients = async () => {
             const { data } = await axios(`${process.env.REACT_APP_PATIENT_URL}/getPatients`)
             setPatients(data);
         }
         getPatients();
 
-        const getPatientById = async (id) =>{
-            const { data } = await axios.post(`${process.env.REACT_APP_PATIENT_URL}/getPatientById`,JSON.stringify({id:1}))
+        const getPatientById = async (id) => {
+            const { data } = await axios.post(`${process.env.REACT_APP_PATIENT_URL}/getPatientById`, JSON.stringify({ id: 1 }))
             setPatient(data)
         }
         getPatientById();
@@ -44,7 +53,10 @@ export const AppProvider = ({ children }) => {
                 isResponsibleLogin,
                 setisResponsibleLogin,
                 patients,
-                patient
+                patient,
+                responsibles,
+                currentResponsible,
+                setCurrentResponsible
             }}
         >
             {children}

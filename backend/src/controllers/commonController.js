@@ -8,31 +8,46 @@ const nodemailer = require("nodemailer");
 
 
 const login = async (req, res, next) => {
-    console.log(req.body)
-    let data = await req.body
-    console.log(data)
 
-    const _responsible = await Responsible.findOne({ email: data.email });
-    console.log(_responsible)
+    try {
 
-    if (!_responsible) {
-        passport.authenticate('local', {
-            successRedirect: `${process.env.LOGIN_SUCCESS_URL}`,
-            failureRedirect: `${process.env.LOGIN_FAIL_URL}1`,
-        })(req, res, next)
-    }
-    else {
-        if (_responsible && _responsible.isActive == true) {
+
+
+        // form request
+        let data = await req.body
+
+        // axios request
+        // let data = await JSON.parse(Object.keys(req.body)[0])
+
+
+        const _responsible = await Responsible.findOne({ email: data.email });
+        const responsibleId = _responsible.id;
+        let randomNumber1 = Math.floor(Math.random() * 1000)
+        if(randomNumber1 <100) randomNumber1 += 100;
+        let randomNumber2 = Math.floor(Math.random() * 1000)
+        if(randomNumber2 <100) randomNumber2 += 100;
+
+        if (!_responsible) {
             passport.authenticate('local', {
-                successRedirect: `${process.env.LOGIN_SUCCESS_URL}`,
+                successRedirect: `${process.env.LOGIN_SUCCESS_URL}/${responsibleId}/${randomNumber}`,
                 failureRedirect: `${process.env.LOGIN_FAIL_URL}1`,
             })(req, res, next)
         }
-        else if(_responsible && _responsible.isActive == false){
-            passport.authenticate('local', {
-                successRedirect: `${process.env.LOGIN_FAIL_URL}2`,
-            })(req, res, next)
+        else {
+            if (_responsible && _responsible.isActive == true) {
+                passport.authenticate('local', {
+                    successRedirect: `${process.env.LOGIN_SUCCESS_URL}/${randomNumber1}${responsibleId}${randomNumber2}`,
+                    failureRedirect: `${process.env.LOGIN_FAIL_URL}1`,
+                })(req, res, next)
+            }
+            else if (_responsible && _responsible.isActive == false) {
+                passport.authenticate('local', {
+                    successRedirect: `${process.env.LOGIN_FAIL_URL}2`,
+                })(req, res, next)
+            }
         }
+    } catch (error) {
+        console.error(error)
     }
 
 
