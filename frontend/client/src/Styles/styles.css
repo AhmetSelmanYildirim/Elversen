@@ -130,6 +130,13 @@ body {
   align-items: center;
   padding: 3vh 0vh 8vh 0vh;
 }
+.responsivePageInnerContainer{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+}
 .slider {
   width: 100%;
   display: flex;
@@ -141,6 +148,20 @@ body {
 }
 .homepageContent {
   margin: 50px 0px;
+}
+.resetPasswordArea{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.updatePatientInfo{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .footerContainer {
   width: 100%;

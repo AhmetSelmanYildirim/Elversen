@@ -22,7 +22,6 @@ const App = () => {
           <Route path="/termsandconditions" element={<TermsAndConditions />} />
           <Route path="/login" element={<Login />} />
           <Route path="/r/profile/:id" element={<ResponsibleProfile authorized={false}/>} />
-          {/* <Route path="/r/profile/:id" element={<ResponsibleProfile authorized={false}/>} /> */}
         </Routes>
       </Router>
     </div>
