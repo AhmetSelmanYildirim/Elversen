@@ -68,6 +68,9 @@ export const strings = new LocalizedStrings({
 
         // Update patient info
         patientInfo: "SMA'lı çocuğunuzun bilgilerini gücelleme",
+        dateOfBirth: "Doğum tarihi",
+        facebookLink: "Facebook Link",
+        instagramLink: "Instagram Link",
 
     },
     en: {
@@ -137,6 +140,9 @@ export const strings = new LocalizedStrings({
 
         // Update patient info
         patientInfo: "Update info of your child with SMA",
+        dateOfBirth: "Date of Birth",
+        updateFacebookLink: "Facebook Link",
+        updateInstagramLink: "Instagram Link",
 
     }
 })

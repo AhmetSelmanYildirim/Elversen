@@ -92,20 +92,20 @@ const AddPatient = () => {
                                 )
                                 .catch(err => console.log(err.message))
 
-                            // values.name = "";
-                            // values.surname = "";
-                            // values.dateofbirth = "";
-                            // values.weight = "";
-                            // values.resName = "";
-                            // values.resPhone = "";
-                            // values.resEmail = "";
-                            // values.collectedAmount = "";
-                            // values.requiredAmount = "";
-                            // values.iban = "";
-                            // values.permit = "";
-                            // values.termsandconditions = "";
-                            // values.instagramLink = "";
-                            // values.facebookLink = "";
+                            values.name = "";
+                            values.surname = "";
+                            values.dateofbirth = "";
+                            values.weight = "";
+                            values.resName = "";
+                            values.resPhone = "";
+                            values.resEmail = "";
+                            values.collectedAmount = "";
+                            values.requiredAmount = "";
+                            values.iban = "";
+                            values.permit = "";
+                            values.termsandconditions = "";
+                            values.instagramLink = "";
+                            values.facebookLink = "";
                         }}
                     >
                         {({ errors, touched }) => (

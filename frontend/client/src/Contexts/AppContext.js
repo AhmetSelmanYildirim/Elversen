@@ -36,11 +36,11 @@ export const AppProvider = ({ children }) => {
         }
         getPatients();
 
-        const getPatientById = async (id) => {
-            const { data } = await axios.post(`${process.env.REACT_APP_PATIENT_URL}/getPatientById`, JSON.stringify({ id: 1 }))
-            setPatient(data)
-        }
-        getPatientById();
+        // const getPatientById = async (id) => {
+        //     const { data } = await axios.post(`${process.env.REACT_APP_PATIENT_URL}/getPatientById`, JSON.stringify({ id: 1 }))
+        //     setPatient(data)
+        // }
+        // getPatientById();
 
     }, [])
 

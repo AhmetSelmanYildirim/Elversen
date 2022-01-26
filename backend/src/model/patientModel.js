@@ -11,8 +11,8 @@ const PatientSchema = new Schema({
         type: String,
         required: true,
     },
-    birthOfDate: {
-        type: Date,
+    dateOfBirth: {
+        type: String,
         required: true,
     },
     weight: {

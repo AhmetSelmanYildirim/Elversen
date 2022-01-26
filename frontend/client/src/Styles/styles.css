@@ -30,7 +30,7 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
-.headerItemResponsible{
+.headerItemResponsible {
   background-color: pink;
   cursor: pointer;
   border-radius: 10px;
@@ -130,7 +130,7 @@ body {
   align-items: center;
   padding: 3vh 0vh 8vh 0vh;
 }
-.responsivePageInnerContainer{
+.responsivePageInnerContainer {
   width: 90%;
   display: flex;
   flex-direction: row;
@@ -149,15 +149,22 @@ body {
 .homepageContent {
   margin: 50px 0px;
 }
-.resetPasswordArea{
+.resetPasswordArea {
   width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.updatePatientInfo{
+.updatePatientInfo {
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.patientInfoArea {
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -176,7 +183,6 @@ body {
   bottom: 0px;
   padding: 2vh 0vh 0vh 0vh;
   min-height: 25px;
-
 }
 .footerInnerContainer {
   width: 100%;
@@ -212,18 +218,32 @@ body {
 }
 .addPatientForm,
 .contactForm,
+.resetPasswordForm,
 .loginForm {
   display: flex;
   flex-direction: column;
 }
 .addPatientFormField,
 .contactFormField,
+.resetPasswordFormField,
 .loginFormField {
   padding: 5px;
   margin: 5px 0px;
   border: 1px solid gray;
   border-radius: 4px;
 }
+.updateInfoForm {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+}
+.updateInfoFormField {
+  padding: 5px;
+  margin: 5px 0px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
 .formErrorMessage {
   text-align: center;
   color: red;
@@ -284,20 +304,22 @@ body {
   flex-direction: column;
 }
 .listItemContainer .listItemInnerContainer .infoArea .remainingAmount {
-  display:flex; 
-  justify-content:center;
-  align-items:center;
-  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 .listItemContainer .listItemInnerContainer .infoArea .remainingAmount .heart {
   position: absolute;
-  
 }
-.listItemContainer .listItemInnerContainer .infoArea .remainingAmount .heartText {
-  position:absolute; 
-  color:white;
+.listItemContainer
+  .listItemInnerContainer
+  .infoArea
+  .remainingAmount
+  .heartText {
+  position: absolute;
+  color: white;
 }
-
 
 @media only screen and (max-width: 800px) {
   .headerInnerContainer {
@@ -310,7 +332,7 @@ body {
     justify-content: center;
     align-items: center;
   }
-  .headerItemResponsible{
+  .headerItemResponsible {
     background-color: pink;
     color: #ff6600;
     cursor: pointer;
@@ -327,5 +349,50 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 5vh 0vh;
+  }
+  .responsivePageInnerContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .resetPasswordArea {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .addPatientForm,
+  .contactForm,
+  .resetPasswordForm,
+  .loginForm {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+  .addPatientFormField,
+  .contactFormField,
+  .resetPasswordFormField,
+  .loginFormField {
+    padding: 5px;
+    margin: 5px 0px;
+    border: 1px solid gray;
+    border-radius: 4px;
+  }
+
+  .updateInfoForm {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .updateInfoFormField {
+    padding: 5px;
+    margin: 5px 0px;
+    border: 1px solid gray;
+    border-radius: 4px;
   }
 }
