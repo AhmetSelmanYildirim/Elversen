@@ -89,11 +89,14 @@ const ListPatients = () => {
                                     <p>{item.name}</p>
                                     <p>{item.age}</p>
                                     <p>{item.weight}kg</p>
+                                    {item.instagramLink && <p><a style={{textDecoration:"none", color:"white"}} href={item.instagramLink} target="_blank"> Instagram</a></p>}
+                                    {item.facebookLink && <p><a style={{textDecoration:"none", color:"white"}} href={item.facebookLink} target="_blank"> Facebook</a></p>}
                                 </div>
                                 <div className='amountInfo' >
                                     <p>{strings.requiredAmount}: {item.requiredAmount} TL</p>
                                     <p>{strings.collectedAmount}: {item.collectedAmount} TL</p>
                                     <p>{strings.remainingAmount}: {item.requiredAmount - item.collectedAmount} TL</p>
+                                    <p>IBAN: {item.ibanNo}</p>
                                 </div>
                                 <div className='remainingAmount' >
                                     <p className='heart'><Heart percent={(item.collectedAmount / item.requiredAmount) * 100} size={100} color={'purple'} outlined={true} /></p>

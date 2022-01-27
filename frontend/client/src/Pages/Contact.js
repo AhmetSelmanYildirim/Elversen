@@ -3,16 +3,27 @@ import Header from '../Components/Header'
 import { strings } from "../Languages/Strings";
 import { AppContext } from "../Contexts/AppContext";
 import Footer from "../Components/Footer"
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, useField } from 'formik';
 import axios from "axios"
 import * as Yup from "yup"
 
-
+const MyTextArea = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+    return (
+        <>
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <textarea className="text-area" {...field} {...props} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </>
+    );
+};
 
 
 const Contact = () => {
     const { } = useContext(AppContext)
-    
+
     const contactValidationSchema = Yup.object().shape({
         name: Yup.string()
             .min(2, strings.tooShort)
@@ -51,7 +62,7 @@ const Contact = () => {
             <div className='innerPageContainer' >
                 {strings.contact}
 
-                <div className='addPatientFormArea'>
+                <div className='contactFormArea'>
 
                     <Formik
                         initialValues={{ name: "", surname: "", phone: "", email: "", subject: "", message: "" }}
@@ -93,10 +104,12 @@ const Contact = () => {
                                 {errors.subject && touched.subject ? (
                                     <div className='formErrorMessage'>{errors.subject}</div>
                                 ) : null}
-                                <Field className="contactFormField" name="message" type="text" placeholder={strings.formMessage} />
-                                {errors.message && touched.message ? (
-                                    <div className='formErrorMessage'>{errors.message}</div>
-                                ) : null}
+                                <MyTextArea
+                                    className="contactFormField"
+                                    name="message"
+                                    rows="6"
+                                    placeholder={strings.formMessage}
+                                />
 
 
 

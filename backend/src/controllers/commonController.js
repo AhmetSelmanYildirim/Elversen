@@ -56,7 +56,40 @@ const login = async (req, res, next) => {
 
 const sendContactMail = async (req, res, next) => {
     let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log(data)
+    // console.log(data)
+
+    //Mail activate process
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+
+        auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASSWORD
+        }
+    });
+
+    const sentMail = await transporter.sendMail({
+        from: `Contact Mail <${process.env.GMAIL_USER}>`,
+        to: process.env.GMAIL_USER,
+        subject: data.subject,
+        html: `
+        <div><strong>İsim: </strong> ${data.name} </div>
+        <div><strong>Soyisim: </strong> ${data.surname} </div>
+        <div><strong>Telefon: </strong> ${data.phone} </div>
+        <div><strong>Email: </strong> ${data.email} </div>
+        <div><strong>Mesaj: </strong> ${data.message} </div>
+        `
+    }, (error, info) => {
+        if (error) {
+            console.log("An error occured: " + error);
+            console.log(info);
+        }
+        else {
+            console.log("mail has sent");
+            console.log(info);
+            transporter.close();
+        }
+    })
 
     res.send("data received")
 }
