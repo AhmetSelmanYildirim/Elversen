@@ -23,10 +23,31 @@ const getPatientById = async (req, res, next) => {
 }
 
 const updatePatient = async (req, res, next) => {
-    
+
     let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log(data);
-    // res.send("geldigeldi")
+    // console.log(data);
+
+    try {
+
+        const patient = await Patient.findByIdAndUpdate(data.id,{
+            name:data.values.name,
+            surname:data.values.surname,
+            weight:data.values.weight,
+            collectedAmount:data.values.collectedAmount,
+            requiredAmount:data.values.requiredAmount,
+            ibanNo:data.values.ibanNo,
+            responsiblePhone:data.values.responsiblePhone,
+            facebookLink:data.values.facebookLink,
+            instagramLink:data.values.instagramLink,
+
+        })
+
+        res.send({ msg: "info updated successfully" })
+    } catch (error) {
+        console.log(error.message);
+        res.send({ error: "an error occured"})
+    }
+
 }
 
 module.exports = {

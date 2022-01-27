@@ -17,6 +17,8 @@ const ResponsibleProfile = ({ authorized }) => {
     const [responsibleUser, setresponsibleUser] = useState("")
     const [successMessage, setSuccessMessage] = useState(false)
     const [failMessage, setFailMessage] = useState(false)
+    const [updateSuccessMessage, setUpdateSuccessMessage] = useState(false)
+    const [updateFailMessage, setUpdateFailMessage] = useState(false)
     const [patient, setPatient] = useState("");
 
     useEffect(() => {
@@ -35,6 +37,12 @@ const ResponsibleProfile = ({ authorized }) => {
     useEffect(() => {
         if (failMessage) setSuccessMessage(false)
     }, [failMessage])
+    useEffect(() => {
+        if (updateSuccessMessage) setUpdateFailMessage(false)
+    }, [updateSuccessMessage])
+    useEffect(() => {
+        if (updateFailMessage) setUpdateSuccessMessage(false)
+    }, [updateFailMessage])
 
 
 
@@ -49,7 +57,7 @@ const ResponsibleProfile = ({ authorized }) => {
             .max(50, strings.tooLong)
             .required(strings.required),
 
-        renewPassword: Yup.string() 
+        renewPassword: Yup.string()
             .oneOf([Yup.ref('newPassword'), null], strings.passwordMatch)
     });
 
@@ -62,14 +70,10 @@ const ResponsibleProfile = ({ authorized }) => {
             .min(2, strings.tooShort)
             .max(50, strings.tooLong)
             .required(strings.required),
-        dateofbirth: Yup.string()
-            .min(10, strings.tooShort)
-            .max(10, strings.tooLong)
-            .required(strings.required),
         weight: Yup.number()
             .min(1, strings.weightTooLow)
             .required(strings.required),
-        resPhone: Yup.string()
+        responsiblePhone: Yup.string()
             .min(2, strings.tooShort)
             .max(50, strings.tooLong)
             .required(strings.required),
@@ -158,17 +162,18 @@ const ResponsibleProfile = ({ authorized }) => {
                         {patient &&
                             <div className='patientInfoArea'>
                                 <Formik
-                                    initialValues={{ name: patient.name, surname: patient.surname, weight: patient.weight, dateOfBirth: patient.dateOfBirth, collectedAmount: patient.collectedAmount, requiredAmount: patient.requiredAmount, ibanNo: patient.ibanNo, responsiblePhone: patient.responsiblePhone, facebookLink: patient.facebookLink, instagramLink: patient.instagramLink }}
+                                    initialValues={{ name: patient.name, surname: patient.surname, weight: patient.weight, collectedAmount: patient.collectedAmount, requiredAmount: patient.requiredAmount, ibanNo: patient.ibanNo, responsiblePhone: patient.responsiblePhone, facebookLink: patient.facebookLink, instagramLink: patient.instagramLink }}
                                     validationSchema={patientUpdateValidationSchema}
 
                                     onSubmit={async (values) => {
-                                        const data={
+                                        const data = {
                                             id: patient._id,
                                             values
                                         }
-                                        axios.put(`${process.env.REACT_APP_PATIENT_URL}/updatePatient`, JSON.stringify(data))
+                                        await axios.put(`${process.env.REACT_APP_PATIENT_URL}/updatePatient`, JSON.stringify(data))
                                             .then(response => {
-                                                console.log(response)
+                                                response.data.error && setUpdateFailMessage(true)
+                                                response.data.msg && setUpdateSuccessMessage(true)
                                             })
                                             .catch(err => console.log(err.message))
                                     }}
@@ -187,10 +192,6 @@ const ResponsibleProfile = ({ authorized }) => {
                                             <span><strong>{strings.formWeight}</strong></span><Field className="updateInfoFormField" name="weight" type="number" placeholder={strings.formWeight} />
                                             {errors.weight && touched.weight ? (
                                                 <div className='formErrorMessage'>{errors.weight}</div>
-                                            ) : null}
-                                            <span><strong>{strings.dateOfBirth}</strong></span><Field className="updateInfoFormField" name="dateOfBirth" type="text" placeholder={strings.formDateOfBirth} />
-                                            {errors.dateOfBirth && touched.dateOfBirth ? (
-                                                <div className='formErrorMessage'>{errors.dateOfBirth}</div>
                                             ) : null}
                                             <span><strong>{strings.collectedAmount}</strong></span><Field className="updateInfoFormField" name="collectedAmount" type="number" placeholder={strings.collectedAmount} />
                                             {errors.collectedAmount && touched.collectedAmount ? (
@@ -221,6 +222,10 @@ const ResponsibleProfile = ({ authorized }) => {
                                         </Form>
                                     )}
                                 </Formik>
+                                {updateSuccessMessage &&
+                                    <p style={{ color: "green" }}>{strings.infoUpdateSuccess}</p>}
+                                {updateFailMessage &&
+                                    <p style={{ color: "red" }}>{strings.infoUpdateFail}</p>}
                             </div>
                         }
                         {/* 

@@ -71,6 +71,8 @@ export const strings = new LocalizedStrings({
         dateOfBirth: "Doğum tarihi",
         facebookLink: "Facebook Link",
         instagramLink: "Instagram Link",
+        infoUpdateSuccess: "Bilgiler başarıyla güncellendi",
+        infoUpdateFail: "Bir hata oluştu",
 
     },
     en: {
@@ -143,6 +145,8 @@ export const strings = new LocalizedStrings({
         dateOfBirth: "Date of Birth",
         updateFacebookLink: "Facebook Link",
         updateInstagramLink: "Instagram Link",
+        infoUpdateSuccess: "Info updated successfully",
+        infoUpdateFail: "An error occured while updating info"
 
     }
 })
