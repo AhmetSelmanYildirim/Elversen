@@ -12,7 +12,7 @@ import * as Yup from "yup";
 const AddPatient = () => {
     const { } = useContext(AppContext)
     const [formReceivedMessage, setFormReceivedMessage] = useState("")
-    const [step, setStep] = useState(2)
+    const [step, setStep] = useState(1)
     const [emailState, setEmailState] = useState("")
 
 
@@ -207,13 +207,15 @@ const AddPatient = () => {
                 <Header />
                 <div className='innerPageContainer' >
                     {strings.addpatient}
-                    <p>{emailState}</p>
-                    <form action={`${process.env.REACT_APP_SERVER_URL}/addpatientphoto`} method="post" encType="multipart/form-data">
-                        <input type="file" name="avatar" />
-                        <button type='submit'>{strings.submitForm}</button>
-                    </form>
+                    
+                    <div >
+                        <form className='contactFormArea' action={`${process.env.REACT_APP_SERVER_URL}/addpatientpermit`} method="post" encType="multipart/form-data">
+                            <input type="file" name="governmentPermit" />
+                            <input hidden type="text" name="email" value={emailState} />
+                            <button type='submit'>{strings.submitForm}</button>
+                        </form>
 
-                    <div className='addPatientFormArea'>
+
 
                     </div>
 

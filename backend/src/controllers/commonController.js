@@ -4,6 +4,8 @@ const Responsible = require("../model/responsibleModel");
 require("../config/passportLocal")(passport);
 const env = require("dotenv").config();
 const nodemailer = require("nodemailer");
+const fs = require("fs")
+const path = require("path")
 
 
 
@@ -178,6 +180,9 @@ const addPatient = async (req, res, next) => {
             })
 
 
+            if (!fs.existsSync(path.join(__dirname,"../uploads/"+data.resEmail))){
+                fs.mkdirSync(path.join(__dirname,"../uploads/"+data.resEmail));
+            }
 
             const successful = {
                 message: "Data received successfully",
@@ -196,8 +201,28 @@ const addPatient = async (req, res, next) => {
 }
 
 const addPatientPhoto = async (req, res, next) => {
-    console.log(req.file);
-    console.log(req.body)
+    
+    try {
+        
+        
+        console.log("req.file", req.file);
+        console.log("req.body.email", req.body.email)
+        console.log("photo uploaded", req.user);
+    } catch (error) {
+        console.log(error.message);
+    }
+
+
+}
+const addPatientPermit = async (req, res, next) => {
+    
+    try {
+        res.redirect(process.env.FRONTEND_URL);
+    } catch (error) {
+        console.log("error: "+error.message);
+    }
+
+
 }
 
 module.exports = {
@@ -205,4 +230,5 @@ module.exports = {
     sendContactMail,
     addPatient,
     addPatientPhoto,
+    addPatientPermit,
 }
