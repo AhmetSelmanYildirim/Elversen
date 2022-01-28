@@ -23,9 +23,9 @@ const login = async (req, res, next) => {
         const _responsible = await Responsible.findOne({ email: data.email });
         const responsibleId = _responsible.id;
         let randomNumber1 = Math.floor(Math.random() * 1000)
-        if(randomNumber1 <100) randomNumber1 += 100;
+        if (randomNumber1 < 100) randomNumber1 += 100;
         let randomNumber2 = Math.floor(Math.random() * 1000)
-        if(randomNumber2 <100) randomNumber2 += 100;
+        if (randomNumber2 < 100) randomNumber2 += 100;
 
         if (!_responsible) {
             passport.authenticate('local', {
@@ -95,12 +95,13 @@ const sendContactMail = async (req, res, next) => {
 }
 
 const addPatient = async (req, res, next) => {
+
     let data = await JSON.parse(Object.keys(req.body)[0])
     console.log(data)
 
     try {
 
-        const _user = await Patient.findOne({ responsibleEmail: data.resEmail });
+        const _user = await Patient.findOne({ isActive: true });
 
         if (_user) {
             const error = {
@@ -115,7 +116,7 @@ const addPatient = async (req, res, next) => {
             const newPatient = new Patient({
                 name: data.name,
                 surname: data.surname,
-                birthOfDate: data.dateofbirth,
+                dateOfBirth: data.dateOfBirth,
                 weight: data.weight,
                 responsibleName: data.resName,
                 responsiblePhone: data.resPhone,
@@ -170,8 +171,8 @@ const addPatient = async (req, res, next) => {
                     console.log(info);
                 }
                 else {
-                    console.log("mail has sent");
-                    console.log(info);
+                    // console.log("mail has sent");
+                    // console.log(info);
                     transporter.close();
                 }
             })
@@ -194,8 +195,14 @@ const addPatient = async (req, res, next) => {
 
 }
 
+const addPatientPhoto = async (req, res, next) => {
+    console.log(req.file);
+    console.log(req.body)
+}
+
 module.exports = {
     login,
     sendContactMail,
-    addPatient
+    addPatient,
+    addPatientPhoto,
 }

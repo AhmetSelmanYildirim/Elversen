@@ -8,4 +8,6 @@ router.post('/contact', commonController.sendContactMail );
 
 router.post('/addpatient', commonController.addPatient );
 
+router.post('/addpatientphoto', commonController.addPatientPhoto);
+
 module.exports = router;
