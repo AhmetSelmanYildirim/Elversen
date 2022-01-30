@@ -74,6 +74,8 @@ export const strings = new LocalizedStrings({
         infoUpdateSuccess: "Bilgiler başarıyla güncellendi",
         infoUpdateFail: "Bir hata oluştu",
 
+        thanksForContactUs: "Mesajınız başarıyla bize ulaşmıştır. İlginiz için teşekkür ederiz."
+
     },
     en: {
         homepage: "Homepage",
@@ -146,7 +148,9 @@ export const strings = new LocalizedStrings({
         updateFacebookLink: "Facebook Link",
         updateInstagramLink: "Instagram Link",
         infoUpdateSuccess: "Info updated successfully",
-        infoUpdateFail: "An error occured while updating info"
+        infoUpdateFail: "An error occured while updating info",
+
+        thanksForContactUs:"Your message has reached us successfully. Thank you for your attention."
 
     }
 })

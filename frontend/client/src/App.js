@@ -8,6 +8,7 @@ import Contact from './Pages/Contact';
 import TermsAndConditions from './Pages/TermsAndConditions';
 import Login from './Pages/Login';
 import ResponsibleProfile from './Pages/Responsible/ResponsibleProfile';
+import ThankYou from './Pages/ThankYou';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/termsandconditions" element={<TermsAndConditions />} />
           <Route path="/login" element={<Login />} />
           <Route path="/r/profile/:id" element={<ResponsibleProfile authorized={false}/>} />
+          <Route path="/contact/thankyou" element={<ThankYou />} />
         </Routes>
       </Router>
     </div>

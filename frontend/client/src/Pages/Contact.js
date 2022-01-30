@@ -6,6 +6,7 @@ import Footer from "../Components/Footer"
 import { Formik, Field, Form, useField } from 'formik';
 import axios from "axios"
 import * as Yup from "yup"
+import { useNavigate } from "react-router-dom"
 
 const MyTextArea = ({ label, ...props }) => {
     const [field, meta] = useField(props);
@@ -22,6 +23,7 @@ const MyTextArea = ({ label, ...props }) => {
 
 
 const Contact = () => {
+    const navigate = useNavigate();
     const { } = useContext(AppContext)
 
     const contactValidationSchema = Yup.object().shape({
@@ -69,7 +71,10 @@ const Contact = () => {
                         validationSchema={contactValidationSchema}
                         onSubmit={async (values) => {
                             axios.post(`${process.env.REACT_APP_SERVER_URL}/contact`, JSON.stringify(values))
-                                .then(response => console.log(response))
+                                .then(response => {
+                                    if (response.data.msg) navigate("/contact/thankyou")
+                                    else if (response.data.error) navigate("/contact?error=1")
+                                })
                                 .catch(err => console.log(err.message))
 
                             values.name = "";

@@ -84,16 +84,17 @@ const sendContactMail = async (req, res, next) => {
     }, (error, info) => {
         if (error) {
             console.log("An error occured: " + error);
+            res.send({error:`An error occured: ${error.message}`})
             console.log(info);
         }
         else {
+            res.send({msg:"data received"})
             console.log("mail has sent");
             console.log(info);
             transporter.close();
         }
     })
 
-    res.send("data received")
 }
 
 const addPatient = async (req, res, next) => {
@@ -200,26 +201,27 @@ const addPatient = async (req, res, next) => {
 
 }
 
-const addPatientPhoto = async (req, res, next) => {
-    
-    try {
-        
-        
-        console.log("req.file", req.file);
-        console.log("req.body.email", req.body.email)
-        console.log("photo uploaded", req.user);
-    } catch (error) {
-        console.log(error.message);
-    }
 
-
-}
 const addPatientPermit = async (req, res, next) => {
     
     try {
         res.redirect(process.env.FRONTEND_URL);
     } catch (error) {
         console.log("error: "+error.message);
+    }
+
+
+}
+
+const addPatientPhoto = async (req, res, next) => {
+    
+    try {
+        
+        console.log("req.file", req.file);
+        console.log("req.body.email", req.body.email)
+        console.log("photo uploaded", req.user);
+    } catch (error) {
+        console.log(error.message);
     }
 
 
