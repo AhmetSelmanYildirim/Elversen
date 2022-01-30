@@ -80,7 +80,7 @@ const ListPatients = () => {
                         <div className='listItemInnerContainer'>
 
                             <div className='photoContainer'>
-                                <img src="./img/child.png"
+                                <img src={`${process.env.REACT_APP_SERVER_URL}/${item.responsibleEmail}/${item.photo}`}
                                     alt='childsphoto'
                                 />
                             </div>

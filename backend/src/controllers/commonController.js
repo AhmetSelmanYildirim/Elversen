@@ -216,10 +216,9 @@ const addPatientPermit = async (req, res, next) => {
 const addPatientPhoto = async (req, res, next) => {
     
     try {
+        const patient = await Patient.findOneAndUpdate({resEmail: req.body.email},{photo:req.file.filename})
         
-        console.log("req.file", req.file);
-        console.log("req.body.email", req.body.email)
-        console.log("photo uploaded", req.user);
+        res.redirect(`${process.env.LOGIN_SUCCESS_URL}/${req.body.url}`)
     } catch (error) {
         console.log(error.message);
     }

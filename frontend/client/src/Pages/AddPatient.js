@@ -206,13 +206,13 @@ const AddPatient = () => {
             <div className='pageContainer' >
                 <Header />
                 <div className='innerPageContainer' >
-                    {strings.addpatient}
+                    {/* {strings.addpatient} */}
                     {strings.uploadGovernmentPermit}
                     
                     <div>
                         <form className='addPermitForm' action={`${process.env.REACT_APP_SERVER_URL}/addpatientpermit`} method="post" encType="multipart/form-data">
-                            <input type="file" name="governmentPermit" />
                             <input hidden type="text" name="email" value={emailState} />
+                            <input type="file" name="governmentPermit" />
                             <button type='submit'>{strings.submitForm}</button>
                         </form>
                     </div>

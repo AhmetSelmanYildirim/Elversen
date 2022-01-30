@@ -6,6 +6,7 @@ const session = require("express-session");
 const passport = require("passport");
 
 app.use(cors());
+app.use(express.static("src/uploads"))
 //for datas from form
 app.use(express.urlencoded({ extended:true }));
 //db

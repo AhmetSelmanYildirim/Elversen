@@ -10,7 +10,7 @@ const ThankYou = () => {
     return <div className='pageContainer' >
         <Header />
         <div className='innerPageContainer' >
-            <div style={{width:"80vw", textAlign:"center", marginTop:"10%" }}>
+            <div className='patientAdded'>
                 {strings.thanksForContactUs}
             </div>
 

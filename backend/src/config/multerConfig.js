@@ -5,9 +5,7 @@ const path = require('path')
 const myPermitStorage = multer.diskStorage({
     // Where we upload files
     destination: async (req, file, cb) => {
-        setTimeout(() => {
-            cb(null, path.join(__dirname, "../uploads/" + req.body.email))
-        }, 2000);
+        cb(null, path.join(__dirname, "../uploads/" + req.body.email))
     },
     // What name it will have 
     filename: (req, file, cb) => {
@@ -17,7 +15,7 @@ const myPermitStorage = multer.diskStorage({
 
 const myPhotoStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../uploads/"))
+        cb(null, path.join(__dirname, "../uploads/" + req.body.email))
     },
     // What name it will have 
     filename: (req, file, cb) => {

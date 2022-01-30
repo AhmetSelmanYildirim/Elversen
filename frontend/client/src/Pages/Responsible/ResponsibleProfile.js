@@ -11,7 +11,8 @@ import axios from 'axios';
 const ResponsibleProfile = ({ authorized }) => {
 
     const { responsibles, patients } = useContext(AppContext)
-    let { id } = useParams(); //PARAMETREDEN GELMESİN BODYDEN GELSİN
+    let { id } = useParams();
+    const rawId = id;
     id = id.slice(3, id.length - 3);
     const [isAuthorized, setIsAuthorized] = useState(false);
     const [responsibleUser, setresponsibleUser] = useState("")
@@ -228,7 +229,21 @@ const ResponsibleProfile = ({ authorized }) => {
                                     <p style={{ color: "red" }}>{strings.infoUpdateFail}</p>}
                             </div>
                         }
-                        {/* 
+                    </div>
+                    <div className='uploadPhotoArea'>
+                        {strings.updatePhoto}
+
+                        <div className='uploadPhotoFormArea'>
+                            {patient && <img className='photoSMA' src={`${process.env.REACT_APP_SERVER_URL}/${patient.responsibleEmail}/${patient.photo}`} alt='photoSMA' />}
+                            <form className='updatePhotoForm' action={`${process.env.REACT_APP_SERVER_URL}/addpatientphoto`} method="post" encType="multipart/form-data">
+                                <input hidden type="text" name="url" value={rawId} />
+                                <input hidden type="text" name="email" value={patient.responsibleEmail} />
+                                <input type="file" name="photoSMA" />
+                                <button type='submit'>{strings.submitForm}</button>
+                            </form>
+                        </div>
+                    </div>
+                    {/* 
                         *name
                         *surname
                         *birthOfDate
@@ -246,7 +261,6 @@ const ResponsibleProfile = ({ authorized }) => {
                         *instagramLink
                         createdAt
                         */}
-                    </div>
                 </div>
             </div>
         );
