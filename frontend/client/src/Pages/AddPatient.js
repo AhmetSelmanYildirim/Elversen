@@ -207,16 +207,14 @@ const AddPatient = () => {
                 <Header />
                 <div className='innerPageContainer' >
                     {strings.addpatient}
+                    {strings.uploadGovernmentPermit}
                     
-                    <div >
-                        <form className='contactFormArea' action={`${process.env.REACT_APP_SERVER_URL}/addpatientpermit`} method="post" encType="multipart/form-data">
+                    <div>
+                        <form className='addPermitForm' action={`${process.env.REACT_APP_SERVER_URL}/addpatientpermit`} method="post" encType="multipart/form-data">
                             <input type="file" name="governmentPermit" />
                             <input hidden type="text" name="email" value={emailState} />
                             <button type='submit'>{strings.submitForm}</button>
                         </form>
-
-
-
                     </div>
 
                 </div>

@@ -205,7 +205,7 @@ const addPatient = async (req, res, next) => {
 const addPatientPermit = async (req, res, next) => {
     
     try {
-        res.redirect(process.env.FRONTEND_URL);
+        res.redirect(`${process.env.FRONTEND_URL}/addpatient/patientadded`);
     } catch (error) {
         console.log("error: "+error.message);
     }

@@ -69,12 +69,14 @@ export const strings = new LocalizedStrings({
         // Update patient info
         patientInfo: "SMA'lı çocuğunuzun bilgilerini gücelleme",
         dateOfBirth: "Doğum tarihi",
-        facebookLink: "Facebook Link",
-        instagramLink: "Instagram Link",
+        updateFacebookLink: "Facebook Link",
+        updateInstagramLink: "Instagram Link",
         infoUpdateSuccess: "Bilgiler başarıyla güncellendi",
         infoUpdateFail: "Bir hata oluştu",
 
-        thanksForContactUs: "Mesajınız başarıyla bize ulaşmıştır. İlginiz için teşekkür ederiz."
+        thanksForContactUs: "Mesajınız başarıyla bize ulaşmıştır. İlginiz için teşekkür ederiz.",
+        uploadGovernmentPermit: "Lütfen valilik izninizi yükleyiniz.",
+        patientAdded:"İsteğiniz bize ulaştı. Kontroller yapıldıktan sonra listeleme sayfasında çocuğunuzu görebileceksiniz. Mail adresinize iletilen şifre ile giriş yapıp güncellemeleri yapabileceksiniz."
 
     },
     en: {
@@ -150,7 +152,9 @@ export const strings = new LocalizedStrings({
         infoUpdateSuccess: "Info updated successfully",
         infoUpdateFail: "An error occured while updating info",
 
-        thanksForContactUs:"Your message has reached us successfully. Thank you for your attention."
+        thanksForContactUs: "Your message has reached us successfully. Thank you for your attention.",
+        uploadGovernmentPermit: "Please add your government permit.",
+        patientAdded:"Your request has reached us. After the checks are made, you will be able to see your child on the listing page. You will be able to log in with the password sent to your e-mail address and make updates.",
 
     }
 })

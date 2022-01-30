@@ -232,6 +232,24 @@ body {
   border: 1px solid gray;
   border-radius: 4px;
 }
+
+.addPermitForm {
+  height: 20vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.patientAdded{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  text-align: center;
+  font-size: large;
+  margin-top: 5%;
+}
+
 .updateInfoForm {
   display: flex;
   width: 60%;
@@ -243,7 +261,7 @@ body {
   border: 1px solid gray;
   border-radius: 4px;
 }
-.contactFormArea{
+.contactFormArea {
   width: 50%;
 }
 
@@ -399,5 +417,15 @@ body {
     margin: 5px 0px;
     border: 1px solid gray;
     border-radius: 4px;
+  }
+
+  .patientAdded{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    text-align: center;
+    font-size: large;
+    margin-top: 5%;
   }
 }
