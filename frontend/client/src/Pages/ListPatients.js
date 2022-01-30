@@ -65,15 +65,17 @@ const ListPatients = () => {
     return (
         <div className='pageContainer' >
             <Header />
-            
+
 
             <div className='innerPageContainer' >
-            <Select
-                placeholder={strings.sort}
-                defaultValue={sorting}
-                onChange={setSorting}
-                options={options}
-            />
+                <div style={{marginBottom:20}}>
+                    <Select
+                        placeholder={strings.sort}
+                        defaultValue={sorting}
+                        onChange={setSorting}
+                        options={options}
+                    />
+                </div>
 
                 {allPatients && allPatients.map((item, index) => (
                     <div key={item + index} className='listItemContainer'>
@@ -89,8 +91,8 @@ const ListPatients = () => {
                                     <p>{item.name}</p>
                                     <p>{item.age}</p>
                                     <p>{item.weight}kg</p>
-                                    {item.instagramLink && <p><a style={{textDecoration:"none", color:"white"}} href={item.instagramLink} target="_blank"> Instagram</a></p>}
-                                    {item.facebookLink && <p><a style={{textDecoration:"none", color:"white"}} href={item.facebookLink} target="_blank"> Facebook</a></p>}
+                                    {item.instagramLink && <p><a style={{ textDecoration: "none", color: "white" }} href={item.instagramLink} target="_blank"> Instagram</a></p>}
+                                    {item.facebookLink && <p><a style={{ textDecoration: "none", color: "white" }} href={item.facebookLink} target="_blank"> Facebook</a></p>}
                                 </div>
                                 <div className='amountInfo' >
                                     <p>{strings.requiredAmount}: {item.requiredAmount} TL</p>

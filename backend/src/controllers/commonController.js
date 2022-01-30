@@ -164,9 +164,9 @@ const addPatient = async (req, res, next) => {
             const sentMail = await transporter.sendMail({
                 from: `SMA platform <${process.env.GMAIL_USER}>`,
                 to: data.resEmail,
-                subject: "Account Approvement",
-                html: `<h1>Your password is ${generatedPassword}</h1>
-                        <h2> After we approve your documents we will send you a mail then you can login </h2> 
+                subject: "Hesap Onaylama",
+                html: `<h1>Parolanız:  ${generatedPassword}</h1>
+                        <h2>Belgeleriniz onaylandıktan sonra, giriş yapabileceğiniz zaman size tekrar mail göndereceğiz. </h2> 
                 `
             }, (error, info) => {
                 if (error) {
