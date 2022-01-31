@@ -78,7 +78,7 @@ const AddPatient = () => {
                     <div className='addPatientFormArea'>
 
                         <Formik
-                            initialValues={{ name: "", surname: "", dateOfBirth: "", weight: "", city: "", resName: "", resPhone: "", resEmail: "", collectedAmount: "", requiredAmount: "", iban: "", instagramLink: "", facebookLink: "", termsandconditions: false }}
+                            initialValues={{ name: "", surname: "", dateOfBirth: "", weight: "", city: "", resName: "", resPhone: "", resEmail: "", collectedAmount: "", requiredAmount: "", iban: "", instagramLink: "", facebookLink: "", termsandconditions: false, photo:"default.png" }}
                             validationSchema={addPatientValidationSchema}
                             onSubmit={async (values) => {
                                 setEmailState(values.resEmail)

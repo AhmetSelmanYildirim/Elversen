@@ -234,7 +234,16 @@ const ResponsibleProfile = ({ authorized }) => {
                         {strings.updatePhoto}
 
                         <div className='uploadPhotoFormArea'>
-                            {patient && <img className='photoSMA' src={`${process.env.REACT_APP_SERVER_URL}/${patient.responsibleEmail}/${patient.photo}`} alt='photoSMA' />}
+                            {patient &&
+                                patient.photo !== "default.png" ?
+                                <img className='photoSMA' src={`${process.env.REACT_APP_SERVER_URL}/${patient.responsibleEmail}/${patient.photo}`}
+                                    alt='childsphoto'
+                                />
+                                :
+                                <img className='photoSMA' src={`${process.env.REACT_APP_SERVER_URL}/default.png`}
+                                    alt='childsphoto'
+                                />
+                            }
                             <form className='updatePhotoForm' action={`${process.env.REACT_APP_SERVER_URL}/addpatientphoto`} method="post" encType="multipart/form-data">
                                 <input hidden type="text" name="url" value={rawId} />
                                 <input hidden type="text" name="email" value={patient.responsibleEmail} />

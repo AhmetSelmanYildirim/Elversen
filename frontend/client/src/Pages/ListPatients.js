@@ -68,7 +68,7 @@ const ListPatients = () => {
 
 
             <div className='innerPageContainer' >
-                <div style={{marginBottom:20}}>
+                <div style={{ marginBottom: 20 }}>
                     <Select
                         placeholder={strings.sort}
                         defaultValue={sorting}
@@ -76,33 +76,77 @@ const ListPatients = () => {
                         options={options}
                     />
                 </div>
+                <div className='listItemContainerTitle'>
+                    <div className='listItemInnerContainer'>
 
+                        <div className='photoContainer'>
+                            Fotoğraf
+                        </div>
+                        <div className='infoArea'>
+                            <div className='personalInfo'>
+                                <p>İsim Soyisim</p>
+                            </div>
+                            <div className='personalInfo'>
+                                <p>Gereken TL</p>
+                            </div>
+                            <div className='personalInfo'>
+                                <p>Toplanan TL</p>
+                            </div>
+                            <div className='personalInfo'>
+                                <p>Şehir</p>
+                            </div>
+                            <div className='personalInfo'>
+                                <p>Kalan Gün</p>
+                            </div>
+                            <div className='personalInfo'>
+                                <p>Kalan Kilo</p>
+                            </div>
+                            <div className='remainingAmount' >
+                                Kalan TL
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 {allPatients && allPatients.map((item, index) => (
                     <div key={item + index} className='listItemContainer'>
                         <div className='listItemInnerContainer'>
 
                             <div className='photoContainer'>
-                                <img src={`${process.env.REACT_APP_SERVER_URL}/${item.responsibleEmail}/${item.photo}`}
-                                    alt='childsphoto'
-                                />
+                                
+                                {item.photo !== "default.png" ?
+                                    <img src={`${process.env.REACT_APP_SERVER_URL}/${item.responsibleEmail}/${item.photo}`}
+                                        alt='childsphoto'
+                                    />
+                                    :
+                                    <img src={`${process.env.REACT_APP_SERVER_URL}/default.png`}
+                                        alt='childsphoto'
+                                    />
+                                }
+                                
                             </div>
                             <div className='infoArea'>
                                 <div className='personalInfo'>
-                                    <p>{item.name}</p>
-                                    <p>{item.age}</p>
-                                    <p>{item.weight}kg</p>
-                                    {item.instagramLink && <p><a style={{ textDecoration: "none", color: "white" }} href={item.instagramLink} target="_blank"> Instagram</a></p>}
-                                    {item.facebookLink && <p><a style={{ textDecoration: "none", color: "white" }} href={item.facebookLink} target="_blank"> Facebook</a></p>}
+                                    <p>{item.name} {item.surname}</p>
                                 </div>
-                                <div className='amountInfo' >
-                                    <p>{strings.requiredAmount}: {item.requiredAmount} TL</p>
-                                    <p>{strings.collectedAmount}: {item.collectedAmount} TL</p>
-                                    <p>{strings.remainingAmount}: {item.requiredAmount - item.collectedAmount} TL</p>
-                                    <p>IBAN: {item.ibanNo}</p>
+                                <div className='personalInfo'>
+                                    <p>{item.requiredAmount}</p>
+                                </div>
+                                <div className='personalInfo'>
+                                    <p>{item.collectedAmount}</p>
+                                </div>
+                                <div className='personalInfo'>
+                                    <p>{item.city}</p>
+                                </div>
+                                <div className='personalInfo'>
+                                    <p>yaş/<strong style={{color:"pink"}}>2</strong></p>
+                                </div>
+                                <div className='personalInfo'>
+                                    <p>{item.weight}/<strong style={{color:"pink"}}>13.5</strong></p>
                                 </div>
                                 <div className='remainingAmount' >
                                     <p className='heart'><Heart percent={(item.collectedAmount / item.requiredAmount) * 100} size={100} color={'purple'} outlined={true} /></p>
-                                    <p className='heartText'>{((item.collectedAmount / item.requiredAmount) * 100).toFixed(1)}</p>
+                                    <p className='heartText'>%{((item.collectedAmount / item.requiredAmount) * 100).toFixed(1)}</p>
                                 </div>
                             </div>
 
@@ -110,7 +154,6 @@ const ListPatients = () => {
                     </div>
                 ))
                 }
-
             </div>
             <Footer />
         </div>

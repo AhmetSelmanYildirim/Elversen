@@ -13,8 +13,6 @@ const login = async (req, res, next) => {
 
     try {
 
-
-
         // form request
         let data = await req.body
 
@@ -84,11 +82,11 @@ const sendContactMail = async (req, res, next) => {
     }, (error, info) => {
         if (error) {
             console.log("An error occured: " + error);
-            res.send({error:`An error occured: ${error.message}`})
+            res.send({ error: `An error occured: ${error.message}` })
             console.log(info);
         }
         else {
-            res.send({msg:"data received"})
+            res.send({ msg: "data received" })
             console.log("mail has sent");
             console.log(info);
             transporter.close();
@@ -100,13 +98,15 @@ const sendContactMail = async (req, res, next) => {
 const addPatient = async (req, res, next) => {
 
     let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log(data)
+    console.log("addPatient", data)
 
     try {
 
-        const _user = await Patient.findOne({ isActive: true });
+        const _user = await Patient.findOne({ responsibleEmail: data.resEmail, isActive: true });
 
         if (_user) {
+            console.log("This mail is already in use")
+            console.log("user", _user)
             const error = {
                 message: "This mail is already in use",
                 status: "error"
@@ -114,7 +114,10 @@ const addPatient = async (req, res, next) => {
             res.send(error)
         }
         else {
-
+            console.log("Creating new patient")
+            if (!fs.existsSync(path.join(__dirname, "../uploads/" + data.resEmail))) {
+                fs.mkdirSync(path.join(__dirname, "../uploads/" + data.resEmail));
+            }
             //Creating new patient
             const newPatient = new Patient({
                 name: data.name,
@@ -133,9 +136,10 @@ const addPatient = async (req, res, next) => {
                 instagramLink: data.instagramLink,
                 facebookLink: data.facebookLink,
                 photo: data.photo,
+                city: data.city
             });
             await newPatient.save();
-            console.log('Patient Created');
+            console.log('Patient Created', newPatient);
 
             //Creating password for new user
             const generatedPassword = Math.floor(Math.random() * 1000000)
@@ -174,16 +178,12 @@ const addPatient = async (req, res, next) => {
                     console.log(info);
                 }
                 else {
-                    // console.log("mail has sent");
-                    // console.log(info);
+                    console.log("mail has sent");
+                    console.log(info);
                     transporter.close();
                 }
             })
 
-
-            if (!fs.existsSync(path.join(__dirname,"../uploads/"+data.resEmail))){
-                fs.mkdirSync(path.join(__dirname,"../uploads/"+data.resEmail));
-            }
 
             const successful = {
                 message: "Data received successfully",
@@ -201,23 +201,23 @@ const addPatient = async (req, res, next) => {
 
 }
 
-
 const addPatientPermit = async (req, res, next) => {
-    
+
+    console.log("addPatientPermit", req.body)
     try {
         res.redirect(`${process.env.FRONTEND_URL}/addpatient/patientadded`);
     } catch (error) {
-        console.log("error: "+error.message);
+        console.log("error: " + error.message);
     }
 
 
 }
 
 const addPatientPhoto = async (req, res, next) => {
-    
+    console.log("addPatientPhoto",req.body.email);
     try {
-        const patient = await Patient.findOneAndUpdate({resEmail: req.body.email},{photo:req.file.filename})
-        
+        const patient = await Patient.findOneAndUpdate({ responsibleEmail: req.body.email }, { photo: req.file.filename })
+        console.log("patient",patient);
         res.redirect(`${process.env.LOGIN_SUCCESS_URL}/${req.body.url}`)
     } catch (error) {
         console.log(error.message);

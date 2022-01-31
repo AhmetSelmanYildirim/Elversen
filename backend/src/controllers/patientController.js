@@ -15,11 +15,13 @@ const getPatients = async (req, res, next) => {
 
 const getPatientById = async (req, res, next) => {
     let data = await JSON.parse(Object.keys(req.body)[0])
+    console.log("getPatientById", data)
 
     const responsible = await Responsible.findById(data.id)
-    const patient = await Patient.find({ responsibleEmail: responsible.email })
-
-    res.send(patient)
+    .then(async result => {
+        const patient = await Patient.find({ responsibleEmail: result.email })
+        res.send(patient)
+    })
 }
 
 const updatePatient = async (req, res, next) => {
