@@ -79,6 +79,10 @@ export const strings = new LocalizedStrings({
         patientAdded: "İsteğiniz bize ulaştı. Kontroller yapıldıktan sonra listeleme sayfasında çocuğunuzu görebileceksiniz. Mail adresinize iletilen şifre ile giriş yapıp güncellemeleri yapabileceksiniz.",
         updatePhoto: "Fotoğrafı güncelleyin",
 
+        sortingName: "İsim",
+        sortingAge: "Yaş",
+        sortingWeight: "Kilo",
+
     },
     en: {
         homepage: "Homepage",
@@ -157,5 +161,10 @@ export const strings = new LocalizedStrings({
         uploadGovernmentPermit: "Please add your government permit.",
         patientAdded: "Your request has reached us. After the checks are made, you will be able to see your child on the listing page. You will be able to log in with the password sent to your e-mail address and make updates.",
         updatePhoto: "Upload photo",
+
+        sortingName: "Name",
+        sortingAge: "Age",
+        sortingWeight: "Weight",
+
     }
 })

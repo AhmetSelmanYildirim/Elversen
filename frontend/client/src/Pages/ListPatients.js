@@ -6,14 +6,14 @@ import Footer from "../Components/Footer"
 import { Heart } from '@pxblue/react-progress-icons';
 import Select from "react-select";
 
-const options = [
-    { value: 'name', label: 'Name' },
-    { value: 'age', label: 'Age' },
-    { value: 'weight', label: 'Weight' },
-]
 
 const ListPatients = () => {
     const { patients } = useContext(AppContext)
+    const options = [
+        { value: 'name', label: strings.sortingName },
+        { value: 'age', label: strings.sortingAge },
+        { value: 'weight', label: strings.sortingWeight },
+    ]
     const [sorting, setSorting] = useState({ value: 'choose', label: strings.sort });
     const [allPatients, setAllPatients] = useState([])
     let everyPatients = []
@@ -71,7 +71,7 @@ const ListPatients = () => {
                 <div style={{ marginBottom: 20 }}>
                     <Select
                         placeholder={strings.sort}
-                        defaultValue={sorting}
+                        defaultValue={strings.sort}
                         onChange={setSorting}
                         options={options}
                     />
