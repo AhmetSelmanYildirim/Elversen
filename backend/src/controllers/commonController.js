@@ -108,13 +108,17 @@ const addPatient = async (req, res, next) => {
             console.log("This mail is already in use")
             console.log("user", _user)
             const error = {
-                message: "This mail is already in use",
+                error: "This mail is already in use",
                 status: "error"
             }
             res.send(error)
         }
         else {
-            console.log("Creating new patient")
+
+            // Delete old data if responsible is not active
+            await Patient.findOneAndDelete({responsibleEmail: data.resEmail});
+            await Responsible.findOneAndDelete({email: data.resEmail});
+
             if (!fs.existsSync(path.join(__dirname, "../uploads/" + data.resEmail))) {
                 fs.mkdirSync(path.join(__dirname, "../uploads/" + data.resEmail));
             }

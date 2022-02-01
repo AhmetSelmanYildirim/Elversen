@@ -14,6 +14,7 @@ const AddPatient = () => {
     const [formReceivedMessage, setFormReceivedMessage] = useState("")
     const [step, setStep] = useState(1)
     const [emailState, setEmailState] = useState("")
+    const [emailAlreadyInUse,setEmailAlreadyInUse]= useState(false)
 
 
 
@@ -78,7 +79,7 @@ const AddPatient = () => {
                     <div className='addPatientFormArea'>
 
                         <Formik
-                            initialValues={{ name: "asd", surname: "qwe", dateOfBirth: "", weight: "10", city: "asd", resName: "dsa", resPhone: "123123", resEmail: "ahmetselmanyildirim@outlook.com", collectedAmount: "12", requiredAmount: "32", iban: "TR000011112222333344445555", instagramLink: "", facebookLink: "", termsandconditions: false, photo:"default.png" }}
+                            initialValues={{ name: "", surname: "", dateOfBirth: "", weight: "", city: "", resName: "", resPhone: "", resEmail: "", collectedAmount: "", requiredAmount: "", iban: "", instagramLink: "", facebookLink: "", termsandconditions: false, photo:"default.png" }}
                             validationSchema={addPatientValidationSchema}
                             onSubmit={async (values) => {
                                 setEmailState(values.resEmail)
@@ -88,7 +89,9 @@ const AddPatient = () => {
 
                                 axios.post(`${process.env.REACT_APP_SERVER_URL}/addpatient`, JSON.stringify(values))
                                     .then(response => {
-                                        setStep(2)
+                                        response.data.status !== "error" && setStep(2)
+                                        response.data.status === "error" && setEmailAlreadyInUse(true)
+
                                         console.log(response.data)
                                     }
                                     )
@@ -156,6 +159,7 @@ const AddPatient = () => {
                                     {errors.resEmail && touched.resEmail ? (
                                         <div className='formErrorMessage'>{errors.resEmail}</div>
                                     ) : null}
+                                    {emailAlreadyInUse && <p style={{ color: "red" }}>{strings.emailAlreadyInUse}</p>}
 
                                     <Field className="addPatientFormField" name="collectedAmount" type="number" placeholder={strings.formCollectedAmount} />
                                     {errors.collectedAmount && touched.collectedAmount ? (

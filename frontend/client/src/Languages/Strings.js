@@ -83,6 +83,9 @@ export const strings = new LocalizedStrings({
         sortingAge: "Yaş",
         sortingWeight: "Kilo",
 
+        emailAlreadyInUse: "Email zaten kullanımda",
+
+
     },
     en: {
         homepage: "Homepage",
@@ -165,6 +168,7 @@ export const strings = new LocalizedStrings({
         sortingName: "Name",
         sortingAge: "Age",
         sortingWeight: "Weight",
+        emailAlreadyInUse: "Email already in use",
 
     }
 })
