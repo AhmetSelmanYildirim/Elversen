@@ -60,8 +60,8 @@ const ListPatients = () => {
 
         if (sorting.value === "name") {
             everyPatients = allPatients.sort((a, b) => {
-                if (a.name < b.name) { return 1; }
-                if (a.name > b.name) { return -1; }
+                if (a.name < b.name) { return -1; }
+                if (a.name > b.name) { return 1; }
                 return 0;
             })
             setAllPatients([...allPatients], everyPatients)
@@ -69,8 +69,8 @@ const ListPatients = () => {
         }
         if (sorting.value === "age") {
             everyPatients = allPatients.sort((a, b) => {
-                if ((new Date(a.dateOfEnd) - today) / 86400000 < (new Date(b.dateOfEnd) - today) / 86400000) { return 1; }
-                if ((new Date(a.dateOfEnd) - today) / 86400000 > (new Date(b.dateOfEnd) - today) / 86400000) { return -1; }
+                if ((new Date(a.dateOfEnd) - today) / 86400000 < (new Date(b.dateOfEnd) - today) / 86400000) { return -1; }
+                if ((new Date(a.dateOfEnd) - today) / 86400000 > (new Date(b.dateOfEnd) - today) / 86400000) { return 1; }
                 return 0;
             })
             setAllPatients([...allPatients], everyPatients)
@@ -95,7 +95,7 @@ const ListPatients = () => {
 
 
             <div className='innerPageContainer' >
-                <div style={{ marginBottom: 20 }}>
+                <div style={{ marginBottom: 20, marginTop:"6vh" }}>
                     <Select
                         placeholder={strings.sort}
                         defaultValue={strings.sort}
