@@ -78,10 +78,14 @@ const AddPatient = () => {
                     <div className='addPatientFormArea'>
 
                         <Formik
-                            initialValues={{ name: "", surname: "", dateOfBirth: "", weight: "", city: "", resName: "", resPhone: "", resEmail: "", collectedAmount: "", requiredAmount: "", iban: "", instagramLink: "", facebookLink: "", termsandconditions: false, photo:"default.png" }}
+                            initialValues={{ name: "asd", surname: "qwe", dateOfBirth: "", weight: "10", city: "asd", resName: "dsa", resPhone: "123123", resEmail: "ahmetselmanyildirim@outlook.com", collectedAmount: "12", requiredAmount: "32", iban: "TR000011112222333344445555", instagramLink: "", facebookLink: "", termsandconditions: false, photo:"default.png" }}
                             validationSchema={addPatientValidationSchema}
                             onSubmit={async (values) => {
                                 setEmailState(values.resEmail)
+                                let doe = new Date(values.dateOfBirth)
+                                doe.setDate(doe.getDate()+730);
+                                values.dateOfEnd = doe;
+
                                 axios.post(`${process.env.REACT_APP_SERVER_URL}/addpatient`, JSON.stringify(values))
                                     .then(response => {
                                         setStep(2)
@@ -122,7 +126,7 @@ const AddPatient = () => {
                                         <div className='formErrorMessage'>{errors.surname}</div>
                                     ) : null}
 
-                                    <Field className="addPatientFormField" name="dateOfBirth" type="text" placeholder={strings.formDateOfBirth} />
+                                    <Field className="addPatientFormField" name="dateOfBirth" type="date" placeholder={strings.formDateOfBirth} />
                                     {errors.dateOfBirth && touched.dateOfBirth ? (
                                         <div className='formErrorMessage'>{errors.dateOfBirth}</div>
                                     ) : null}

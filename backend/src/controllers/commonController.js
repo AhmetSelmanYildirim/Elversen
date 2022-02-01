@@ -123,6 +123,7 @@ const addPatient = async (req, res, next) => {
                 name: data.name,
                 surname: data.surname,
                 dateOfBirth: data.dateOfBirth,
+                dateOfEnd: data.dateOfEnd,
                 weight: data.weight,
                 responsibleName: data.resName,
                 responsiblePhone: data.resPhone,

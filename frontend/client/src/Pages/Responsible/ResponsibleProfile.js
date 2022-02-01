@@ -252,32 +252,11 @@ const ResponsibleProfile = ({ authorized }) => {
                             </form>
                         </div>
                     </div>
-                    {/* 
-                        *name
-                        *surname
-                        *birthOfDate
-                        *weight
-                        *responsibleName
-                        *responsiblePhone
-                        responsibleEmail
-                        *collectedAmount
-                        *requiredAmount
-                        *ibanNo
-                        governmentPermit
-                        termAndCondition
-                        photo
-                        *facebookLink
-                        *instagramLink
-                        createdAt
-                        */}
+
                 </div>
             </div>
         );
     }
-
-
-
-
 }
 
 export default ResponsibleProfile;

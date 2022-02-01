@@ -6,6 +6,7 @@ import Footer from "../Components/Footer"
 import { Heart } from '@pxblue/react-progress-icons';
 import Select from "react-select";
 
+const today = new Date()
 
 const ListPatients = () => {
     const { patients } = useContext(AppContext)
@@ -42,8 +43,8 @@ const ListPatients = () => {
         }
         if (sorting.value === "age") {
             everyPatients = allPatients.sort((a, b) => {
-                if (a.age < b.age) { return 1; }
-                if (a.age > b.age) { return -1; }
+                if ((new Date(a.dateOfEnd) - today) / 86400000 < (new Date(b.dateOfEnd) - today) / 86400000) { return 1; }
+                if ((new Date(a.dateOfEnd) - today) / 86400000 > (new Date(b.dateOfEnd) - today) / 86400000) { return -1; }
                 return 0;
             })
             setAllPatients([...allPatients], everyPatients)
@@ -113,7 +114,7 @@ const ListPatients = () => {
                         <div className='listItemInnerContainer'>
 
                             <div className='photoContainer'>
-                                
+
                                 {item.photo !== "default.png" ?
                                     <img src={`${process.env.REACT_APP_SERVER_URL}/${item.responsibleEmail}/${item.photo}`}
                                         alt='childsphoto'
@@ -123,7 +124,7 @@ const ListPatients = () => {
                                         alt='childsphoto'
                                     />
                                 }
-                                
+
                             </div>
                             <div className='infoArea'>
                                 <div className='personalInfo'>
@@ -139,10 +140,10 @@ const ListPatients = () => {
                                     <p>{item.city}</p>
                                 </div>
                                 <div className='personalInfo'>
-                                    <p>yaş/<strong style={{color:"pink"}}>2</strong></p>
+                                    <p>{parseInt((new Date(item.dateOfEnd) - today) / 86400000)}</p>
                                 </div>
                                 <div className='personalInfo'>
-                                    <p>{item.weight}/<strong style={{color:"pink"}}>13.5</strong></p>
+                                    <p>{item.weight}/<strong style={{ color: "pink" }}>13.5</strong></p>
                                 </div>
                                 <div className='remainingAmount' >
                                     <p className='heart'><Heart percent={(item.collectedAmount / item.requiredAmount) * 100} size={100} color={'purple'} outlined={true} /></p>
