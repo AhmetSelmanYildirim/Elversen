@@ -182,7 +182,7 @@ const AddPatient = () => {
                                         <div className='formErrorMessage'>{errors.facebookLink}</div>
                                     ) : null}
 
-                                    <Link style={{ textAlign: "center", margin: "10px 0px" }} to={`/termsandconditions`} > {strings.termsAndConditions} </Link>
+                                    <Link style={{ textAlign: "center", margin: "10px 0px" }} to={`/termsandconditions`} target={"_blank"} > {strings.termsAndConditions} </Link>
                                     <label className="addPatientFormField">
                                         <Field name="termsandconditions" type="checkbox" /> {strings.formTermsAndConditions}
                                     </label>
