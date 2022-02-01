@@ -95,7 +95,7 @@ const ListPatients = () => {
 
 
             <div className='innerPageContainer' >
-                <div style={{ marginBottom: 20, marginTop:"6vh" }}>
+                <div style={{ marginBottom: 10, marginTop: "7vh" }}>
                     <Select
                         placeholder={strings.sort}
                         defaultValue={strings.sort}
@@ -107,29 +107,29 @@ const ListPatients = () => {
                     <div className='listItemInnerContainer'>
 
                         <div className='photoContainer'>
-                            Fotoğraf
+                            {strings.photo}
                         </div>
                         <div className='infoArea'>
                             <div className='personalInfo'>
-                                <p>İsim Soyisim</p>
+                                <p>{strings.listingName}</p>
                             </div>
                             <div className='personalInfo'>
-                                <p>Gereken TL</p>
+                                <p>{strings.listingRequiredMoney}</p>
                             </div>
                             <div className='personalInfo'>
-                                <p>Toplanan TL</p>
+                                <p>{strings.listingCollectedMoney}</p>
                             </div>
                             <div className='personalInfo'>
-                                <p>Şehir</p>
+                                <p>{strings.listingCity}</p>
                             </div>
                             <div className='personalInfo'>
-                                <p>Kalan Gün</p>
+                                <p>{strings.listingRemainingDays}</p>
                             </div>
                             <div className='personalInfo'>
-                                <p>Kalan Kilo</p>
+                                <p>{strings.listingRemainingWeight}</p>
                             </div>
                             <div className='remainingAmount' >
-                                Kalan TL
+                                {strings.listingRemainingMoney}
                             </div>
                         </div>
 
@@ -185,17 +185,17 @@ const ListPatients = () => {
                         position="center"
                     >
                         <div style={popupInnerContainer}>
-                            <div>İsim: {item.name} {item.surname}</div>
-                            <div>Şehir: {item.city}</div>
-                            <div>Doğum Tarihi: {`${new Date(item.dateOfBirth).getDate()}/${new Date(item.dateOfBirth).getMonth() + 1}/${new Date(item.dateOfBirth).getFullYear()}`}</div>
-                            <div>IBAN: {item.ibanNo} </div>
-                            <div>Gereken Miktar: {item.requiredAmount} TL </div>
-                            <div>Toplanan Miktar: {item.collectedAmount} TL</div>
-                            <div>Ağırlık: {item.weight}kg</div>
-                            <div>Sorumlu Kişi: {item.responsibleName} </div>
-                            <div>Sorumlu Email: <a href={`mailto: ${item.responsibleEmail}`}>{item.responsibleEmail}</a>  </div>
+                            <div><strong>{strings.listingName}:</strong> {item.name} {item.surname}</div>
+                            <div><strong>{strings.dateOfBirth}:</strong> {`${new Date(item.dateOfBirth).getDate()}/${new Date(item.dateOfBirth).getMonth() + 1}/${new Date(item.dateOfBirth).getFullYear()}`}</div>
+                            <div><strong>{strings.listingCity}:</strong> {item.city}</div>
+                            <div><strong>{strings.formWeight}:</strong> {item.weight}kg</div>
+                            <div><strong>{strings.listingRequiredMoney}:</strong> {item.requiredAmount} TL </div>
+                            <div><strong>{strings.listingCollectedMoney}:</strong> {item.collectedAmount} TL</div>
+                            <div><strong>IBAN:</strong> {item.ibanNo} </div>
+                            <div><strong>{strings.formResponsibleName}:</strong> {item.responsibleName} </div>
+                            <div><strong>{strings.formResponsibleEmail}:</strong> <a href={`mailto: ${item.responsibleEmail}`}>{item.responsibleEmail}</a>  </div>
                             {/* <div>{item.responsiblePhone} </div> */}
-                            <div><a style={{ marginRight: "10px" }} href={item.facebookLink} target="_blank"><i style={{ color: "#0165E1" }} class="fab fa-facebook fa-2x"></i></a>
+                            <div style={{marginTop:"10px"}}><a style={{ marginRight: "10px" }} href={item.facebookLink} target="_blank"><i style={{ color: "#0165E1" }} class="fab fa-facebook fa-2x"></i></a>
                                 <a href={item.instagramLink} target="_blank"><i style={{ color: "#B403AA" }} class="fab fa-instagram fa-2x"></i></a>
                             </div>
                         </div>

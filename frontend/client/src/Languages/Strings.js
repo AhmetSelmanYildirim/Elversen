@@ -79,11 +79,21 @@ export const strings = new LocalizedStrings({
         patientAdded: "İsteğiniz bize ulaştı. Kontroller yapıldıktan sonra listeleme sayfasında çocuğunuzu görebileceksiniz. Mail adresinize iletilen şifre ile giriş yapıp güncellemeleri yapabileceksiniz.",
         updatePhoto: "Fotoğrafı güncelleyin",
 
-        sortingName: "İsim",
-        sortingAge: "Yaş",
-        sortingWeight: "Kilo",
-
         emailAlreadyInUse: "Email zaten kullanımda",
+
+        sortingName: "İsim",
+        sortingAge: "Kalan günler",
+        sortingWeight: "Kalan ağırlık",
+
+        listPhoto:"Fotoğraf",
+        listingName:"İsim",
+        listingRequiredMoney:"Gereken",
+        listingRemainingMoney:"Kalan",
+        listingCollectedMoney:"Toplanan",
+        listingCity:"Şehir",
+        listingRemainingDays:"Gün",
+        listingRemainingWeight:"Kilo",
+
 
 
     },
@@ -166,9 +176,18 @@ export const strings = new LocalizedStrings({
         updatePhoto: "Upload photo",
 
         sortingName: "Name",
-        sortingAge: "Age",
-        sortingWeight: "Weight",
+        sortingAge: "Remaining days",
+        sortingWeight: "Remaining weight",
         emailAlreadyInUse: "Email already in use",
+
+        listPhoto:"Photo",
+        listingName:"Name",
+        listingRequiredMoney:"Required",
+        listingRemainingMoney:"Remaining",
+        listingCollectedMoney:"Collected",
+        listingCity:"City",
+        listingRemainingDays:"Days",
+        listingRemainingWeight:"Weight",
 
     }
 })

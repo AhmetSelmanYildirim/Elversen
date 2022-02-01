@@ -314,7 +314,7 @@ body {
   min-width: 600px;
   min-height: 60px;
   position: fixed;
-  top: 6vh;
+  top: 5.2vh;
   z-index: 10;
 }
 .listItemContainerTitle .listItemInnerContainer {
@@ -372,6 +372,7 @@ body {
   border-radius: 25px;
   min-width: 600px;
   min-height: 200px;
+  cursor: pointer;
 }
 .listItemContainer .listItemInnerContainer {
   width: 95%;
@@ -438,6 +439,27 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#76429c; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#ff6600; 
 }
 
 @media only screen and (max-width: 800px) {

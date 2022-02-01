@@ -8,13 +8,20 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Yup from "yup";
 
+const titleCase = (str) => {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
+}
 
 const AddPatient = () => {
     const { } = useContext(AppContext)
     const [formReceivedMessage, setFormReceivedMessage] = useState("")
     const [step, setStep] = useState(1)
     const [emailState, setEmailState] = useState("")
-    const [emailAlreadyInUse,setEmailAlreadyInUse]= useState(false)
+    const [emailAlreadyInUse, setEmailAlreadyInUse] = useState(false)
 
 
 
@@ -79,13 +86,21 @@ const AddPatient = () => {
                     <div className='addPatientFormArea'>
 
                         <Formik
-                            initialValues={{ name: "", surname: "", dateOfBirth: "", weight: "", city: "", resName: "", resPhone: "", resEmail: "", collectedAmount: "", requiredAmount: "", iban: "", instagramLink: "", facebookLink: "", termsandconditions: false, photo:"default.png" }}
+                            initialValues={{ name: "", surname: "", dateOfBirth: "", weight: "", city: "", resName: "", resPhone: "", resEmail: "", collectedAmount: "", requiredAmount: "", iban: "", instagramLink: "", facebookLink: "", termsandconditions: false, photo: "default.png" }}
                             validationSchema={addPatientValidationSchema}
                             onSubmit={async (values) => {
                                 setEmailState(values.resEmail)
+
+                                values.name = titleCase(values.name)
+                                values.surname = titleCase(values.surname)
+                                values.city = titleCase(values.city)
+                                values.resName = titleCase(values.resName)
+
                                 let doe = new Date(values.dateOfBirth)
-                                doe.setDate(doe.getDate()+730);
+                                doe.setDate(doe.getDate() + 730);
                                 values.dateOfEnd = doe;
+
+                                
 
                                 axios.post(`${process.env.REACT_APP_SERVER_URL}/addpatient`, JSON.stringify(values))
                                     .then(response => {
@@ -216,7 +231,7 @@ const AddPatient = () => {
                 <div className='innerPageContainer' >
                     {/* {strings.addpatient} */}
                     {strings.uploadGovernmentPermit}
-                    
+
                     <div>
                         <form className='addPermitForm' action={`${process.env.REACT_APP_SERVER_URL}/addpatientpermit`} method="post" encType="multipart/form-data">
                             <input hidden type="text" name="email" value={emailState} />
