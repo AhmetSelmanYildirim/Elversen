@@ -64,6 +64,7 @@ body {
   z-index: 1;
   background-color: #ddd;
   border-radius: 5px;
+  left:-35%;
 }
 
 /* Links inside the dropdown */

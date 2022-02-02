@@ -1,4 +1,5 @@
 const Responsible = require("../model/responsibleModel")
+const bcrypt = require("bcrypt")
 
 const getResponsibles = async (req, res, next) => {
     const responsibles = await Responsible.find({ isActive: true })
@@ -16,13 +17,15 @@ const resetPassword = async (req, res, next) => {
     let data = await JSON.parse(Object.keys(req.body)[0])
 
     const responsible = await Responsible.findById(data.id)
+    const hashedPassword = await bcrypt.hash(data.newPassword, 10)
+    const passwordCheck = await bcrypt.compare(data.currentPassword, responsible.password);
 
-    if (responsible.password == data.currentPassword) {
-        await Responsible.findByIdAndUpdate(data.id, { password: data.newPassword })
-        res.send({msg:"Password reset successfully"})
+    if (passwordCheck) {
+        await Responsible.findByIdAndUpdate(data.id, { password: hashedPassword })
+        res.send({ msg: "Password reset successfully" })
     }
-    else{
-        res.send({error:"passwords are not matches"})
+    else {
+        res.send({ error: "passwords are not matches" })
     }
 
 }

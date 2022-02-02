@@ -6,6 +6,8 @@ const env = require("dotenv").config();
 const nodemailer = require("nodemailer");
 const fs = require("fs")
 const path = require("path")
+const bcrypt = require("bcrypt");
+const { stdout } = require("process");
 
 
 
@@ -98,7 +100,7 @@ const sendContactMail = async (req, res, next) => {
 const addPatient = async (req, res, next) => {
 
     let data = await JSON.parse(Object.keys(req.body)[0])
-    console.log("addPatient", data)
+    stdout.write("addPatient", data)
 
     try {
 
@@ -116,8 +118,8 @@ const addPatient = async (req, res, next) => {
         else {
 
             // Delete old data if responsible is not active
-            await Patient.findOneAndDelete({responsibleEmail: data.resEmail});
-            await Responsible.findOneAndDelete({email: data.resEmail});
+            await Patient.findOneAndDelete({ responsibleEmail: data.resEmail });
+            await Responsible.findOneAndDelete({ email: data.resEmail });
 
             if (!fs.existsSync(path.join(__dirname, "../uploads/" + data.resEmail))) {
                 fs.mkdirSync(path.join(__dirname, "../uploads/" + data.resEmail));
@@ -144,21 +146,22 @@ const addPatient = async (req, res, next) => {
                 city: data.city
             });
             await newPatient.save();
-            console.log('Patient Created', newPatient);
+            // console.log('Patient Created', newPatient);
 
             //Creating password for new user
             const generatedPassword = Math.floor(Math.random() * 1000000)
+            const hashedPassword = await bcrypt.hash(generatedPassword.toString(), 10)
 
             const newResponsible = new Responsible({
                 name: data.resName,
-                password: generatedPassword,
+                password: hashedPassword,
                 phone: data.resPhone,
                 email: data.resEmail,
                 patientName: data.name,
                 patientSurname: data.surname
             });
             await newResponsible.save();
-            console.log("Responsible Created")
+            console.log("Responsible Created", newResponsible);
 
             //Mail activate process
             let transporter = nodemailer.createTransport({
@@ -219,10 +222,10 @@ const addPatientPermit = async (req, res, next) => {
 }
 
 const addPatientPhoto = async (req, res, next) => {
-    console.log("addPatientPhoto",req.body.email);
+    console.log("addPatientPhoto", req.body.email);
     try {
         const patient = await Patient.findOneAndUpdate({ responsibleEmail: req.body.email }, { photo: req.file.filename })
-        console.log("patient",patient);
+        console.log("patient", patient);
         res.redirect(`${process.env.LOGIN_SUCCESS_URL}/${req.body.url}`)
     } catch (error) {
         console.log(error.message);
