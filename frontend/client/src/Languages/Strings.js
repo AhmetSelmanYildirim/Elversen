@@ -94,7 +94,12 @@ export const strings = new LocalizedStrings({
         listingRemainingDays:"Gün",
         listingRemainingWeight:"Kilo",
 
-
+        forgottenPassword:"Şifremi sıfırla",
+        forgottenPasswordLink:"Şifrenizi mi unuttunuz?",
+        forgottenPasswordInfoConfirm:"Şifrenizi sıfırlamak için mail kutunuza gelen maili kontrol ediniz.",
+        forgottenPasswordInfoWarning:"Lütfen önce hesabınızın aktif olduğundan emin olunuz.",
+        forgottenPasswordInfoError:"Kullanıcı bulunamadı.",
+        tokenIsNotValid:"Token geçerli değil",
 
     },
     en: {
@@ -188,6 +193,13 @@ export const strings = new LocalizedStrings({
         listingCity:"City",
         listingRemainingDays:"Days",
         listingRemainingWeight:"Weight",
+
+        forgottenPassword:"Reset password",
+        forgottenPasswordLink:"Forgot your password?",
+        forgottenPasswordInfoConfirm:"Please check your mail box to reset the password.",
+        forgottenPasswordInfoWarning:"Please be sure your account has activated.",
+        forgottenPasswordInfoError:"Responsible not found",
+        tokenIsNotValid:"Token is not valid",
 
     }
 })

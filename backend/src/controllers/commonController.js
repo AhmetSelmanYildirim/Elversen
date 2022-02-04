@@ -7,7 +7,6 @@ const nodemailer = require("nodemailer");
 const fs = require("fs")
 const path = require("path")
 const bcrypt = require("bcrypt");
-const { stdout } = require("process");
 
 
 
@@ -100,10 +99,9 @@ const sendContactMail = async (req, res, next) => {
 const addPatient = async (req, res, next) => {
 
     let data = await JSON.parse(Object.keys(req.body)[0])
-    stdout.write("addPatient", data)
+    console.log("addPatient", data)
 
     try {
-
         const _user = await Patient.findOne({ responsibleEmail: data.resEmail, isActive: true });
 
         if (_user) {
@@ -116,11 +114,11 @@ const addPatient = async (req, res, next) => {
             res.send(error)
         }
         else {
-
             // Delete old data if responsible is not active
             await Patient.findOneAndDelete({ responsibleEmail: data.resEmail });
             await Responsible.findOneAndDelete({ email: data.resEmail });
 
+            console.log("Creating user folder")
             if (!fs.existsSync(path.join(__dirname, "../uploads/" + data.resEmail))) {
                 fs.mkdirSync(path.join(__dirname, "../uploads/" + data.resEmail));
             }
@@ -146,7 +144,7 @@ const addPatient = async (req, res, next) => {
                 city: data.city
             });
             await newPatient.save();
-            // console.log('Patient Created', newPatient);
+            console.log('Patient Created', newPatient);
 
             //Creating password for new user
             const generatedPassword = Math.floor(Math.random() * 1000000)
@@ -192,21 +190,16 @@ const addPatient = async (req, res, next) => {
                 }
             })
 
-
             const successful = {
                 message: "Data received successfully",
                 status: "successful"
             }
             res.send(successful)
         }
-
     }
     catch (e) {
         console.log("An error occured while creating new user: " + e)
     }
-
-
-
 }
 
 const addPatientPermit = async (req, res, next) => {
@@ -217,8 +210,6 @@ const addPatientPermit = async (req, res, next) => {
     } catch (error) {
         console.log("error: " + error.message);
     }
-
-
 }
 
 const addPatientPhoto = async (req, res, next) => {
@@ -230,8 +221,6 @@ const addPatientPhoto = async (req, res, next) => {
     } catch (error) {
         console.log(error.message);
     }
-
-
 }
 
 module.exports = {

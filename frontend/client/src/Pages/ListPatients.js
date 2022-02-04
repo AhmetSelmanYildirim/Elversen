@@ -136,8 +136,8 @@ const ListPatients = () => {
                     </div>
                 </div>
                 {allPatients && allPatients.map((item, index) => (
-                    <Popup trigger={
-                        <div key={item + index} className='listItemContainer'>
+                    <Popup key={item + index} trigger={
+                        <div className='listItemContainer'>
                             <div className='listItemInnerContainer'>
 
                                 <div className='photoContainer'>
@@ -195,8 +195,8 @@ const ListPatients = () => {
                             <div><strong>{strings.formResponsibleName}:</strong> {item.responsibleName} </div>
                             <div><strong>{strings.formResponsibleEmail}:</strong> <a href={`mailto: ${item.responsibleEmail}`}>{item.responsibleEmail}</a>  </div>
                             {/* <div>{item.responsiblePhone} </div> */}
-                            <div style={{marginTop:"10px"}}><a style={{ marginRight: "10px" }} href={item.facebookLink} target="_blank"><i style={{ color: "#0165E1" }} class="fab fa-facebook fa-2x"></i></a>
-                                <a href={item.instagramLink} target="_blank"><i style={{ color: "#B403AA" }} class="fab fa-instagram fa-2x"></i></a>
+                            <div style={{marginTop:"10px"}}><a style={{ marginRight: "10px" }} href={item.facebookLink} target="_blank"><i style={{ color: "#0165E1" }} className="fab fa-facebook fa-2x"></i></a>
+                                <a href={item.instagramLink} target="_blank"><i style={{ color: "#B403AA" }} className="fab fa-instagram fa-2x"></i></a>
                             </div>
                         </div>
                     </Popup>

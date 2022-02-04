@@ -1,5 +1,9 @@
 const Responsible = require("../model/responsibleModel")
 const bcrypt = require("bcrypt")
+const passport = require("passport");
+const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+
 
 const getResponsibles = async (req, res, next) => {
     const responsibles = await Responsible.find({ isActive: true })
@@ -30,13 +34,120 @@ const resetPassword = async (req, res, next) => {
 
 }
 
-const forgetPassword = async (req, res, next) => {
+const forgottenPassword = async (req, res, next) => {
 
-    res.send("Forget password")
+    let data = await JSON.parse(Object.keys(req.body)[0])
+
+    console.log("forgottenPassword", data);
+
+    try {
+        const responsible = await Responsible.findOne({ email: data.email });
+        console.log(responsible);
+
+        if (!responsible) { res.send({ msg: "error" }) }
+        else {
+            if (responsible && responsible.isActive == false) { res.send({ msg: "warning" }) }
+            else if (responsible && responsible.isActive == true) {
+
+                const jwtInfo = {
+                    id: responsible._id,
+                    password: responsible.email
+                };
+
+                const secret = process.env.RESET_PASSWORD_SECRET_KEY + "-" + responsible.password;
+                const jwtToken = jwt.sign(jwtInfo, secret, { expiresIn: '1d' });
+
+                //send password reset mail
+                const url = process.env.FRONTEND_URL + '/resetPassword/' + responsible._id + '/' + jwtToken;
+
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: process.env.GMAIL_USER,
+                        pass: process.env.GMAIL_PASSWORD
+                    }
+                });
+
+                await transporter.sendMail({
+                    from: "SMA Platform <nodedenemejs@gmail.com>",
+                    to: responsible.email,
+                    subject: "Parola sıfırlama",
+                    text: "Parolayı sıfırlamak için linke tılayınız: " + url
+                }, (error, info) => {
+                    if (error) {
+                        console.log("An error occured: " + error);
+                    }
+                    console.log("mail has sent");
+                    console.log(info);
+                    transporter.close();
+                })
+
+                res.send({ msg: "confirm" })
+
+            }
+        }
+
+    }
+    catch (e) {
+        console.log("forgottenPassword: " + e.message);
+    }
+}
+
+const resetForgottenPassword = async (req, res, next) => {
+    let data = await JSON.parse(Object.keys(req.body)[0])
+    // console.log(data)
+
+    const IDinLink = data.id;
+    const tokenInLink = data.token;
+
+    if (IDinLink && tokenInLink) {
+
+        const _findedUser = await Responsible.findById({ _id: IDinLink })
+
+        const secretKey = process.env.RESET_PASSWORD_SECRET_KEY + "-" + _findedUser.password;
+
+        try {
+
+            jwt.verify(tokenInLink, secretKey, async (e, decoded) => {
+
+                if (e) {
+                    res.send({ error: 'The link is incorrect or out of date' });
+                    // res.redirect('/forgot-password')
+                } else {
+                    res.send({ msg: "token is valid" })
+                }
+            });
+
+        } catch (e) {
+            req.send({ error: "Invalid link" });
+        }
+
+    }
+    else {
+        res.send({ warning: "Please click on the link you received." });
+    }
+}
+
+const saveNewPassword = async (req, res, next) => {
+    let data = await JSON.parse(Object.keys(req.body)[0])
+    console.log(data);
+
+    try {
+        const hashedPassword = await bcrypt.hash(data.newPassword, 10)
+        const responsible = await Responsible.findByIdAndUpdate(data.id, { password: hashedPassword })
+        console.log("responsible: ", responsible);
+
+        res.send({ msg: "password changed successfully" })
+    } catch (error) {
+        console.log("error: " + error);
+    }
+
 }
 
 module.exports = {
     getResponsibles,
     resetPassword,
-    forgetPassword,
+    forgottenPassword,
+    resetForgottenPassword,
+    saveNewPassword
 }

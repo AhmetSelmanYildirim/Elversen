@@ -10,6 +10,9 @@ import Login from './Pages/Login';
 import ResponsibleProfile from './Pages/Responsible/ResponsibleProfile';
 import ThankYou from './Pages/ThankYou';
 import PatientAdded from './Pages/PatientAdded';
+import ForgottenPassword from './Pages/ForgottenPassword';
+import ResetPassword from './Pages/ResetPassword';
+
 
 const App = () => {
   return (
@@ -23,9 +26,11 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/termsandconditions" element={<TermsAndConditions />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/r/profile/:id" element={<ResponsibleProfile authorized={false}/>} />
+          <Route path="/r/profile/:id" element={<ResponsibleProfile authorized={false} />} />
           <Route path="/contact/thankyou" element={<ThankYou />} />
           <Route path="/addpatient/patientadded" element={<PatientAdded />} />
+          <Route path="/forgottenPassword" element={<ForgottenPassword />} />
+          <Route path="/resetPassword/:id/:token" element={<ResetPassword />} />
         </Routes>
       </Router>
     </div>
