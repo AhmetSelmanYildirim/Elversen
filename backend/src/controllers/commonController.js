@@ -70,7 +70,7 @@ const sendContactMail = async (req, res, next) => {
     });
 
     const sentMail = await transporter.sendMail({
-        from: `Contact Mail <${process.env.GMAIL_USER}>`,
+        from: `SMA Contact Form <${process.env.GMAIL_USER}>`,
         to: process.env.GMAIL_USER,
         subject: data.subject,
         html: `
