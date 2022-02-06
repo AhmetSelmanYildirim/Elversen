@@ -8,15 +8,15 @@ const Sidebar = () => {
   return (
     <div className='sidebarOuterContainer'>
       <div className='sidebarInnerContainer'>
-        <a className="menuItem" onClick={() => navigate("/")}>
+        <div className="menuItem" onClick={() => navigate("/")}>
           <i className="fas fa-home"></i>
-        </a>
-        <a className="menuItem" onClick={() => navigate("/patients")}>
-          <i className="fas fa-child"></i><span class="hint">SMA'lı</span>
-        </a>
-        <a className="menuItem" onClick={() => navigate("/responsibles")}>
-          <i className="fas fa-user"></i><span class="hint">Sorumlu</span>
-        </a>
+        </div>
+        <div className="menuItem" onClick={() => navigate("/patients")}>
+          <i className="fas fa-child"></i><span className="hint">SMA'lı</span>
+        </div>
+        <div className="menuItem" onClick={() => navigate("/responsibles")}>
+          <i className="fas fa-user"></i><span className="hint">Sorumlu</span>
+        </div>
       </div >
     </div >
   );

@@ -6,7 +6,8 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 
 const Responsibles = () => {
 
-    const { isLogon } = useContext(AppContext)
+    const { isLogon, responsibles } = useContext(AppContext)
+    console.log(responsibles)
 
     if (isLogon) {
         return (

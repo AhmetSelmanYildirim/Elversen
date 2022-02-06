@@ -10,10 +10,9 @@ export const AppProvider = ({ children }) => {
     const [isLogon, setIsLogon] = useState(false);
 
     const login = async (email, password) => {
-        // email şifre backende gönder
         let message = "";
         const info = { email, password }
-        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, JSON.stringify(info))
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, JSON.stringify(info))
             .then(result => {
                 result.data === true ? setIsLogon(true) : message = result.data.error;
             })
@@ -22,19 +21,19 @@ export const AppProvider = ({ children }) => {
 
     useEffect(() => {
 
-        // const getResponsibles = async () => {
-        //     const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/getResponsibles`)
-        //     // console.log(data)
-        //     setResponsibles(data);
-        // }
-        // getResponsibles();
+        const getResponsibles = async () => {
+            const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/r/getResponsibles`)
+            // console.log(data)
+            setResponsibles(data);
+        }
+        getResponsibles();
 
-        // const getPatients = async () => {
-        //     const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/getPatients`)
-        //     // console.log(data)
-        //     setResponsibles(data);
-        // }
-        // getPatients();
+        const getPatients = async () => {
+            const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/p/getPatients`)
+            // console.log(data)
+            setPatients(data);
+        }
+        getPatients();
 
     }, [])
 

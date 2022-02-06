@@ -5,7 +5,8 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 
 const Patients = () => {
 
-    const { isLogon } = useContext(AppContext)
+    const { isLogon, patients } = useContext(AppContext)
+    console.log(patients)
 
     if (isLogon) {
         return (
