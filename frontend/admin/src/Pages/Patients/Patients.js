@@ -1,5 +1,5 @@
 import "./Patients.css"
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AppContext } from "../../Contexts/AppContext";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Accordion from '@mui/material/Accordion';
@@ -7,10 +7,21 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import axios from "axios";
 
 const Patients = () => {
 
-    const { isLogon, patients, activatePatient, deactivatePatient } = useContext(AppContext)
+    const { isLogon, patients, activatePatient, deactivatePatient, setPatients } = useContext(AppContext)
+
+    
+    useEffect(() => {
+        const getPatients = async () => {
+            const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/p/getPatients`)
+            // console.log(data)
+            setPatients(data);
+        }
+        getPatients();
+    }, [])
 
     const handleDeactivate = (event => {
         event.target.style = "display:none"

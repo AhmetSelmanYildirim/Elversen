@@ -1,5 +1,5 @@
 import "./Responsibles.css"
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AppContext } from "../../Contexts/AppContext";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Accordion from '@mui/material/Accordion';
@@ -7,11 +7,22 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import axios from "axios";
 
 
 const Responsibles = () => {
 
-    const { isLogon, responsibles, activateResponsible, deactivateResponsible } = useContext(AppContext)
+    const { isLogon, responsibles, activateResponsible, deactivateResponsible, setResponsibles } = useContext(AppContext)
+
+    useEffect(() => {
+
+        const getResponsibles = async () => {
+            const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/r/getResponsibles`)
+            setResponsibles(data);
+        }
+        getResponsibles();
+
+    }, [])
 
     const handleDeactivate = (event => {
         event.target.style = "display:none"

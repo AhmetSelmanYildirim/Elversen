@@ -36,30 +36,13 @@ export const AppProvider = ({ children }) => {
         axios.put(`${process.env.REACT_APP_SERVER_URL}/p/deactivatePatient`, JSON.stringify(info))
     }
 
-    useEffect(() => {
-
-        const getResponsibles = async () => {
-            const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/r/getResponsibles`)
-            // console.log(data)
-            setResponsibles(data);
-        }
-        getResponsibles();
-
-        const getPatients = async () => {
-            const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/p/getPatients`)
-            // console.log(data)
-            setPatients(data);
-        }
-        getPatients();
-
-    }, [])
-
-
     return (
         <AppContext.Provider
             value={{
                 patients,
+                setPatients,
                 responsibles,
+                setResponsibles,
                 isLogon,
                 login,
                 activatePatient,
