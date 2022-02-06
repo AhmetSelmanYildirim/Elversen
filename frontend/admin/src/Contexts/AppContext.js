@@ -9,15 +9,15 @@ export const AppProvider = ({ children }) => {
     const [responsibles, setResponsibles] = useState("")
     const [isLogon, setIsLogon] = useState(false);
 
-    
     const login = async (email, password) => {
         // email şifre backende gönder
+        let message = "";
         const info = { email, password }
         const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, JSON.stringify(info))
             .then(result => {
-                console.log(result)
-                // validse setIsLogon(true)
+                result.data === true ? setIsLogon(true) : message = result.data.error;
             })
+        return message
     }
 
     useEffect(() => {

@@ -1,35 +1,46 @@
 import "./Homepage.css"
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from "../../Contexts/AppContext";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 
 const Homepage = () => {
 
-    const { login, isLogon } = useContext(AppContext)
+    const { login, isLogon } = useContext(AppContext);
+    const [errorMessage, setErrorMessage] = useState(null);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const email = event.target[0].value;
         const password = event.target[1].value;
-        login(email, password)
+        await login(email, password).then(res => setErrorMessage(res))
     }
+
 
     if (!isLogon) {
         return (
-            <div className="container">
-                Homepage
-                <form className="loginForm" onSubmit={handleSubmit}>
-                    <input className="formInput" name="email" type="email" placeholder="email" />
-                    <input className="formInput" name="password" type="password" placeholder="parola" />
-                    <button className="formInput" type="submit">Giriş yap</button>
-                </form>
+            <div className="homepageOuterContainer">
+                <Sidebar />
+                <div className="homepageInnerContainer">
+                    Homepage
+                    <form className="loginForm" onSubmit={handleSubmit}>
+                        <input className="formInput" name="email" type="email" placeholder="email" />
+                        <input className="formInput" name="password" type="password" placeholder="parola" />
+                        <button className="formInput" type="submit">Giriş yap</button>
+                    </form>
+                    {
+                        errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>
+                    }
+                </div>
             </div>
         );
     }
     else {
         return (
-            <div className="container">
-                <a className="menu-item" href="/Patients">Patients </a>
-                <a className="menu-item" href="/Responsibles">Responsibles</a>
+            <div className="homepageOuterContainer">
+                <Sidebar />
+                <div className="homepageInnerContainer">
+                    Homepage
+                </div>
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import "./Responsibles.css"
 import React, { useContext } from 'react';
 import { AppContext } from "../../Contexts/AppContext";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 
 
 const Responsibles = () => {
@@ -9,13 +10,23 @@ const Responsibles = () => {
 
     if (isLogon) {
         return (
-            <div>
-                Responsibles
+            <div className="responsibleOuterContainer">
+                <Sidebar />
+                <div className="responsibleInnerContainer">
+                    Responsibles
+                </div>
             </div>
         );
     }
     else {
-        return <div>Lütfen giriş yapınız.</div>
+        return (
+            <div className="responsibleOuterContainer">
+                <Sidebar />
+                <div className="responsibleInnerContainer">
+                    Lütfen giriş yapınız.
+                </div>
+            </div>
+        );
     }
 
 };

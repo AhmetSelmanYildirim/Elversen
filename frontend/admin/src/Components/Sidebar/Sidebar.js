@@ -1,19 +1,25 @@
 import React from 'react';
-import { push as Menu } from 'react-burger-menu';
 import './Sidebar.css';
+import { useNavigate } from "react-router-dom"
 
-export default props => {
+
+const Sidebar = () => {
+  const navigate = useNavigate();
   return (
-    <Menu pageWrapId={'page-wrap'} outerContainerId={'outer-container'} >
-      <a className="menu-item" href="/">
-        Home
-      </a>
-      <a className="menu-item" href="/Patients">
-        Patients
-      </a>
-      <a className="menu-item" href="/Responsibles">
-        Responsibles
-      </a>
-    </Menu>
+    <div className='sidebarOuterContainer'>
+      <div className='sidebarInnerContainer'>
+        <a className="menuItem" onClick={() => navigate("/")}>
+          <i className="fas fa-home"></i>
+        </a>
+        <a className="menuItem" onClick={() => navigate("/patients")}>
+          <i className="fas fa-child"></i><span class="hint">SMA'lı</span>
+        </a>
+        <a className="menuItem" onClick={() => navigate("/responsibles")}>
+          <i className="fas fa-user"></i><span class="hint">Sorumlu</span>
+        </a>
+      </div >
+    </div >
   );
 };
+
+export default Sidebar;
