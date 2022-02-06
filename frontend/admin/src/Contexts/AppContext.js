@@ -7,6 +7,18 @@ export const AppProvider = ({ children }) => {
 
     const [patients, setPatients] = useState("")
     const [responsibles, setResponsibles] = useState("")
+    const [isLogon, setIsLogon] = useState(false);
+
+    
+    const login = async (email, password) => {
+        // email şifre backende gönder
+        const info = { email, password }
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, JSON.stringify(info))
+            .then(result => {
+                console.log(result)
+                // validse setIsLogon(true)
+            })
+    }
 
     useEffect(() => {
 
@@ -32,6 +44,8 @@ export const AppProvider = ({ children }) => {
             value={{
                 patients,
                 responsibles,
+                isLogon,
+                login
             }}
         >
             {children}
