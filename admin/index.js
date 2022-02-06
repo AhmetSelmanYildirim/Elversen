@@ -9,4 +9,11 @@ app.use(express.urlencoded({ extended:true }));
 //db
 require('./src/config/database');
 
+// Routers
+const patientRouter = require("./src/routers/patientRouter");
+const responsibleRouter = require("./src/routers/responsibleRouter");
+
+app.use("/p/", patientRouter);
+app.use("/r/", responsibleRouter);
+
 app.listen(process.env.PORT,()=>{console.log(`${process.env.PORT} listening`)})
