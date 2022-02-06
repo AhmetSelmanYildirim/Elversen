@@ -11,15 +11,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Responsibles = () => {
 
-    const { isLogon, responsibles } = useContext(AppContext)
+    const { isLogon, responsibles, activateResponsible, deactivateResponsible } = useContext(AppContext)
 
     const handleDeactivate = (event => {
         event.target.style = "display:none"
+        deactivateResponsible(event.target.parentElement.childNodes[0].childNodes[2].nodeValue);
         event.target.previousElementSibling.innerHTML = "<strong>Aktif:</strong> pasif"
     })
 
     const handleActivate = (event => {
         event.target.style = "display:none"
+        activateResponsible(event.target.parentElement.childNodes[0].childNodes[2].nodeValue);
         event.target.previousElementSibling.innerHTML = "<strong>Aktif:</strong> aktif"
     })
 
@@ -41,9 +43,9 @@ const Responsibles = () => {
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <div>
-                                        <p>Email: {responsible.email}</p>
-                                        <p>Telefon: {responsible.phone}</p>
-                                        <p>Aktif: {responsible.isActive ? "aktif" : "pasif"}</p>
+                                        <p><strong>Email:</strong> {responsible.email}</p>
+                                        <p><strong>Telefon:</strong> {responsible.phone}</p>
+                                        <p><strong>Aktif:</strong> {responsible.isActive ? "aktif" : "pasif"}</p>
                                         {responsible.isActive ?
                                             <button className="deactivate" onClick={handleDeactivate}>Pasifleştir</button>
                                             :

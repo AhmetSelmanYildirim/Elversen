@@ -11,8 +11,24 @@ const getPatients = async (req, res, next) => {
 }
 
 const getPatientById = async (req, res, next) => { }
-const activatePatient = async (req, res, next) => { }
-const deactivatePatient = async (req, res, next) => { }
+const activatePatient = async (req, res, next) => { 
+    let data = await JSON.parse(Object.keys(req.body)[0])
+
+    try {
+        const result = await Patient.findOneAndUpdate({responsibleEmail:data.email},{isActive:true})
+    } catch (error) {
+        console.log(error);
+    }
+}
+const deactivatePatient = async (req, res, next) => {
+    let data = await JSON.parse(Object.keys(req.body)[0])
+
+    try {
+        const result = await Patient.findOneAndUpdate({responsibleEmail:data.email},{isActive:false})
+    } catch (error) {
+        console.log(error);
+    }
+ }
 
 
 

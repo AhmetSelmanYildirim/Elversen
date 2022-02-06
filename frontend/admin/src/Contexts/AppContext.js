@@ -7,7 +7,7 @@ export const AppProvider = ({ children }) => {
 
     const [patients, setPatients] = useState("")
     const [responsibles, setResponsibles] = useState("")
-    const [isLogon, setIsLogon] = useState(false);
+    const [isLogon, setIsLogon] = useState(true);
 
     const login = async (email, password) => {
         let message = "";
@@ -17,6 +17,23 @@ export const AppProvider = ({ children }) => {
                 result.data === true ? setIsLogon(true) : message = result.data.error;
             })
         return message
+    }
+
+    const activateResponsible = (email) => {
+        let info = { email }
+        axios.put(`${process.env.REACT_APP_SERVER_URL}/r/activateResponsible`, JSON.stringify(info))
+    }
+    const deactivateResponsible = (email) => {
+        let info = { email }
+        axios.put(`${process.env.REACT_APP_SERVER_URL}/r/deactivateResponsible`, JSON.stringify(info))
+    }
+    const activatePatient = (email) => {
+        let info = { email }
+        axios.put(`${process.env.REACT_APP_SERVER_URL}/p/activatePatient`, JSON.stringify(info))
+    }
+    const deactivatePatient = (email) => {
+        let info = { email }
+        axios.put(`${process.env.REACT_APP_SERVER_URL}/p/deactivatePatient`, JSON.stringify(info))
     }
 
     useEffect(() => {
@@ -44,7 +61,11 @@ export const AppProvider = ({ children }) => {
                 patients,
                 responsibles,
                 isLogon,
-                login
+                login,
+                activatePatient,
+                activateResponsible,
+                deactivatePatient,
+                deactivateResponsible,
             }}
         >
             {children}

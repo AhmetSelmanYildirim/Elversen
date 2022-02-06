@@ -10,15 +10,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Patients = () => {
 
-    const { isLogon, patients } = useContext(AppContext)
+    const { isLogon, patients, activatePatient, deactivatePatient } = useContext(AppContext)
 
     const handleDeactivate = (event => {
         event.target.style = "display:none"
+        deactivatePatient(event.target.parentElement.childNodes[9].childNodes[2].nodeValue);
         event.target.previousElementSibling.innerHTML = "<strong>Aktif:</strong> pasif"
     })
 
     const handleActivate = (event => {
         event.target.style = "display:none"
+        activatePatient(event.target.parentElement.childNodes[9].childNodes[2].nodeValue);
         event.target.previousElementSibling.innerHTML = "<strong>Aktif:</strong> aktif"
     })
 
