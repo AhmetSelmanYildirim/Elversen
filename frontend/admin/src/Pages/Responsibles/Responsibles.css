@@ -6,6 +6,7 @@
   flex-direction: row;
 }
 .responsibleInnerContainer {
+  margin-left: 5%;
   width: 100%;
   display: flex;
   flex-direction: column;
