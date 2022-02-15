@@ -61,17 +61,17 @@ const sendContactMail = async (req, res, next) => {
 
     //Mail activate process
     let transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'Yandex',
 
         auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_PASSWORD
+            user: process.env.YANDEX_USER,
+            pass: process.env.YANDEX_PASSWORD
         }
     });
 
     const sentMail = await transporter.sendMail({
-        from: `SMA Contact Form <${process.env.GMAIL_USER}>`,
-        to: process.env.GMAIL_USER,
+        from: `SMA Contact Form <${process.env.YANDEX_USER}>`,
+        to: process.env.YANDEX_USER,
         subject: data.subject,
         html: `
         <div><strong>İsim: </strong> ${data.name} </div>
@@ -163,16 +163,16 @@ const addPatient = async (req, res, next) => {
 
             //Mail activate process
             let transporter = nodemailer.createTransport({
-                service: 'gmail',
+                service: 'Yandex',
 
                 auth: {
-                    user: process.env.GMAIL_USER,
-                    pass: process.env.GMAIL_PASSWORD
+                    user: process.env.YANDEX_USER,
+                    pass: process.env.YANDEX_PASSWORD
                 }
             });
 
             const sentMail = await transporter.sendMail({
-                from: `SMA platform <${process.env.GMAIL_USER}>`,
+                from: `SMA platform <${process.env.YANDEX_USER}>`,
                 to: data.resEmail,
                 subject: "Hesap Onaylama",
                 html: `<h1>Parolanız:  ${generatedPassword}</h1>

@@ -6,7 +6,7 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
-    const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem("language"))
+    const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem("language") || "tr")
     const [isResponsibleLogin, setisResponsibleLogin] = useState(false)
     const [patients, setPatients] = useState("")
     const [patient, setPatient] = useState("")
