@@ -30,7 +30,7 @@ const Login = () => {
                 <form className='loginForm' action={`${process.env.REACT_APP_SERVER_URL}/login`} method='post'>
                     <input className="loginFormField" name="email" type="email" placeholder={strings.formEmail} />
                     <input className="loginFormField" name="password" type="password" placeholder={strings.formPassword} />
-                    <button type="submit">{strings.submitForm}</button>
+                    <button className='loginFormButton' type="submit">{strings.submitForm}</button>
                 </form>
 
                 <Link

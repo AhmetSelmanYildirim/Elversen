@@ -209,7 +209,7 @@ const AddPatient = () => {
                                         <div className='formErrorMessage'>{errors.termsandconditions}</div>
                                     ) : null}
 
-                                    <button type="submit">{strings.submitForm}</button>
+                                    <button className="addPatientFormButton" type="submit">{strings.submitForm}</button>
                                 </Form>
                             )}
 

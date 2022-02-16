@@ -149,7 +149,7 @@ const ResponsibleProfile = ({ authorized }) => {
                                         <div className='formErrorMessage'>{errors.renewPassword}</div>
                                     ) : null}
 
-                                    <button type="submit">{strings.submitForm}</button>
+                                    <button className='resetPasswordFormButton' type="submit">{strings.submitForm}</button>
                                 </Form>
                             )}
                         </Formik>
@@ -219,7 +219,7 @@ const ResponsibleProfile = ({ authorized }) => {
                                                 <div className='formErrorMessage'>{errors.instagramLink}</div>
                                             ) : null}
 
-                                            <button type="submit">{strings.submitForm}</button>
+                                            <button className="updateInfoFormButton" type="submit">{strings.submitForm}</button>
                                         </Form>
                                     )}
                                 </Formik>

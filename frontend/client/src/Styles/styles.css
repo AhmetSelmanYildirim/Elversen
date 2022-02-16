@@ -103,6 +103,7 @@ body {
   color: #ff6600;
   font-size: 20px;
   cursor: pointer;
+  padding-top: 5px;
 }
 
 .mobileSpinner {
@@ -259,7 +260,19 @@ body {
 .contactFormField,
 .resetPasswordFormField,
 .loginFormField {
-  padding: 5px;
+  padding: 10px;
+  font-size: 18px;
+  margin: 5px 0px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.addPatientFormButton,
+.contactFormButton,
+.resetPasswordFormButton,
+.loginFormButton{
+  padding: 10px;
+  font-size: 18px;
   margin: 5px 0px;
   border: 1px solid gray;
   border-radius: 4px;
@@ -288,7 +301,13 @@ body {
   flex-direction: column;
 }
 .updateInfoFormField {
-  padding: 5px;
+  padding: 10px;
+  margin: 5px 0px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+.updateInfoFormButton {
+  padding: 10px;
   margin: 5px 0px;
   border: 1px solid gray;
   border-radius: 4px;
@@ -524,7 +543,7 @@ body {
   .contactFormField,
   .resetPasswordFormField,
   .loginFormField {
-    padding: 5px;
+    padding: 10px;
     margin: 5px 0px;
     border: 1px solid gray;
     border-radius: 4px;
@@ -625,4 +644,9 @@ body {
   .listItemContainerTitle .listItemInnerContainer .photoContainer {
     display: none;
   }
+
+  .contactFormArea {
+    width: 90%;
+  }
+
 }

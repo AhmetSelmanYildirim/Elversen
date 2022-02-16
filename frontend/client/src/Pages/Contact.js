@@ -124,7 +124,7 @@ const Contact = () => {
                                 <Field className="contactFormField" name="email" type="email" placeholder={strings.formEmail} />
                                 <Field className="contactFormField" name="subject" type="text" placeholder={strings.formSubject} />
                                 <Field className="contactFormField" name="message" type="text" placeholder={strings.formMessage} /> */}
-                                <button type="submit">{strings.submitForm}</button>
+                                <button className='contactFormButton' type="submit">{strings.submitForm}</button>
                             </Form>
                         )}
                     </Formik>
