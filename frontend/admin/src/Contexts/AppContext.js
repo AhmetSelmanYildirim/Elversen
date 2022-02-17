@@ -7,6 +7,7 @@ export const AppProvider = ({ children }) => {
 
     const [patients, setPatients] = useState("")
     const [responsibles, setResponsibles] = useState("")
+    const [ips,setIps] = useState("");
     const [isLogon, setIsLogon] = useState(false);
 
     const login = async (email, password) => {
@@ -43,6 +44,8 @@ export const AppProvider = ({ children }) => {
                 setPatients,
                 responsibles,
                 setResponsibles,
+                ips,
+                setIps,
                 isLogon,
                 login,
                 activatePatient,

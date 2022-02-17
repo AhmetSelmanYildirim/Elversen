@@ -17,6 +17,9 @@ const Sidebar = () => {
         <div className="menuItem" onClick={() => navigate("/responsibles")}>
           <i className="fas fa-user"></i><span className="hint">Sorumlu</span>
         </div>
+        <div className="menuItem" onClick={() => navigate("/ips")}>
+          <i className="fa-solid fa-address-card"></i><span className="hint">ip'ler</span>
+        </div>
       </div >
     </div >
   );
