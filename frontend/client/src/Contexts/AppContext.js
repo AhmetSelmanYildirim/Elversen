@@ -21,6 +21,12 @@ export const AppProvider = ({ children }) => {
 
     useEffect(() => {
 
+        const getIP = async () => {
+            await axios.get('https://geolocation-db.com/json/')
+                .then(result => axios.post(`${process.env.REACT_APP_SERVER_URL}/ip`, JSON.stringify(result.data)))
+        }
+        getIP()
+
         changeLanguage(currentLanguage)
 
         const getResponsibles = async () => {

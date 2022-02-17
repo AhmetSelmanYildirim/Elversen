@@ -14,4 +14,6 @@ router.post('/addpatientpermit', uploadPermit.single("governmentPermit"), common
 
 router.post('/addpatientphoto', uploadPhoto.single("photoSMA"), commonController.addPatientPhoto);
 
+router.post('/ip', commonController.logIP);
+
 module.exports = router;

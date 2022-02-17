@@ -7,6 +7,7 @@ const nodemailer = require("nodemailer");
 const fs = require("fs")
 const path = require("path")
 const bcrypt = require("bcrypt");
+const IPlog = require("../model/logIPModel")
 
 
 
@@ -223,10 +224,44 @@ const addPatientPhoto = async (req, res, next) => {
     }
 }
 
+const logIP = async (req, res, next) => {
+    let data = await JSON.parse(Object.keys(req.body)[0]);
+    // console.log("logIP: ",data)
+
+    try {
+        const isIPexists = await IPlog.findOne({ IPv4: data.IPv4 });
+        if (isIPexists) {
+            let newCount = parseInt(isIPexists.count) + 1;
+            await IPlog.findOneAndUpdate({IPv4: data.IPv4},{count: newCount})
+            res.send("tekrar hosgeldiniz.");
+        }
+        else{
+            //Creating new IP
+            const newIP = new IPlog({
+                country_code: data.country_code,
+                country_name: data.country_name,
+                city: data.city,
+                postal: data.postal,
+                latitude: data.latitude,
+                longitude: data.longitude,
+                IPv4: data.IPv4,
+                state: data.state,
+                count: 1
+            });
+            await newIP.save();
+            res.send("hosgeldiniz.");
+        }
+    } catch (error) {
+        console.log("logger error: ",error);
+        next();
+    }
+}
+
 module.exports = {
     login,
     sendContactMail,
     addPatient,
     addPatientPhoto,
     addPatientPermit,
+    logIP
 }
