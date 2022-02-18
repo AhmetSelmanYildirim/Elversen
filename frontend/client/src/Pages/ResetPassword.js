@@ -57,7 +57,6 @@ const ResetPassword = () => {
                 }
                 axios.post(`${process.env.REACT_APP_RESPONSIBLE_URL}/saveNewPassword`, JSON.stringify(data))
                   .then(response => { 
-                    console.log(response);
                     response.data.msg && navigate("/login")
                    })
                   .catch(err => console.log(err.message))

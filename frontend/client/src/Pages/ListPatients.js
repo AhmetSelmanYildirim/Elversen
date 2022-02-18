@@ -16,6 +16,7 @@ const contentStyle = {
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "10px",
+    minWidth: "400px"
 };
 const overlayStyle = { background: 'rgba(0,0,0,0.5)' };
 const arrowStyle = { display: "none" }; // style for an svg element

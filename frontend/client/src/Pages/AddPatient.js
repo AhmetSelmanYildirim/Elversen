@@ -100,14 +100,13 @@ const AddPatient = () => {
                                 doe.setDate(doe.getDate() + 730);
                                 values.dateOfEnd = doe;
 
-                                
+
 
                                 axios.post(`${process.env.REACT_APP_SERVER_URL}/addpatient`, JSON.stringify(values))
                                     .then(response => {
                                         response.data.status !== "error" && setStep(2)
                                         response.data.status === "error" && setEmailAlreadyInUse(true)
 
-                                        console.log(response.data)
                                     }
                                     )
                                     .catch(err => console.log(err.message))
@@ -143,11 +142,14 @@ const AddPatient = () => {
                                     {errors.surname && touched.surname ? (
                                         <div className='formErrorMessage'>{errors.surname}</div>
                                     ) : null}
+                                    <div style={{display:"flex", flexDirection:"row", justifyContent:"flex-start", alignItems:"center"}}>
+                                        <span >{strings.dateOfBirth}: </span>
+                                        <Field className="addPatientFormField" name="dateOfBirth" type="date" placeholder={strings.formDateOfBirth} />
+                                        {errors.dateOfBirth && touched.dateOfBirth ? (
+                                            <div className='formErrorMessage'>{errors.dateOfBirth}</div>
+                                        ) : null}
+                                    </div>
 
-                                    <Field className="addPatientFormField" name="dateOfBirth" type="date" placeholder={strings.formDateOfBirth} />
-                                    {errors.dateOfBirth && touched.dateOfBirth ? (
-                                        <div className='formErrorMessage'>{errors.dateOfBirth}</div>
-                                    ) : null}
 
                                     <Field className="addPatientFormField" name="weight" type="number" placeholder={strings.formWeight} />
                                     {errors.weight && touched.weight ? (

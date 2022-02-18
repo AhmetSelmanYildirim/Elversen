@@ -20,6 +20,7 @@ export const AppProvider = ({ children }) => {
     }
 
     useEffect(() => {
+        setTimeout(() => console.clear(), 200)
 
         const getIP = async () => {
             await axios.get('https://geolocation-db.com/json/')
@@ -31,7 +32,6 @@ export const AppProvider = ({ children }) => {
 
         const getResponsibles = async () => {
             const { data } = await axios(`${process.env.REACT_APP_RESPONSIBLE_URL}/getResponsibles`)
-            // console.log(data)
             setResponsibles(data);
         }
         getResponsibles();
