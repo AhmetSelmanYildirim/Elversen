@@ -22,82 +22,86 @@ const Header = () => {
                 {showMenu &&
                     <div className='mobileSpinner'>
                         <div>
-                    <Link
-                        className="headerItem"
-                        to={`/`}>
-                        <p>{strings.homepage}</p>
-                    </Link>
-                </div>
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/listpatients`}>
-                        <p>{strings.listpatients}</p>
-                    </Link>
-                </div>
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/about`}>
-                        <p>{strings.about}</p>
-                    </Link>
-                </div>
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/contact`}>
-                        <p>{strings.contact}</p>
-                    </Link>
-                </div>
-                <div className="headerItem dropdown">
-                    {strings.responsible} <i className="fas fa-angle-down fa-xs"></i>
-                    <div className='dropdown-content'>
-                        <Link
-                            className="dropdown-item"
-                            to={`/addpatient`}>
-                            <p>{strings.addpatient}</p>
-                        </Link>
-                        <Link
-                            className="dropdown-item"
-                            to={`/login`}>
-                            <p>{strings.headerLogin}</p>
-                        </Link>
-                    </div>
-                </div>
-                <div>
-                    {currentLanguage === "en" ?
-                        <span
-                            className="headerItem"
-                            onClick={() => changeLanguage("tr")}
-                        >
-                            <p>TR</p>
-                        </span>
-                        :
-                        <span
-                            className="headerItem"
-                            onClick={() => changeLanguage("en")}
-                        >
-                            <p>EN</p>
-                        </span>
-                    }
-                </div>
+                            <Link
+                                className="headerItem"
+                                to={`/`}>
+                                <p>{strings.homepage}</p>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link
+                                className="headerItem"
+                                to={`/listpatients`}>
+                                <p>{strings.listpatients}</p>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link
+                                className="headerItem"
+                                to={`/about`}>
+                                <p>{strings.about}</p>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link
+                                className="headerItem"
+                                to={`/contact`}>
+                                <p>{strings.contact}</p>
+                            </Link>
+                        </div>
+                        <div className="headerItem dropdown">
+                            {strings.responsible} <i className="fas fa-angle-down fa-xs"></i>
+                            <div className='dropdown-content'>
+                                <Link
+                                    className="dropdown-item"
+                                    to={`/addpatient`}>
+                                    <p>{strings.addpatient}</p>
+                                </Link>
+                                <Link
+                                    className="dropdown-item"
+                                    to={`/login`}>
+                                    <p>{strings.headerLogin}</p>
+                                </Link>
+                            </div>
+                        </div>
+                        <div>
+                            {currentLanguage === "en" ?
+                                <span
+                                    className="headerItem"
+                                    onClick={() => changeLanguage("tr")}
+                                >
+                                    <p>TR</p>
+                                </span>
+                                :
+                                <span
+                                    className="headerItem"
+                                    onClick={() => changeLanguage("en")}
+                                >
+                                    <p>EN</p>
+                                </span>
+                            }
+                        </div>
                     </div>
 
                 }
             </div>
 
+            <div className='headerLogoContainer'>
+                <Link to={`/`}>
 
-
+                <img className='headerLogo' src='img/logo/elversen-logo-880x200-white.png'/>
+                </Link>
+            </div>
 
             <div className='headerInnerContainer' >
                 {/* desktop menu */}
-                <div>
+                {/* <div>
                     <Link
                         className="headerItem"
                         to={`/`}>
                         <p>{strings.homepage}</p>
                     </Link>
-                </div>
+                </div> */}
                 <div>
                     <Link
                         className="headerItem"
