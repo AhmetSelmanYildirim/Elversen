@@ -14,6 +14,13 @@ const Header = () => {
     return (
         <div className='headerContainer' >
 
+            <div className='headerMobileLogoContainer'>
+                <Link to={`/`}>
+
+                    <img className='headerLogo' src='img/logo/elversen-logo-880x200-white.png' />
+                </Link>
+            </div>
+
             <div className='headerMobileInnerContainer'>
                 {/* mobile menu */}
                 <div onClick={() => setshowMenu(!showMenu)} className='hamburgerMenu' >
@@ -21,13 +28,13 @@ const Header = () => {
                 </div>
                 {showMenu &&
                     <div className='mobileSpinner'>
-                        <div>
+                        {/* <div>
                             <Link
                                 className="headerItem"
                                 to={`/`}>
                                 <p>{strings.homepage}</p>
                             </Link>
-                        </div>
+                        </div> */}
                         <div>
                             <Link
                                 className="headerItem"
@@ -89,7 +96,7 @@ const Header = () => {
             <div className='headerLogoContainer'>
                 <Link to={`/`}>
 
-                <img className='headerLogo' src='img/logo/elversen-logo-880x200-white.png'/>
+                    <img className='headerLogo' src='img/logo/elversen-logo-880x200-white.png' />
                 </Link>
             </div>
 
