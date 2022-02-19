@@ -51,7 +51,7 @@ const IPs = () => {
                                         <p><strong>Giriş sayısı:</strong> {ip.count}</p>
                                         <p><strong>İlk Giriş tarihi: </strong> 
                                         <span>{new Date(ip.createdAt).getDate()}/
-                                        {(new Date(ip.createdAt).getMonth()) < 10 ? ("0".concat(new Date(ip.createdAt).getMonth().toString())) : new Date(ip.createdAt).getMonth()}/
+                                        {(new Date(ip.createdAt).getMonth()) < 9 ? ("0".concat((parseInt(new Date(ip.createdAt).getMonth())+1).toString())) : parseInt(new Date(ip.createdAt).getMonth())+1}/
                                         {new Date(ip.createdAt).getFullYear()}  </span><span>
                                         {(new Date(ip.createdAt).getHours()) < 10 ? ("0".concat(new Date(ip.createdAt).getHours().toString())) : new Date(ip.createdAt).getHours()}:
                                         {(new Date(ip.createdAt).getMinutes()) < 10 ? ("0".concat(new Date(ip.createdAt).getMinutes().toString())) : new Date(ip.createdAt).getMinutes()}:
@@ -59,7 +59,7 @@ const IPs = () => {
                                         </span>
                                         <span> GMT:{(new Date(ip.createdAt).getTimezoneOffset()) < 0 ? ("-".concat(new Date(ip.createdAt).getTimezoneOffset().toString())) : (new Date(ip.createdAt).getTimezoneOffset()) > 0 ? ("+".concat(new Date(ip.createdAt).getTimezoneOffset().toString())) : (new Date(ip.createdAt).getTimezoneOffset())}</span>    
                                         </p>
-                                        {/* latitude,longitude*/}
+                                        <p><strong>Konum:</strong> {ip.latitude},{ip.longitude}</p>
                                     </div>
                                 </AccordionDetails>
                             </Accordion>
