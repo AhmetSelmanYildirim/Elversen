@@ -8,11 +8,11 @@ const Footer = () => {
                 <div className='footerLeft'>
                     <div className='socialMediaIcons'>
                         <a className='socialMediaIcon' href='#'> <i className="fab fa-facebook fa-lg"></i></a>
-                        <a className='socialMediaIcon' href='#'> <i className="fab fa-instagram fa-lg"></i></a>
+                        <a className='socialMediaIcon' style={{marginLeft:"10px"}} href='#'> <i className="fab fa-instagram fa-lg"></i></a>
                     </div>
                 </div>
                 <div className='footerRight'>
-                    HHY & ASY
+                    <span>HHY & ASY</span>
                 </div>
             </div>
         </div>
