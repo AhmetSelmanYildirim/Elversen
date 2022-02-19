@@ -47,8 +47,8 @@ const AddPatient = () => {
             .max(50, strings.tooLong)
             .required(strings.required),
         resPhone: Yup.string()
-            .min(2, strings.tooShort)
-            .max(50, strings.tooLong)
+            .min(10, strings.tooShort)
+            .max(20, strings.tooLong)
             .required(strings.required),
         resEmail: Yup.string()
             .min(2, strings.tooShort)
@@ -60,8 +60,9 @@ const AddPatient = () => {
         requiredAmount: Yup.number()
             .required(strings.required),
         iban: Yup.string()
-            .min(26, strings.tooShort)
-            .max(26, strings.tooLong)
+            .matches(/^[0-9]+$/, strings.ibanValidation)
+            .min(24, strings.ibanValidation)
+            .max(24, strings.ibanValidation)
             .required(strings.required),
         termsandconditions: Yup.boolean()
             .required(strings.termsAndConditionsRequired)
@@ -96,6 +97,10 @@ const AddPatient = () => {
                                 values.city = titleCase(values.city)
                                 values.resName = titleCase(values.resName)
 
+                                values.iban = "TR".concat(values.iban)
+                                values.instagramLink = "https://www.instagram.com/".concat(values.instagramLink)
+                                values.facebookLink = "https://www.facebook.com/".concat(values.facebookLink)
+
                                 let doe = new Date(values.dateOfBirth)
                                 doe.setDate(doe.getDate() + 730);
                                 values.dateOfEnd = doe;
@@ -110,21 +115,6 @@ const AddPatient = () => {
                                     }
                                     )
                                     .catch(err => console.log(err.message))
-
-                                // values.name = "";
-                                // values.surname = "";
-                                // values.dateOfBirth = "";
-                                // values.weight = "";
-                                // values.resName = "";
-                                // values.resPhone = "";
-                                // values.resEmail = "";
-                                // values.collectedAmount = "";
-                                // values.requiredAmount = "";
-                                // values.iban = "";
-                                // values.permit = "";
-                                // values.termsandconditions = "";
-                                // values.instagramLink = "";
-                                // values.facebookLink = "";
                             }}
                         >
                             {({ errors, touched }) => (
@@ -132,73 +122,90 @@ const AddPatient = () => {
 
                                     {formReceivedMessage && <div style={{ color: "white", background: "orange", textAlign: "center" }}>{formReceivedMessage}</div>}
 
-
+                                    <span>{strings.formName}</span>
                                     <Field className="addPatientFormField" name="name" type="text" placeholder={strings.formName} />
                                     {errors.name && touched.name ? (
                                         <div className='formErrorMessage'>{errors.name}</div>
                                     ) : null}
 
+                                    <span>{strings.formSurname}</span>
                                     <Field className="addPatientFormField" name="surname" type="text" placeholder={strings.formSurname} />
                                     {errors.surname && touched.surname ? (
                                         <div className='formErrorMessage'>{errors.surname}</div>
                                     ) : null}
-                                    <div style={{display:"flex", flexDirection:"row", justifyContent:"flex-start", alignItems:"center"}}>
-                                        <span >{strings.dateOfBirth}: </span>
-                                        <Field className="addPatientFormField" name="dateOfBirth" type="date" placeholder={strings.formDateOfBirth} />
-                                        {errors.dateOfBirth && touched.dateOfBirth ? (
-                                            <div className='formErrorMessage'>{errors.dateOfBirth}</div>
-                                        ) : null}
-                                    </div>
 
+                                    <span>{strings.dateOfBirth}</span>
+                                    <Field className="addPatientFormField" name="dateOfBirth" type="date" placeholder={strings.formDateOfBirth} />
+                                    {errors.dateOfBirth && touched.dateOfBirth ? (
+                                        <div className='formErrorMessage'>{errors.dateOfBirth}</div>
+                                    ) : null}
 
+                                    <span>{strings.formWeight}</span>
                                     <Field className="addPatientFormField" name="weight" type="number" placeholder={strings.formWeight} />
                                     {errors.weight && touched.weight ? (
                                         <div className='formErrorMessage'>{errors.weight}</div>
                                     ) : null}
+
+                                    <span>{strings.city}</span>
                                     <Field className="addPatientFormField" name="city" type="text" placeholder={strings.city} />
                                     {errors.city && touched.city ? (
                                         <div className='formErrorMessage'>{errors.city}</div>
                                     ) : null}
 
 
-
+                                    <span>{strings.formResponsibleName}</span>
                                     <Field className="addPatientFormField" name="resName" type="text" placeholder={strings.formResponsibleName} />
                                     {errors.resName && touched.resName ? (
                                         <div className='formErrorMessage'>{errors.resName}</div>
                                     ) : null}
 
+                                    <span>{strings.formResponsiblePhone}</span>
                                     <Field className="addPatientFormField" name="resPhone" type="text" placeholder={strings.formResponsiblePhone} />
                                     {errors.resPhone && touched.resPhone ? (
                                         <div className='formErrorMessage'>{errors.resPhone}</div>
                                     ) : null}
 
+                                    <span>{strings.formResponsibleEmail}</span>
                                     <Field className="addPatientFormField" name="resEmail" type="email" placeholder={strings.formResponsibleEmail} />
                                     {errors.resEmail && touched.resEmail ? (
                                         <div className='formErrorMessage'>{errors.resEmail}</div>
                                     ) : null}
                                     {emailAlreadyInUse && <p style={{ color: "red" }}>{strings.emailAlreadyInUse}</p>}
 
+                                    <span>{strings.formCollectedAmount}</span>
                                     <Field className="addPatientFormField" name="collectedAmount" type="number" placeholder={strings.formCollectedAmount} />
                                     {errors.collectedAmount && touched.collectedAmount ? (
                                         <div className='formErrorMessage'>{errors.collectedAmount}</div>
                                     ) : null}
 
+                                    <span>{strings.formRequiredAmount}</span>
                                     <Field className="addPatientFormField" name="requiredAmount" type="number" placeholder={strings.formRequiredAmount} />
                                     {errors.requiredAmount && touched.requiredAmount ? (
                                         <div className='formErrorMessage'>{errors.requiredAmount}</div>
                                     ) : null}
 
 
-                                    <Field className="addPatientFormField" name="iban" type="text" placeholder={strings.IBANNumber} />
+                                    <span>{strings.IBANNumber}</span>
+                                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
+                                        <span >TR </span>
+                                        <Field className="addPatientFormField" style={{ width: "100%" }} name="iban" type="string" placeholder="000011112222333344445555" />
+                                    </div>
                                     {errors.iban && touched.iban ? (
                                         <div className='formErrorMessage'>{errors.iban}</div>
                                     ) : null}
 
-                                    <Field className="addPatientFormField" name="instagramLink" type="text" placeholder={strings.instagramLink} />
+                                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
+                                        <span >https://www.instagram.com/ </span>
+                                        <Field className="addPatientFormField" style={{ width: "100%" }} name="instagramLink" type="text" placeholder={strings.username} />
+                                    </div>
                                     {errors.instagramLink && touched.instagramLink ? (
                                         <div className='formErrorMessage'>{errors.instagramLink}</div>
                                     ) : null}
-                                    <Field className="addPatientFormField" name="facebookLink" type="text" placeholder={strings.facebookLink} />
+
+                                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
+                                        <span >https://www.facebook.com/ </span>
+                                        <Field className="addPatientFormField" style={{ width: "100%" }} name="facebookLink" type="text" placeholder={strings.username} />
+                                    </div>
                                     {errors.facebookLink && touched.facebookLink ? (
                                         <div className='formErrorMessage'>{errors.facebookLink}</div>
                                     ) : null}

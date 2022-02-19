@@ -2,6 +2,7 @@ import LocalizedStrings from "react-localization";
 
 export const strings = new LocalizedStrings({
     tr: {
+        // Header
         homepage: "Anasayfa",
         about: "Hakkımızda",
         addpatient: "SMA'lı Çocuk Ekle",
@@ -13,6 +14,7 @@ export const strings = new LocalizedStrings({
         headerLogout: "Sorumlu Çıkış",
         headerProfile: "Sorumlu Profil",
 
+        // Add patient
         formName: "Ad",
         formSurname: "Soyad",
         formDateOfBirth: "Doğum tarihi: gg.aa.yyyy",
@@ -20,7 +22,7 @@ export const strings = new LocalizedStrings({
         formResponsiblePhone: "Sorumlu kişi telefon numarası",
         formResponsibleEmail: "Sorumlu kişi e-posta",
         formCollectedAmount: "Toplanan tutar",
-        formRequiredAmount: "Gerekli miktar",
+        formRequiredAmount: "Tedavi tutarı",
         formWeight: "Ağırlık",
         IBANNumber: "IBAN No",
         governmentPermit: "Valilik izni",
@@ -31,7 +33,9 @@ export const strings = new LocalizedStrings({
         formMessage: "Mesaj",
         formTermsAndConditions: "Şartlar ve Koşulları kabul ediyorum",
         formPassword: "Şifre",
+        username: "kullanıcı_adı",
 
+        // Form Validation
         required: "Zorunlu alan",
         tooShort: "Çok kısa",
         tooLong: "Çok uzun",
@@ -39,6 +43,7 @@ export const strings = new LocalizedStrings({
         termsAndConditionsRequired: "Şartlar ve koşulların kabul edilmesi zorunludur",
         weightTooLow: "Kilo 0 dan az olamaz",
         collectedAmountTooLow: "Toplanan miktar 0 dan az olamaz",
+        ibanValidation: "Lütfen 26 haneli IBAN numarasının sadece sayı kısmını giriniz",
 
         termsAndConditions: "Şartlar ve Koşullar",
 
@@ -47,12 +52,13 @@ export const strings = new LocalizedStrings({
         responsible: "Sorumlu",
         loginError: "Girilen bilgiler hatalı",
         loginAuthorizationError: "Lütfen onay maili için bekleyiniz",
-        requiredAmount: "Gerekli miktar",
+        requiredAmount: "Tedavi tutarı",
         remainingAmount: "Kalan miktar",
         collectedAmount: "Toplanan miktar",
 
-        facebookLink: "Facebook Linki: https://www.facebook.com/kullanıcıadı/",
-        instagramLink: "Instagram Linki: https://www.instagram.com/kullanıcıadı/",
+        // Listing page
+        facebookLink: "Facebook Linki",
+        instagramLink: "Instagram Linki",
         photo: "Çocuğumuzun fotoğrafı",
         city: "Şehir",
         sort: "Sıralama",
@@ -81,6 +87,7 @@ export const strings = new LocalizedStrings({
 
         emailAlreadyInUse: "Email zaten kullanımda",
 
+        //Listing
         sortingName: "İsim",
         sortingAge: "Kalan günler",
         sortingWeight: "Kalan ağırlık",
@@ -94,6 +101,7 @@ export const strings = new LocalizedStrings({
         listingRemainingDays: "Gün",
         listingRemainingWeight: "Kilo",
 
+        // Forgotten password
         forgottenPassword: "Şifremi sıfırla",
         forgottenPasswordLink: "Şifrenizi mi unuttunuz?",
         forgottenPasswordInfoConfirm: "Şifrenizi sıfırlamak için mail kutunuza gelen maili kontrol ediniz.",
@@ -124,16 +132,17 @@ export const strings = new LocalizedStrings({
         aboutText9: "Fikri ateşleyen Hüseyin Hakan Yıldırım ile yazılımı yapan ve birlikte geliştirdikleri Ahmet Selman Yıldırım tarafından bu proje başlatıldı. Ama biz yalnız değiliz, olmak da istemiyoruz. Gönüllülerimizle birlikte olmak istiyoruz. Bu yüzden gönüllü tüm desteklere açığız.",
 
         // Terms and Conditions
-        termsText1:"Elversen bir gönüllü organizasyondur.",
-        termsText2:"Amaç, Türkiye’deki SMA’lı çocuklarla yardımseverleri buluşturmaktır.",
-        termsText3:"1.	SMA’lı giriş formu valilik onayında ismi geçen veya SMA’lı çocuğumuzun anne-babasından birisi tarafından doldurulmalıdır. Bu kişi, bundan sonra “sorumlu” olarak anılacaktır.",
-        termsText4:"2.	Sorumlu, verdiği tüm bilgilerin doğruluğundan da sorumludur.",
-        termsText5:"3.	Sorumlu, verdiği tüm bilgilerin doğruluğunu Kabul eder.",
-        termsText6:"4.	Veriler, haftalık olarak güncellenmelidir. Üst üstü iki hafta ve ayrı zamanlar beş hafta güncellenmeyen hesaplar askıya alınır.",
-        termsText7:"5.	Sorumlu, siteye verdiği tüm bilgilerin platformumuz tarafından internette, sosyal medyada, tüm platformlarda ve üçüncü kişilerle paylaşılmasını Kabul eder.",
+        termsText1: "Elversen bir gönüllü organizasyondur.",
+        termsText2: "Amaç, Türkiye’deki SMA’lı çocuklarla yardımseverleri buluşturmaktır.",
+        termsText3: "1.	SMA’lı giriş formu valilik onayında ismi geçen veya SMA’lı çocuğumuzun anne-babasından birisi tarafından doldurulmalıdır. Bu kişi, bundan sonra “sorumlu” olarak anılacaktır.",
+        termsText4: "2.	Sorumlu, verdiği tüm bilgilerin doğruluğundan da sorumludur.",
+        termsText5: "3.	Sorumlu, verdiği tüm bilgilerin doğruluğunu Kabul eder.",
+        termsText6: "4.	Veriler, haftalık olarak güncellenmelidir. Üst üstü iki hafta ve ayrı zamanlar beş hafta güncellenmeyen hesaplar askıya alınır.",
+        termsText7: "5.	Sorumlu, siteye verdiği tüm bilgilerin platformumuz tarafından internette, sosyal medyada, tüm platformlarda ve üçüncü kişilerle paylaşılmasını Kabul eder.",
 
     },
     en: {
+        // Header
         homepage: "Homepage",
         about: "About us",
         addpatient: "Add Child with SMA ",
@@ -145,6 +154,7 @@ export const strings = new LocalizedStrings({
         headerLogout: "Responsible Logout",
         headerProfile: "Responsible Profile",
 
+        // Add patient
         formName: "Name",
         formSurname: "Surname",
         formDateOfBirth: "Date of Birth: dd.mm.yyyy",
@@ -152,7 +162,7 @@ export const strings = new LocalizedStrings({
         formResponsiblePhone: "Responsible Person Phone",
         formResponsibleEmail: "Responsible Person E-Mail",
         formCollectedAmount: "Collected Amount",
-        formRequiredAmount: "Required Amount",
+        formRequiredAmount: "Treatment Amount",
         formWeight: "Weight",
         IBANNumber: "IBAN No",
         governmentPermit: "Government Permit",
@@ -163,7 +173,9 @@ export const strings = new LocalizedStrings({
         formMessage: "Message",
         formTermsAndConditions: "Accept Terms and Conditions",
         formPassword: "Password",
+        username: "username",
 
+        // Form Validation
         required: "Required field",
         tooShort: "Too short",
         tooLong: "Too long",
@@ -171,6 +183,7 @@ export const strings = new LocalizedStrings({
         termsAndConditionsRequired: "The terms and conditions must be accepted",
         weightTooLow: "Weight cannot lower than 0",
         collectedAmountTooLow: "Collected amount cannot lower than 0",
+        ibanValidation: "Please enter only the numeric part of the 26-digit IBAN",
 
         termsAndConditions: "Terms and Conditions",
 
@@ -179,12 +192,13 @@ export const strings = new LocalizedStrings({
         responsible: "Responsible",
         loginError: "The entered information is invalid.",
         loginAuthorizationError: "Please wait for approvement mail",
-        requiredAmount: "Required amount",
+        requiredAmount: "Treatment amount",
         remainingAmount: "Remaining amount",
         collectedAmount: "Collected amount",
 
-        facebookLink: "Facebook URL: https://www.facebook.com/username/",
-        instagramLink: "Instagram URL: https://www.instagram.com/username/",
+        // Listing page
+        facebookLink: "Facebook URL:",
+        instagramLink: "Instagram URL:",
         photo: "The child's photo",
         city: "City",
         sort: "Sort by",
@@ -211,6 +225,7 @@ export const strings = new LocalizedStrings({
         patientAdded: "Your request has reached us. After the checks are made, you will be able to see your child on the listing page. You will be able to log in with the password sent to your e-mail address and make updates.",
         updatePhoto: "Upload photo",
 
+        // Listing
         sortingName: "Name",
         sortingAge: "Remaining days",
         sortingWeight: "Remaining weight",
@@ -225,6 +240,7 @@ export const strings = new LocalizedStrings({
         listingRemainingDays: "Days",
         listingRemainingWeight: "Weight",
 
+        // Forgotten password
         forgottenPassword: "Reset password",
         forgottenPasswordLink: "Forgot your password?",
         forgottenPasswordInfoConfirm: "Please check your mail box to reset the password.",
@@ -255,13 +271,15 @@ export const strings = new LocalizedStrings({
         aboutText9: "This project was initiated by Hüseyin Hakan Yıldırım, who sparked the idea, and Ahmet Selman Yıldırım, who made and developed the software together. But we are not alone, nor do we want to be. We want to be with our volunteers. That's why we welcome all voluntary support.",
 
         // Terms and Conditions
-        termsText1:"Elversen is a volunteer organization.",
-        termsText2:"The aim is to bring together philanthropists and children with SMA in Turkey.",
-        termsText3:"1. The entry form with SMA must be filled in by one of the parents of our child with SMA, whose name is mentioned in the governor's approval. This person is hereinafter referred to as “responsible”.",
-        termsText4:"2. The responsible person is also responsible for the accuracy of all the information he/she gives.",
-        termsText5:"3. The responsible person accepts the accuracy of all the information that he/she has gave.",
-        termsText6:"4. Data should be updated weekly. Accounts that are not updated two weeks in a row and five weeks apart will be suspended.",
-        termsText7:"5. The responsible person accepts that all the information that he/she gave to Elversen could share by our platform on the internet, social media, all platforms and with third parties.",
+        termsText1: "Elversen is a volunteer organization.",
+        termsText2: "The aim is to bring together philanthropists and children with SMA in Turkey.",
+        termsText3: "1. The entry form with SMA must be filled in by one of the parents of our child with SMA, whose name is mentioned in the governor's approval. This person is hereinafter referred to as “responsible”.",
+        termsText4: "2. The responsible person is also responsible for the accuracy of all the information he/she gives.",
+        termsText5: "3. The responsible person accepts the accuracy of all the information that he/she has gave.",
+        termsText6: "4. Data should be updated weekly. Accounts that are not updated two weeks in a row and five weeks apart will be suspended.",
+        termsText7: "5. The responsible person accepts that all the information that he/she gave to Elversen could share by our platform on the internet, social media, all platforms and with third parties.",
+
+
 
     }
 })
