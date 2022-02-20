@@ -92,10 +92,12 @@ export const strings = new LocalizedStrings({
         sortingName: "İsim",
         sortingAge: "Kalan günler",
         sortingWeight: "Kalan ağırlık",
+        sortingMoneyDecrease: "Kalan para azalan",
+        sortingMoneyIncrease: "Kalan para artan",
 
         listPhoto: "Fotoğraf",
         listingName: "İsim",
-        listingRequiredMoney: "Gereken",
+        listingRequiredMoney: "Tedavi tutarı",
         listingRemainingMoney: "Kalan",
         listingCollectedMoney: "Toplanan",
         listingCity: "Şehir",
@@ -203,7 +205,7 @@ export const strings = new LocalizedStrings({
         photo: "The child's photo",
         city: "City",
         sort: "Sort by",
-        infoDetail:"You can click on the items for detailed information about children",
+        infoDetail: "You can click on the items for detailed information about children",
 
         // Password reset
         currentPassword: "Current password",
@@ -231,11 +233,13 @@ export const strings = new LocalizedStrings({
         sortingName: "Name",
         sortingAge: "Remaining days",
         sortingWeight: "Remaining weight",
+        sortingMoneyDecrease: "Remaining money decreasing",
+        sortingMoneyIncrease: "Remaining money increasing",
         emailAlreadyInUse: "Email already in use",
 
         listPhoto: "Photo",
         listingName: "Name",
-        listingRequiredMoney: "Required",
+        listingRequiredMoney: "Treatment amount",
         listingRemainingMoney: "Remaining",
         listingCollectedMoney: "Collected",
         listingCity: "City",

@@ -164,6 +164,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 25vh;
+  min-height: 200px;
   background: rgb(192, 192, 192);
   border-radius: 10px;
 }
@@ -254,9 +255,8 @@ body {
   align-items: center;
 }
 .socialMediaIcons {
-  width: 20%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 .socialMediaIcon {
@@ -561,6 +561,10 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
+  }
+
+  .slider {
+    min-height: 200px;
   }
 
   .addPatientFormArea {

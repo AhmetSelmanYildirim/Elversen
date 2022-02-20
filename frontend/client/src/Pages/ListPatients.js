@@ -41,6 +41,8 @@ const ListPatients = () => {
         { value: 'name', label: strings.sortingName },
         { value: 'age', label: strings.sortingAge },
         { value: 'weight', label: strings.sortingWeight },
+        { value: 'moneydecrease', label: strings.sortingMoneyDecrease },
+        { value: 'moneyincrease', label: strings.sortingMoneyIncrease },
     ]
     const [sorting, setSorting] = useState({ value: 'choose', label: strings.sort });
     const [allPatients, setAllPatients] = useState([])
@@ -85,6 +87,22 @@ const ListPatients = () => {
             })
             setAllPatients([...allPatients], everyPatients)
 
+        }
+        if (sorting.value === "moneydecrease") {
+            everyPatients = allPatients.sort((a, b) => {
+                if (a.requiredAmount - a.collectedAmount < b.requiredAmount - b.collectedAmount) { return 1; }
+                if (a.requiredAmount - a.collectedAmount > b.requiredAmount - b.collectedAmount) { return -1; }
+                return 0;
+            })
+            setAllPatients([...allPatients], everyPatients)
+        }
+        if (sorting.value === "moneyincrease") {
+            everyPatients = allPatients.sort((a, b) => {
+                if (a.requiredAmount - a.collectedAmount < b.requiredAmount - b.collectedAmount) { return -1; }
+                if (a.requiredAmount - a.collectedAmount > b.requiredAmount - b.collectedAmount) { return 1; }
+                return 0;
+            })
+            setAllPatients([...allPatients], everyPatients)
         }
 
     }, [sorting])
@@ -136,7 +154,7 @@ const ListPatients = () => {
 
                     </div>
                 </div>
-                    <span style={{marginBottom:"5px"}}>{strings.infoDetail}</span>
+                <span style={{ marginBottom: "5px" }}>{strings.infoDetail}</span>
                 {allPatients && allPatients.map((item, index) => (
                     <Popup key={item + index} trigger={
                         <div className='listItemContainer'>
@@ -159,10 +177,10 @@ const ListPatients = () => {
                                         <p>{item.name} {item.surname}</p>
                                     </div>
                                     <div className='personalInfo'>
-                                        <p>{item.requiredAmount}</p>
+                                        <p>{item.requiredAmount} TL</p>
                                     </div>
                                     <div className='personalInfo'>
-                                        <p>{item.collectedAmount}</p>
+                                        <p>{item.collectedAmount} TL</p>
                                     </div>
                                     <div className='personalInfo'>
                                         <p>{item.city}</p>
@@ -196,7 +214,7 @@ const ListPatients = () => {
                             <div><strong>{strings.formResponsibleName}:</strong> {item.responsibleName} </div>
                             <div><strong>{strings.formResponsibleEmail}:</strong> <a href={`mailto: ${item.responsibleEmail}`}>{item.responsibleEmail}</a>  </div>
                             {/* <div>{item.responsiblePhone} </div> */}
-                            <div style={{marginTop:"10px"}}><a style={{ marginRight: "10px" }} href={item.facebookLink} target="_blank"><i style={{ color: "#0165E1" }} className="fab fa-facebook fa-2x"></i></a>
+                            <div style={{ marginTop: "10px" }}><a style={{ marginRight: "10px" }} href={item.facebookLink} target="_blank"><i style={{ color: "#0165E1" }} className="fab fa-facebook fa-2x"></i></a>
                                 <a href={item.instagramLink} target="_blank"><i style={{ color: "#B403AA" }} className="fab fa-instagram fa-2x"></i></a>
                             </div>
                         </div>
