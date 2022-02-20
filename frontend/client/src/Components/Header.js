@@ -13,6 +13,7 @@ const Header = () => {
 
     return (
         <div className='headerContainer' >
+            <span style={{position:"absolute", left:"5px", color:"yellow"}}>Beta</span>
 
             <div className='headerMobileLogoContainer'>
                 <Link to={`/`}>
