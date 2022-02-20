@@ -136,11 +136,11 @@ const ListPatients = () => {
 
                     </div>
                 </div>
+                    <span style={{marginBottom:"5px"}}>{strings.infoDetail}</span>
                 {allPatients && allPatients.map((item, index) => (
                     <Popup key={item + index} trigger={
                         <div className='listItemContainer'>
                             <div className='listItemInnerContainer'>
-
                                 <div className='photoContainer'>
 
                                     {item.photo !== "default.png" ?

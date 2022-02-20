@@ -62,6 +62,7 @@ export const strings = new LocalizedStrings({
         photo: "Çocuğumuzun fotoğrafı",
         city: "Şehir",
         sort: "Sıralama",
+        infoDetail: "Çocukların detaylı bilgileri için ögelere tıklayabilirsiniz",
 
         // Password reset
         currentPassword: "Şimdiki şifreniz",
@@ -202,6 +203,7 @@ export const strings = new LocalizedStrings({
         photo: "The child's photo",
         city: "City",
         sort: "Sort by",
+        infoDetail:"You can click on the items for detailed information about children",
 
         // Password reset
         currentPassword: "Current password",
