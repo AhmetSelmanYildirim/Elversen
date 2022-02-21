@@ -207,6 +207,8 @@ const addPatientPermit = async (req, res, next) => {
 
     console.log("addPatientPermit", req.body)
     try {
+        const patient = await Patient.findOneAndUpdate({ responsibleEmail: req.body.email},{governmentPermit:req.file.filename});
+        console.log("patient", patient);
         res.redirect(`${process.env.FRONTEND_URL}/addpatient/patientadded`);
     } catch (error) {
         console.log("error: " + error.message);

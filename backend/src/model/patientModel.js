@@ -49,6 +49,7 @@ const PatientSchema = new Schema({
     },
     governmentPermit: {
         type: String,
+        default:null,
     },
     termsAndCondition: {
         type: Boolean
