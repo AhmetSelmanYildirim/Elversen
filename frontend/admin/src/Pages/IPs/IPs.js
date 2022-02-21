@@ -59,7 +59,7 @@ const IPs = () => {
                                         </span>
                                         <span> GMT:{(new Date(ip.createdAt).getTimezoneOffset()) < 0 ? ("-".concat(new Date(ip.createdAt).getTimezoneOffset().toString())) : (new Date(ip.createdAt).getTimezoneOffset()) > 0 ? ("+".concat(new Date(ip.createdAt).getTimezoneOffset().toString())) : (new Date(ip.createdAt).getTimezoneOffset())}</span>    
                                         </p>
-                                        <p><strong>Konum:</strong> {ip.latitude},{ip.longitude}</p>
+                                        <p><strong>Konum:</strong> <a href={`https://www.google.com/maps/@${ip.latitude},${ip.longitude},14z`} target="_blank" rel="noreferer"> Konum </a> </p>
                                     </div>
                                 </AccordionDetails>
                             </Accordion>
