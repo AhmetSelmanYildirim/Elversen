@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ResponsibleHeader from '../../Components/Responsible/ResponsibleHeader';
+import Footer from '../../Components/Footer';
 import { useParams } from 'react-router-dom';
 import { AppContext } from '../../Contexts/AppContext';
 import { Formik, Form, Field } from "formik";
@@ -254,6 +255,7 @@ const ResponsibleProfile = ({ authorized }) => {
                     </div>
 
                 </div>
+                <Footer/>
             </div>
         );
     }

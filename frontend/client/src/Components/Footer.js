@@ -14,7 +14,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='footerRight'>
-                    <span>HHY & ASY</span>
+                    <span>Bi el versen?</span>
                 </div>
             </div>
         </div>

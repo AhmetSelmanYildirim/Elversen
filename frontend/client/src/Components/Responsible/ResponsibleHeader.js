@@ -13,6 +13,13 @@ const ResponsibleHeader = () => {
 
     return (
         <div className='headerContainer' >
+            <span style={{ position: "absolute", left: "5px", color: "yellow" }}>Beta</span>
+
+            <div className='headerMobileLogoContainer'>
+                <Link to={`/`}>
+                    <img className='headerLogo' src='/img/logo/elversen-logo-880x200-white.png' alt='logo' />
+                </Link>
+            </div>
 
             <div className='headerMobileInnerContainer'>
                 {/* mobile menu */}
@@ -22,41 +29,34 @@ const ResponsibleHeader = () => {
                 {showMenu &&
                     <div className='mobileSpinner'>
                         <div>
-                    <Link
-                        className="headerItem"
-                        to={`/`}>
-                        <p>{strings.homepage}</p>
-                    </Link>
-                </div>
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/listpatients`}>
-                        <p>{strings.listpatients}</p>
-                    </Link>
-                </div>
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/about`}>
-                        <p>{strings.about}</p>
-                    </Link>
-                </div>
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/contact`}>
-                        <p>{strings.contact}</p>
-                    </Link>
-                </div>
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/`}>
-                        <p>{strings.headerLogout}</p>
-                    </Link>
-                </div>
-                {/* <div className="headerItemResponsible dropdown">
+                            <Link
+                                className="headerItem"
+                                to={`/listpatients`}>
+                                <p>{strings.listpatients}</p>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link
+                                className="headerItem"
+                                to={`/about`}>
+                                <p>{strings.about}</p>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link
+                                className="headerItem"
+                                to={`/contact`}>
+                                <p>{strings.contact}</p>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link
+                                className="headerItem"
+                                to={`/`}>
+                                <p>{strings.headerLogout}</p>
+                            </Link>
+                        </div>
+                        {/* <div className="headerItemResponsible dropdown">
                     {strings.responsible} <i className="fas fa-angle-down fa-xs"></i>
                     <div className='dropdown-content'>
                     <Link
@@ -71,40 +71,37 @@ const ResponsibleHeader = () => {
                         </Link>
                     </div>
                 </div> */}
-                <div>
-                    {currentLanguage === "en" ?
-                        <span
-                            className="headerItem"
-                            onClick={() => changeLanguage("tr")}
-                        >
-                            <p>TR</p>
-                        </span>
-                        :
-                        <span
-                            className="headerItem"
-                            onClick={() => changeLanguage("en")}
-                        >
-                            <p>EN</p>
-                        </span>
-                    }
-                </div>
+                        <div>
+                            {currentLanguage === "en" ?
+                                <span
+                                    className="headerItem"
+                                    onClick={() => changeLanguage("tr")}
+                                >
+                                    <p>TR</p>
+                                </span>
+                                :
+                                <span
+                                    className="headerItem"
+                                    onClick={() => changeLanguage("en")}
+                                >
+                                    <p>EN</p>
+                                </span>
+                            }
+                        </div>
                     </div>
 
                 }
             </div>
 
 
-
+            <div className='headerLogoContainer'>
+                <Link to={`/`}>
+                    <img className='headerLogo' src='/img/logo/elversen-logo-880x200-white.png' alt='logo' />
+                </Link>
+            </div>
 
             <div className='headerInnerContainer' >
                 {/* desktop menu */}
-                <div>
-                    <Link
-                        className="headerItem"
-                        to={`/`}>
-                        <p>{strings.homepage}</p>
-                    </Link>
-                </div>
                 <div>
                     <Link
                         className="headerItem"

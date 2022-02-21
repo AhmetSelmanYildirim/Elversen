@@ -157,6 +157,7 @@ body {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-around;
+  margin: 30px;
 }
 .slider {
   width: 100%;
@@ -687,5 +688,14 @@ body {
 
   .contactFormArea {
     width: 90%;
+  }
+
+  .uploadPhotoArea {
+    margin-top: 30px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
