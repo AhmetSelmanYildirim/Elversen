@@ -7,10 +7,10 @@ const Footer = () => {
             <div className='footerInnerContainer'>
                 <div className='footerLeft'>
                     <div className='socialMediaIcons'>
-                        <a className='socialMediaIcon' href='#' target="_blank" > <i className="fab fa-facebook fa-lg"></i></a>
-                        <a className='socialMediaIcon' style={{marginLeft:"10px"}} href='#' target="_blank" > <i className="fab fa-instagram fa-lg"></i></a>
-                        <a className='socialMediaIcon' style={{marginLeft:"10px"}} href='#' target="_blank" > <i className="fab fa-twitter fa-lg"></i></a>
-                        <a className='socialMediaIcon' style={{marginLeft:"10px"}} href='#' target="_blank" > <i className="fab fa-linkedin fa-lg"></i></a>
+                        <a className='socialMediaIcon' href='https://www.facebook.com/ElversenSMA/' target="_blank" rel="noreferrer" > <i className="fab fa-facebook fa-lg"></i></a>
+                        <a className='socialMediaIcon' style={{marginLeft:"10px"}} href='https://www.instagram.com/elversensma/' target="_blank" rel="noreferrer" > <i className="fab fa-instagram fa-lg"></i></a>
+                        <a className='socialMediaIcon' style={{marginLeft:"10px"}} href='https://twitter.com/ElversenSMA' target="_blank" rel="noreferrer" > <i className="fab fa-twitter fa-lg"></i></a>
+                        <a className='socialMediaIcon' style={{marginLeft:"10px"}} href='https://www.linkedin.com/company/elversensma' target="_blank" rel="noreferrer" > <i className="fab fa-linkedin fa-lg"></i></a>
                     </div>
                 </div>
                 <div className='footerRight'>
