@@ -13,7 +13,7 @@ const Patients = () => {
 
     const { isLogon, patients, activatePatient, deactivatePatient, setPatients } = useContext(AppContext)
 
-    
+
     useEffect(() => {
         const getPatients = async () => {
             const { data } = await axios(`${process.env.REACT_APP_SERVER_URL}/p/getPatients`)
@@ -63,6 +63,10 @@ const Patients = () => {
                                         <p><strong>Sorumlu:</strong> {patient.responsibleName}</p>
                                         <p><strong>Telefon:</strong> {patient.responsiblePhone}</p>
                                         <p><strong>Mail:</strong> {patient.responsibleEmail}</p>
+                                        <p><strong>Valilik izni:</strong> {patient.governmentPermit ?
+                                            <a href={`${process.env.REACT_APP_BACKEND_URL}/${patient.responsibleEmail}/${patient.governmentPermit}`} target="_blank" rel="noreferrer"> İzni görmek için tıkla </a> 
+                                            : "İzin yok"
+                                            }  </p>
                                         <p><strong>Aktif:</strong> {patient.isActive ? "aktif" : "pasif"}</p>
                                         {patient.isActive ?
                                             <button className="deactivate" onClick={handleDeactivate}>Pasifleştir</button>
