@@ -97,10 +97,6 @@ const AddPatient = () => {
                                 values.city = titleCase(values.city)
                                 values.resName = titleCase(values.resName)
 
-                                values.iban = "TR".concat(values.iban)
-                                values.instagramLink = "https://www.instagram.com/".concat(values.instagramLink)
-                                values.facebookLink = "https://www.facebook.com/".concat(values.facebookLink)
-
                                 let doe = new Date(values.dateOfBirth)
                                 doe.setDate(doe.getDate() + 730);
                                 values.dateOfEnd = doe;

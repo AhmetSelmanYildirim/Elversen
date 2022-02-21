@@ -135,12 +135,12 @@ const addPatient = async (req, res, next) => {
                 responsibleEmail: data.resEmail,
                 collectedAmount: data.collectedAmount,
                 requiredAmount: data.requiredAmount,
-                ibanNo: data.iban,
+                ibanNo: "TR".concat(data.iban),
                 governmentPermit: data.permit,
                 termsAndCondition: data.termsandconditions,
                 isActive: false,
-                instagramLink: data.instagramLink,
-                facebookLink: data.facebookLink,
+                instagramLink: "https://www.instagram.com/".concat(data.instagramLink),
+                facebookLink: "https://www.facebook.com/".concat(data.facebookLink),
                 photo: data.photo,
                 city: data.city
             });
