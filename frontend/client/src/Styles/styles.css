@@ -481,6 +481,11 @@ body {
   width: 100%;
 }
 
+.mailLink{
+  color: #ff6600;
+  text-decoration: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 7px;

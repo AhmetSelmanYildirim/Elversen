@@ -14,7 +14,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='footerRight'>
-                    <span>Bi el versen?</span>
+                    <span><a className='mailLink' href='mailto:info@elversen.com' >info@elversen.com</a></span>
                 </div>
             </div>
         </div>
