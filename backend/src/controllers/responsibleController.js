@@ -61,15 +61,16 @@ const forgottenPassword = async (req, res, next) => {
                 const url = process.env.FRONTEND_URL + '/resetPassword/' + responsible._id + '/' + jwtToken;
 
                 let transporter = nodemailer.createTransport({
-                    service: 'gmail',
+                    service: 'Yandex',
+
                     auth: {
-                        user: process.env.GMAIL_USER,
-                        pass: process.env.GMAIL_PASSWORD
+                        user: process.env.YANDEX_USER,
+                        pass: process.env.YANDEX_PASSWORD
                     }
                 });
 
                 await transporter.sendMail({
-                    from: "SMA Platform <nodedenemejs@gmail.com>",
+                    from: `Elversen SMA platformu <${process.env.YANDEX_USER}>`,
                     to: responsible.email,
                     subject: "Parola sıfırlama",
                     text: "Parolayı sıfırlamak için linke tılayınız: " + url
