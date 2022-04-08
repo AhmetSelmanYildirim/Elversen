@@ -1,0 +1,80 @@
+<% ips.forEach(ip => { %>
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#panelsStayOpen-collapseOne"
+        aria-expanded="false"
+        aria-controls="panelsStayOpen-collapseOne"
+      >
+        <%- ip.IPv4 %>
+      </button>
+    </h2>
+    <div
+      id="panelsStayOpen-collapseOne"
+      class="accordion-collapse collapse"
+      aria-labelledby="panelsStayOpen-headingOne"
+    >
+      <div class="accordion-body">
+        <div class="accordion-inner-body">
+          <div>
+            <p><strong>IPv4:</strong> <%- ip.IPv4 %></p>
+            <p><strong>Şehir:</strong> <%- ip.city %></p>
+            <p><strong>Eyalet:</strong> <%- ip.state %></p>
+            <p><strong>Posta kodu:</strong> <%- ip.postal %></p>
+            <p>
+              <strong>Konum:</strong>
+              <a
+                href="https://www.google.com/maps/@<%- ip.latitude %>,<%- ip.longitude %>,14z"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Konum
+              </a>
+            </p>
+          </div>
+          <div>
+            <p><strong>Ülke kodu:</strong> <%- ip.country_code %></p>
+            <p><strong>Ülke adı:</strong> <%- ip.country_name %></p>
+            <p><strong>Giriş sayısı:</strong> <%- ip.count %></p>
+            <p>
+              <strong>İlk Giriş tarihi: </strong>
+              <span
+                ><%- new Date(ip.createdAt).getDate() %>/<%-(new
+                Date(ip.createdAt).getMonth()) < 9 ? ("0".concat((parseInt(new
+                Date(ip.createdAt).getMonth())+1).toString())) : parseInt(new
+                Date(ip.createdAt).getMonth())+1%>/<%-new
+                Date(ip.createdAt).getFullYear()%>
+              </span>
+              <span>
+                <%-(new Date(ip.createdAt).getHours()) < 10 ? ("0".concat(new
+                Date(ip.createdAt).getHours().toString())) :new
+                Date(ip.createdAt).getHours()%>:<%-(new
+                Date(ip.createdAt).getMinutes()) < 10 ? ("0".concat(new
+                Date(ip.createdAt).getMinutes().toString())) :new
+                Date(ip.createdAt).getMinutes()%>:<%-(new
+                Date(ip.createdAt).getSeconds()) < 10 ? ("0".concat(new
+                Date(ip.createdAt).getSeconds().toString())) :new
+                Date(ip.createdAt).getSeconds()%>
+              </span>
+              <span>
+                GMT:<%- (new Date(ip.createdAt).getTimezoneOffset()) < 0 ?
+                ("-".concat(new
+                Date(ip.createdAt).getTimezoneOffset().toString())) : (new
+                Date(ip.createdAt).getTimezoneOffset()) > 0 ? ("+".concat(new
+                Date(ip.createdAt).getTimezoneOffset().toString())) : (new
+                Date(ip.createdAt).getTimezoneOffset()) %></span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% }) %>

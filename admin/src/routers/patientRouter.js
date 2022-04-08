@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const patientController = require("../controllers/patientController")
+const authMiddleware = require("../middlewares/auth_middleware")
 
-router.get('/getPatients', patientController.getPatients);
-router.get('/getPatientById', patientController.getPatientById);
-router.put('/activatePatient', patientController.activatePatient);
-router.put('/deactivatePatient', patientController.deactivatePatient);
+
+router.put('/activatePatient', authMiddleware.loggedIn, patientController.activatePatient);
+router.put('/deactivatePatient', authMiddleware.loggedIn, patientController.deactivatePatient);
 
 module.exports = router;

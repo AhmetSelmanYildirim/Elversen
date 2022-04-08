@@ -1,0 +1,76 @@
+<% responsibles.forEach((responsible,index) => { %>
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-<%-index%>">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#panelsStayOpen-<%-index%>"
+        aria-expanded="false"
+        aria-controls="panelsStayOpen-<%-index%>"
+      >
+        <%- responsible.name %>
+      </button>
+    </h2>
+    <div
+      id="panelsStayOpen-<%-index%>"
+      class="accordion-collapse collapse"
+      aria-labelledby="panelsStayOpen-<%-index%>"
+    >
+      <div class="accordion-body">
+        <div class="accordion-inner-body">
+          <div>
+            <p><strong>Email:</strong> <%- responsible.email %></p>
+            <p><strong>Telefon:</strong> <%- responsible.phone %></p>
+          </div>
+          <div>
+            <p>
+              <strong>Aktif:</strong> <%- responsible.isActive ? "aktif" : "pasif" %>
+            </p>
+
+            <% if(responsible.isActive) { %>
+            <button class="deactivate" email="<%- responsible.email %>">
+              Pasifleştir
+            </button>
+            <% } else { %>
+            <button class="activate" email="<%- responsible.email %>">
+              Aktifleştir
+            </button>
+            <% }%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% }) %>
+
+<script>
+  $(".deactivate").click(function () {
+    let selectedEmail = $(this).attr("email");
+    data = { email: selectedEmail };
+    fetch("/r/deactivateResponsible", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    window.location.reload();
+  });
+  $(".activate").click(function () {
+    let selectedEmail = $(this).attr("email");
+    data = { email: selectedEmail };
+    fetch("/r/activateResponsible", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    window.location.reload();
+  });
+</script>

@@ -1,0 +1,30 @@
+<form class="loginForm" method="post" action="/login">
+    <input class="formInput" name="email" type="email" placeholder="email" />
+    <input class="formInput" name="password" autocomplete="on" type="password" placeholder="parola" />
+    <button class="formInput" type="submit">Giriş yap</button>
+</form>
+
+<% if (locals.validation_error != undefined || locals.login_error != undefined || locals.success_message != undefined) { %>
+    <div><%- include('./partials/_message.ejs')  %></div>
+<% } %>
+
+<!-- <script>
+    const form = document.querySelector(".loginForm");
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const email = form.querySelector("input[name='email']").value;
+        const password = form.querySelector("input[name='password']").value;
+        const data = {
+            email,
+            password
+        };
+        fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        
+    });
+</script> -->
