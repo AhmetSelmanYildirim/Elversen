@@ -103,4 +103,13 @@ app.use('/', commonRouter);
 app.use("/p/", patientRouter);
 app.use("/r/", responsibleRouter);
 
+app.get('*', function(req, res) {
+    if (req.isAuthenticated()) {
+        res.render('./pages/error', { layout: './layout/responsible_layout.ejs' });
+    }
+    else {
+        res.render('./pages/error', { layout: './layout/base_layout.ejs' });
+    }
+});
+
 app.listen(process.env.PORT,()=>{console.log(`${"server is" || process.env.PORT} listening`)})
