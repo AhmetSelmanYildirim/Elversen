@@ -14,23 +14,25 @@ module.exports = (passport) => {
     passport.use(new LocalStrategy(options, async (email, password, done) => {
 
         try {
-            const _foundUser = await Responsible.findOne({ email: email });
+            const _user = await Responsible.findOne({ email: email });
 
-            if (!_foundUser) {
-                return done(null, false, { message: "Couldn't find the user" });
+            if (!_user) {
+                return done(null, false, { message: "E-posta ya da şifre hatalı." });
             }
 
-            const passwordCheck = await bcrypt.compare(password, _foundUser.password);
+            const passwordCheck = await bcrypt.compare(password, _user.password);
             if (!passwordCheck) {
-                return done(null, false, { message: 'Password failed' });
+                return done(null, false, { message: 'E-posta ya da şifre hatalı.' });
             } else {
-                return done(null, _foundUser);
 
-                // if (_foundUser && _foundUser.isActive == false) {
-                //     return done(null, false, { message: 'Please wait for approvement mail' })
-                // } else {
-                //     return done(null, _foundUser);
-                // }
+                if(_user && _user.isEmailVerified == false){
+                    return done(null, false, { message: 'Lütfen E-postanıza daha önce göndermiş olduğumuz bağlantıdan E-postanızı onaylayınız.' })
+                }
+                else if (_user && _user.isActive == false) {
+                    return done(null, false, { message: 'Lütfen hesabınız onaylanana kadar bekleyiniz.' })
+                } else {
+                    return done(null, _user);
+                }
             }
 
         }
@@ -42,13 +44,17 @@ module.exports = (passport) => {
     }));
 
     passport.serializeUser((user, done) => {
-        console.log("registered to session: " + user.id);
+        // console.log("registered to session: " + user.id);
         done(null, user.id)
     });
 
     passport.deserializeUser((id, done) => {
         Responsible.findById(id, (err, user) => {
-            done(err, user);
+            const newUser = {
+                // id: user.id,
+                email: user.email,
+            }
+            done(err, newUser);
         });
     });
 

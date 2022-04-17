@@ -1,0 +1,10 @@
+<form class="login-form" method="post" action="/login">
+    <input class="login-form-field" name="email" type="email" placeholder="email" />
+    <input class="login-form-field" name="password" autocomplete="on" type="password" placeholder="parola" />
+    <button type="submit">Giriş yap</button>
+</form>
+<a style="margin-top: 20px;" href="/forgotten-password">Şifrenizi mi unuttunuz?</a>
+
+<% if (locals.validation_error != undefined || locals.login_error != undefined || locals.success_message != undefined) { %>
+    <div><%- include('../partials/_message.ejs')  %></div>
+<% } %>

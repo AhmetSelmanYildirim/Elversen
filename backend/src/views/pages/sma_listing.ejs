@@ -1,0 +1,95 @@
+<div style="overflow-x:auto; width: 100%;">
+<table>
+  <thead class="table-topic-row">
+    <tr>
+      <th>Fotoğraf</th>
+      <th>İsim</th>
+      <th>Tedavi Tutarı(TL)</th>
+      <th>Toplanan(TL)</th>
+      <th>Gün</th>
+      <th>Kilo</th>
+      <th>Kalan Tutar</th>
+      <th>Detay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% patients.map((patient, index) => {%>
+        <% let today = new Date() %>
+        <% let day =  parseInt((new Date(patient.dateOfEnd) - today) / 86400000) %>
+    <tr>
+        <% if(patient.photo !== "default.png"){ %>
+            <td>
+                <img  
+                class="child-photo"
+                src="<%-process.env.BACKEND_URL%>/<%-patient.responsibleEmail%>/<%-patient.photo%>"
+                alt='childphoto'
+                />
+            </td>
+        <%} else{%>
+            <td>
+                <img  
+                class="child-photo"
+                src="<%-process.env.BACKEND_URL%>/default.png"
+                alt='childphoto'
+                />
+            </td>
+        <%}%>
+        
+      <td><%- patient.name + " "+ patient.surname %></td>
+      <td><%- patient.requiredAmount %></td>
+      <td><%- patient.collectedAmount %></td>
+      <td><%- day %></td>
+      <td><%- patient.weight %></td>
+      <% let remaining = ((patient.collectedAmount / patient.requiredAmount) * 100).toFixed(2)  %>
+      <td>%<%- remaining %></td>
+      <td><a class="get-detail" email="<%- patient.responsibleEmail %>"><i class="fa-solid fa-circle-info fa-lg"></i></a>
+        <div class="show-detail">
+            <div class="detail-container">
+                <span class="close"><i class="fa-solid fa-xmark"></i></span>
+                <div><strong>İsim:</strong> <%- patient.name +" "+ patient.surname %> </div>
+                <% 
+                    let date=new Date(patient.dateOfBirth).getDate()
+                    let month=new Date(patient.dateOfBirth).getMonth() + 1
+                    let year=new Date(patient.dateOfBirth).getFullYear()
+                %>
+                <div><strong>Doğum Tarihi:</strong> <%- date+"/"+month+"/"+year %> </div>
+                <div><strong>Şehir:</strong> <%- patient.city %></div>
+                <div><strong>Ağırlık:</strong> <%- patient.weight %> kg</div>
+                <div><strong>Tedavi Tutarı:</strong> <%- patient.requiredAmount %> TL </div>
+                <div><strong>Toplanan Miktar:</strong> <%- patient.collectedAmount %> TL</div>
+                <div><strong>IBAN:</strong> <%- patient.ibanNo %></div>
+                <div><strong>Sorumlu İsim:</strong> <%- patient.responsibleName %>  </div>
+                <div><strong>Sorumlu Email:</strong> <%- patient.responsibleEmail %>  </div>
+                <div style="margin-top: 10px;">
+                    <% if(patient.facebookLink){ %>
+                        <a style="margin-right:10px; text-decoration: none;" href="<%- patient.facebookLink %>" target="_blank" rel="noreferrer">
+                            <i style="color:#0165E1" class="fab fa-facebook fa-2x"></i>
+                        </a>
+                    <%}%>
+                    <% if(patient.instagramLink){ %>
+                        <a  href="<%- patient.instagramLink %>" target="_blank" rel="noreferrer">
+                            <i style="color:#B403AA" class="fab fa-instagram fa-2x"></i>
+                        </a>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </td>
+    </tr>
+    <% });%>
+  </tbody>
+</table>
+</div>
+<script>
+    $(".get-detail").click(function(){
+        $(this).siblings(".show-detail").addClass("show")
+    });
+    $(".close").click(function(){
+        $(this).parent().parent().removeClass("show")
+    });
+    $(document).keyup(function(e) {
+        if (e.keyCode === 27) {
+            $(".close").parent().parent().removeClass("show")
+        }
+    }); 
+</script>

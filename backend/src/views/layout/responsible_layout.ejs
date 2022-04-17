@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="icon" href="img/logo1.png" type="image/icon type" />
+    <!-- HTML Meta Tags -->
+    <title>Elversen SMA Platformu</title>
+    <meta name="description" content="Bir elversen! Bir el ver, sen!" />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://www.elversen.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Elversen SMA Platformu" />
+    <meta property="og:description" content="Bir elversen! Bir el ver, sen!" />
+    <meta
+      property="og:image"
+      content="https://elversen.com/img/elversen_preview.png"
+    />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="elversen.com" />
+    <meta property="twitter:url" content="https://www.elversen.com/" />
+    <meta name="twitter:title" content="Elversen SMA Platformu" />
+    <meta name="twitter:description" content="Bir elversen! Bir el ver, sen!" />
+    <meta
+      name="twitter:image"
+      content="https://elversen.com/img/elversen_preview.png"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="header"><%- include('../partials/responsible_header.ejs') %></div>
+    <div id="responsible-container">
+      <div id="page-container"><%- body %></div>
+    </div>
+    <div id="footer"><%- include('../partials/footer.ejs') %></div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

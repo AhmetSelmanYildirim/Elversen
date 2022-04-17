@@ -59,7 +59,8 @@ const PatientSchema = new Schema({
         default: false
     },
     photo: {
-        type: String
+        type: String,
+        default: "default.png"
     },
     facebookLink: {
         type: String

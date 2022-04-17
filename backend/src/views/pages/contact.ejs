@@ -1,0 +1,49 @@
+<div>
+  <% if (locals.validation_error != undefined) { %> <%-
+  include('../partials/_message.ejs') %> <% } %>
+</div>
+<form class="contact-form" action="/contact" method="post">
+  <input
+    class="contact-form-field"
+    name="name"
+    type="text"
+    placeholder="Ad"
+    value="<%= typeof name != 'undefined' ? name : '' %>"
+  />
+  <input
+    class="contact-form-field"
+    name="surname"
+    type="text"
+    placeholder="Soyad"
+    value="<%= typeof surname != 'undefined' ? surname : '' %>"
+  />
+  <input
+    class="contact-form-field"
+    name="phone"
+    type="text"
+    placeholder="Telefon"
+    value="<%= typeof phone != 'undefined' ? phone : '' %>"
+  />
+  <input
+    class="contact-form-field"
+    name="email"
+    type="email"
+    placeholder="E-posta"
+    value="<%= typeof email != 'undefined' ? email : '' %>"
+  />
+  <input
+    class="contact-form-field"
+    name="subject"
+    type="text"
+    placeholder="Konu"
+    value="<%= typeof subject != 'undefined' ? subject : '' %>"
+  />
+  <textarea
+    class="contact-form-field"
+    name="message"
+    type="textarea"
+    placeholder="Mesaj"
+    value="<%= typeof message != 'undefined' ? message : '' %>"
+  ></textarea>
+  <button type="submit">Gönder</button>
+</form>

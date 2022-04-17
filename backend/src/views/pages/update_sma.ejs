@@ -1,0 +1,318 @@
+<div class="update-sma-outer-container">
+  <div class="update-sma-left-container">
+    <div class="update-sma-title">Fotoğraf Güncelleme</div>
+    <div class="update-sma-image-container">
+      <% if(patient.photo === "default.png"){ %>
+      <img
+        class="update-sma-image"
+        src="<%-process.env.BACKEND_URL%>/<%-patient.photo%>"
+        alt=""
+      />
+      <%} else{%>
+      <img
+        class="update-sma-image"
+        src="<%-process.env.BACKEND_URL%>/<%-patient.responsibleEmail%>/<%-patient.photo%>"
+        alt=""
+      />
+      <%}%>
+    </div>
+    <form
+      class="update-photo-form"
+      action="/update-sma-photo"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="photo" />
+      <button type="submit">Fotoğrafı Güncelle</button>
+    </form>
+
+    <% photo_update_error.forEach(error => { %>
+    <div class="notification">
+      <button class="delete btn-danger">X</button>
+      <strong><%- error %></strong>
+    </div>
+    <% }) %>
+  </div>
+  <div class="update-sma-middle-container">
+    <div class="update-sma-title">Bilgi Güncelleme</div>
+    <% info_update_error.forEach(error => { %>
+      <div class="notification">
+        <button class="delete btn-danger">X</button>
+        <strong><%- error %></strong>
+      </div>
+      <% }) %>
+
+    <form class="update-info-form" action="/update-sma-info" method="post">
+      <div class="update-form-field-container">
+          <label for="name">İsim</label>
+          <div class="update-sma-form-field"> <%- patient.name %></div>
+          <!-- <input class="update-sma-form-field" type="text" name="name" placeholder="İsim" value="<%= typeof name != 'undefined' ? name : '' %>"> -->
+      </div>
+      <div class="update-form-field-container">
+          <label for="surname">Soyisim</label>
+          <div class="update-sma-form-field"> <%- patient.surname %></div>
+          <!-- <input class="update-sma-form-field" type="text" name="surname" placeholder="Soyisim"  value="<%= typeof surname != 'undefined' ? surname : '' %>">         -->
+      </div>
+      <div class="update-form-field-container">
+          <label for="dateOfBirth">Doğum tarihi</label>
+          <div class="update-sma-form-field"> <%- new Date(patient.dateOfBirth).getDate() %>/<%- new Date(patient.dateOfBirth).getMonth()+1 %>/<%- new Date(patient.dateOfBirth).getFullYear() %></div>
+          <!-- <input class="update-sma-form-field" type="date" name="dateOfBirth" placeholder="Doğum tarihi"  value="<%= typeof dateOfBirth != 'undefined' ? dateOfBirth : '' %>"> -->
+      </div>
+      <div class="update-form-field-container">
+          <label for="weight">Kilo</label>
+          <input class="update-sma-form-field" type="number" name="weight" placeholder="<%- patient.weight %>"  value="<%= typeof weight != 'undefined' ? weight : '' %>">
+      </div>
+      <div class="update-form-field-container">
+          <label for="city">Şehir</label>
+          <input class="update-sma-form-field" type="text" name="city" placeholder="<%- patient.city %>"  value="<%= typeof city != 'undefined' ? city : '' %>">
+      </div>
+      <div class="update-form-field-container">
+          <label for="responsibleName">Sorumlu isim</label>
+          <div class="update-sma-form-field"> <%- patient.responsibleName %></div>
+          <!-- <input class="update-sma-form-field" type="text" name="responsibleName" placeholder="Sorumlu isim"  value="<%= typeof responsibleName != 'undefined' ? responsibleName : '' %>"> -->
+      </div>
+      <div class="update-form-field-container">
+          <label for="responsiblePhone">Sorumlu telefon</label>
+          <input class="update-sma-form-field" type="text" name="responsiblePhone" placeholder="<%- patient.responsiblePhone %>"  value="<%= typeof responsiblePhone != 'undefined' ? responsiblePhone : '' %>">
+      </div>
+      <div class="update-form-field-container">
+          <label for="responsibleEmail">Sorumlu e-posta</label>
+          <div class="update-sma-form-field"> <%- patient.responsibleEmail %></div>
+          <!-- <input class="update-sma-form-field" type="email" name="responsibleEmail" placeholder="Sorumlu e-posta"  value="<%= typeof responsibleEmail != 'undefined' ? responsibleEmail : '' %>"> -->
+      </div>
+      <div class="update-form-field-container">
+          <label for="collectedAmount">Toplanan tutar</label>
+          <input class="update-sma-form-field" type="number" name="collectedAmount" placeholder="<%- patient.collectedAmount %>"  value="<%= typeof collectedAmount != 'undefined' ? collectedAmount : '' %>">
+      </div>
+      <div class="update-form-field-container">
+          <label for="requiredAmount">Tedavi tutarı</label>
+          <div class="update-sma-form-field"> <%- patient.requiredAmount %></div>
+          <input class="update-sma-form-field" hidden type="number" name="requiredAmount" placeholder="Tedavi tutarı"  value="<%- patient.requiredAmount %>">
+      </div>
+      <div class="update-form-field-container">
+          <label for="iban">IBAN</label>
+          <div class="update-sma-form-field"> <%- patient.ibanNo %></div>
+          <!-- <input class="update-sma-form-field" type="number" name="iban" placeholder="IBAN"  value="<%= typeof iban != 'undefined' ? iban : '' %>"> -->
+      </div>
+      <div class="update-form-field-container">
+          <label for="instagramUsername">Instagram Linki (Sadece kullanıcı adını yazınız)</label>
+          <% if(patient.instagramLink == "https://www.instagram.com/"){ %>
+            <input class="update-sma-form-field" type="text" name="instagramUsername" placeholder="Kullanıcı adı girilmedi"  value="<%= typeof instagramUsername != 'undefined' ? instagramUsername : '' %>">
+          <% } else {%>
+          <input class="update-sma-form-field" type="text" name="instagramUsername" placeholder="<%- patient.instagramLink %>"  value="<%= typeof instagramUsername != 'undefined' ? instagramUsername : '' %>">
+          <% } %>
+        </div>
+      <div class="update-form-field-container">
+          <label for="facebookUsername">Facebook Linki (Sadece kullanıcı adını yazınız)</label>
+          <% if(patient.facebookLink == "https://www.facebook.com/"){ %>
+            <input class="update-sma-form-field" type="text" name="facebookUsername" placeholder="Kullanıcı adı girilmedi"  value="<%= typeof facebookUsername != 'undefined' ? facebookUsername : '' %>">
+            <% } else {%>
+            <input class="update-sma-form-field" type="text" name="facebookUsername" placeholder="<%- patient.facebookLink %>"  value="<%= typeof facebookUsername != 'undefined' ? facebookUsername : '' %>">
+            <% } %>
+      </div>
+      <button type="submit">Değişiklikleri Güncelle</button>
+  </form>
+
+
+
+  </div>
+  <div class="update-sma-right-container">
+    <div class="update-sma-title">Şifre Değiştirme</div>
+
+    <form class="update-photo-form" action="/update-sma-password" method="post">
+      <input
+        class="update-photo-form-field"
+        name="currentPassword"
+        type="password"
+        placeholder="Şu anki şifre"
+      />
+      <input
+        class="update-photo-form-field"
+        name="password"
+        type="password"
+        placeholder="Yeni şifre"
+      />
+      <input
+        class="update-photo-form-field"
+        name="repassword"
+        type="password"
+        placeholder="Yeni şifre tekrarı"
+      />
+      <button type="submit">Şifreyi Güncelle</button>
+    </form>
+
+    
+    <% password_update_error.forEach(error => { %> 
+    <div class="notification">
+      <button class="delete btn-danger">X</button>
+      <strong><%- error %></strong>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<% success_message.forEach(element => { %>
+<div class="notification">
+  <button class="delete btn-success">X</button>
+  <strong><%- element.msg %></strong>
+</div>
+<% }) %>
+
+<!-- <div>
+  <% if (locals.validation_error != undefined) { %> <%-
+  include('../partials/_message.ejs') %> <% } %>
+</div>
+<form
+  class="add-sma-form"
+  action="/add-sma"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <div class="form-field-container">
+    <label for="name">İsim</label>
+    <input
+      class="add-sma-form-field"
+      type="text"
+      name="name"
+      placeholder="İsim"
+      value="<%= typeof name != 'undefined' ? name : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="surname">Soyisim</label>
+    <input
+      class="add-sma-form-field"
+      type="text"
+      name="surname"
+      placeholder="Soyisim"
+      value="<%= typeof surname != 'undefined' ? surname : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="dateOfBirth">Doğum tarihi</label>
+    <input
+      class="add-sma-form-field"
+      type="date"
+      name="dateOfBirth"
+      placeholder="Doğum tarihi"
+      value="<%= typeof dateOfBirth != 'undefined' ? dateOfBirth : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="weight">Kilo</label>
+    <input
+      class="add-sma-form-field"
+      type="number"
+      name="weight"
+      placeholder="Kilo"
+      value="<%= typeof weight != 'undefined' ? weight : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="city">Şehir</label>
+    <input
+      class="add-sma-form-field"
+      type="text"
+      name="city"
+      placeholder="Şehir"
+      value="<%= typeof city != 'undefined' ? city : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="responsibleName">Sorumlu isim</label>
+    <input
+      class="add-sma-form-field"
+      type="text"
+      name="responsibleName"
+      placeholder="Sorumlu isim"
+      value="<%= typeof responsibleName != 'undefined' ? responsibleName : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="responsiblePhone">Sorumlu telefon</label>
+    <input
+      class="add-sma-form-field"
+      type="text"
+      name="responsiblePhone"
+      placeholder="Sorumlu telefon"
+      value="<%= typeof responsiblePhone != 'undefined' ? responsiblePhone : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="responsibleEmail">Sorumlu e-posta</label>
+    <input
+      class="add-sma-form-field"
+      type="email"
+      name="responsibleEmail"
+      placeholder="Sorumlu e-posta"
+      value="<%= typeof responsibleEmail != 'undefined' ? responsibleEmail : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="collectedAmount">Toplanan tutar</label>
+    <input
+      class="add-sma-form-field"
+      type="number"
+      name="collectedAmount"
+      placeholder="Toplanan tutar"
+      value="<%= typeof collectedAmount != 'undefined' ? collectedAmount : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="requiredAmount">Tedavi tutarı</label>
+    <input
+      class="add-sma-form-field"
+      type="number"
+      name="requiredAmount"
+      placeholder="Tedavi tutarı"
+      value="<%= typeof requiredAmount != 'undefined' ? requiredAmount : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="iban">IBAN</label>
+    <input
+      class="add-sma-form-field"
+      type="number"
+      name="iban"
+      placeholder="IBAN"
+      value="<%= typeof iban != 'undefined' ? iban : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="instagramUsername">Instagram kullanıcı adı</label>
+    <input
+      class="add-sma-form-field"
+      type="text"
+      name="instagramUsername"
+      placeholder="elversensma"
+      value="<%= typeof instagramUsername != 'undefined' ? instagramUsername : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="facebookUsername">Facebook kullanıcı adı</label>
+    <input
+      class="add-sma-form-field"
+      type="text"
+      name="facebookUsername"
+      placeholder="ElversenSMA"
+      value="<%= typeof facebookUsername != 'undefined' ? facebookUsername : '' %>"
+    />
+  </div>
+  <div class="form-field-container">
+    <label for="governmentPermit">Valilik izni (.pdf, .jpg, .png)</label>
+    <input
+      class="add-sma-form-field"
+      type="file"
+      name="governmentPermit"
+      placeholder="Valilik izni"
+    />
+  </div>
+  <div class="terms-and-conditions">
+    <input type="checkbox" name="termsAndConditions" />
+    <label for="termsAndConditions"
+      ><a href="/terms-and-conditions" target="_blank"
+        >Şartlar ve Koşullar</a
+      ></label
+    >
+  </div>
+  <button type="submit">Kaydet</button>
+</form> -->
