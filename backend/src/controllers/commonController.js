@@ -11,6 +11,13 @@ const IPlog = require("../model/logIPModel")
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
+const titleCase = (str) => {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
+}
 
 // GET PAGES
 const getHomePage = async (req, res, next) => {
@@ -140,13 +147,13 @@ const addSma = async (req, res, next) => {
 
                 //Creating new user
                 const newPatient = new Patient({
-                    name: req.body.name,
-                    surname: req.body.surname,
+                    name: titleCase(req.body.name),
+                    surname: titleCase(req.body.surname),
                     dateOfBirth: req.body.dateOfBirth,
                     dateOfEnd: doe,
                     weight: req.body.weight,
-                    city: req.body.city,
-                    responsibleName: req.body.responsibleName,
+                    city: titleCase(req.body.city),
+                    responsibleName: titleCase(req.body.responsibleName),
                     responsiblePhone: req.body.responsiblePhone,
                     responsibleEmail: req.body.responsibleEmail,
                     collectedAmount: req.body.collectedAmount,
@@ -167,12 +174,10 @@ const addSma = async (req, res, next) => {
                 const hashedPassword = await bcrypt.hash(generatedPassword.toString(), 10)
 
                 const newResponsible = new Responsible({
-                    name: req.body.responsibleName,
+                    name: titleCase(req.body.responsibleName),
                     password: hashedPassword,
                     phone: req.body.responsiblePhone,
-                    email: req.body.responsibleEmail,
-                    patientName: req.body.name,
-                    patientSurname: req.body.surname
+                    email: req.body.responsibleEmail
                 });
                 await newResponsible.save();
                 // console.log("Responsible Created", newResponsible);
@@ -201,10 +206,13 @@ const addSma = async (req, res, next) => {
                 const sendMail = await transporter.sendMail({
                     from: `SMA platform <${process.env.YANDEX_USER}>`,
                     to: req.body.responsibleEmail,
-                    subject: "Hesap Onaylama",
-                    html: `<h1>Parolanız:  ${generatedPassword}</h1>
-                            <h2>Belgeleriniz onaylandıktan sonra, giriş yapabileceğiniz zaman size tekrar mail göndereceğiz. </h2>
-                            <h3>Lütfen E-postanızı onaylamak için <a href="${url}">tıklayınız</a></h3>`
+                    subject: "E-posta Onaylama",
+                    html: `
+                    <p>Lütfen E-postanızı onaylamak için <a href="${url}">tıklayınız</a></p>
+                    <p>Belgeleriniz onaylandıktan sonra, giriş yapabileceğiniz zaman size tekrar mail göndereceğiz. </p>
+                    <p>Parolanız:  ${generatedPassword}</p>
+                            
+                            `
 
                 }, (error, info) => {
                     if (error) {

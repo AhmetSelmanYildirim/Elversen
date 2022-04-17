@@ -1,6 +1,8 @@
 const multer = require('multer');
 const path = require('path')
 const fs = require('fs');
+const Responsible = require("../model/responsibleModel");
+
 
 
 const myPermitStorage = multer.diskStorage({
@@ -20,16 +22,22 @@ const myPermitStorage = multer.diskStorage({
 })
 
 const permitFileFilter = async (req, file, cb) => {
-    if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpg' || file.mimetype == 'application/pdf') {
-        if (parseInt(req.headers['content-length']) > 2100000) {
-            req.flash('validation_error', [{ msg: "Valilik izni dosyası 2MB dan büyük olamaz." }])
+    const _user = await Responsible.findOne({ email: req.body.responsibleEmail, isEmailVerified: true });
+    if (_user) {
+        req.flash('validation_error', [{ msg: "Bu mail zaten kullanımda" }])    
+        await cb(null, false);
+    } else {
+        if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpg' || file.mimetype == 'application/pdf') {
+            if (parseInt(req.headers['content-length']) > 2100000) {
+                req.flash('validation_error', [{ msg: "Valilik izni dosyası 2MB dan büyük olamaz." }])
+                await cb(null, false);
+            }
+            else {
+                await cb(null, true);
+            }
+        } else {
             await cb(null, false);
         }
-        else {
-            await cb(null, true);
-        }
-    } else {
-        await cb(null, false);
     }
 }
 
