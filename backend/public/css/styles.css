@@ -269,6 +269,9 @@ font-size: 16px;
 .mobile-sorting-info{
   display: none;
   font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 table {
   text-align: center;
