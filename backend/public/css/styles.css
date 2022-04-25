@@ -249,6 +249,27 @@ footer {
 /********** ABOUT END **********/
 
 /********** LISTING **********/
+.sorting-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#sorting{
+padding: 5px;
+background-color: #76429c;
+color: white;
+border-radius: 10px;
+font-size: 16px;
+}
+#sorting option{
+  background-color: #ff6600;
+}
+.mobile-sorting-info{
+  display: none;
+  font-size: 12px;
+}
 table {
   text-align: center;
   border-collapse: separate;
@@ -286,6 +307,9 @@ table tbody tr td:last-child {
   .child-photo {
     width: 100px;
     height: 100px;
+  }
+  .mobile-sorting-info{
+    display: flex;
   }
 }
 .get-detail {

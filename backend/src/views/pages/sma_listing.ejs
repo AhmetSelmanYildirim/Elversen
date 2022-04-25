@@ -1,4 +1,19 @@
 <div style="overflow-x:auto; width: 100%;">
+
+    <div class="sorting-container">
+        <select id="sorting">
+            <option selected value="">Sırala</option>
+            <option value="name">Alfabetik</option>
+            <option value="age">Kalan gün</option>
+            <option value="weight">Kilo</option>
+            <option value="moneyincreasing">Kalan miktar (artan)</option>
+            <option value="moneydecreasing">Kalan miktar (azalan)</option>
+        </select>
+        <div class="mobile-sorting-info">
+            Daha fazlası için kaydır ->
+        </div>
+    </div>
+
 <table>
   <thead class="table-topic-row">
     <tr>
@@ -80,7 +95,7 @@
   </tbody>
 </table>
 </div>
-<script>
+<script type="text/javascript">
     $(".get-detail").click(function(){
         $(this).siblings(".show-detail").addClass("show")
     });
@@ -92,4 +107,7 @@
             $(".close").parent().parent().removeClass("show")
         }
     }); 
+    $('#sorting').change(function() {       
+        window.location.href = "https://elversen.com/sma-listing/" + $(this).val();
+    });
 </script>

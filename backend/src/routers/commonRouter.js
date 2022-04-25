@@ -7,6 +7,7 @@ const validatorMiddleware = require("../middlewares/validator_middleware")
 router.get("/", commonController.getHomePage)
 router.get("/about-us", commonController.getAboutPage)
 router.get("/contact", commonController.getContactPage)
+router.get("/sma-listing/:sort", commonController.getListingPage)
 router.get("/sma-listing", commonController.getListingPage)
 router.get("/login", authMiddleware.notLoggedIn, commonController.getLoginPage)
 router.get("/logout", authMiddleware.loggedIn, commonController.logout);
@@ -43,6 +44,6 @@ router.post('/update-sma-password', authMiddleware.loggedIn, commonController.up
 
 // router.post('/addpatientpermit', authMiddleware.notLoggedIn, uploadPermit.single("governmentPermit"), commonController.addPatientPermit);
 
-router.post('/ip', commonController.logIP);
+// router.post('/ip', commonController.logIP);
 
 module.exports = router;

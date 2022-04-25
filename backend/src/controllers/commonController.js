@@ -48,8 +48,49 @@ const getContactPage = async (req, res, next) => {
 }
 const getListingPage = async (req, res, next) => {
 
+    const sortParameter = req.params.sort;
+
     try {
-        const patients = await Patient.find({ isActive: true })
+        let patients = await Patient.find({ isActive: true })
+
+        if (sortParameter === "name") {
+            patients = patients.sort((a, b) => {
+                if (a.name < b.name) { return -1; }
+                if (a.name > b.name) { return 1; }
+                return 0;
+            })
+        }
+        if (sortParameter === "age") {
+            patients = patients.sort((a, b) => {
+                if ((new Date(a.dateOfEnd) - new Date()) / 86400000 < (new Date(b.dateOfEnd) - new Date()) / 86400000) { return -1; }
+                if ((new Date(a.dateOfEnd) - new Date()) / 86400000 > (new Date(b.dateOfEnd) - new Date()) / 86400000) { return 1; }
+                return 0;
+            })
+        }
+        if (sortParameter === "weight") {
+            patients = patients.sort((a, b) => {
+                if (a.weight < b.weight) { return 1; }
+                if (a.weight > b.weight) { return -1; }
+                return 0;
+            })
+        }
+        if (sortParameter === "moneydecreasing") {
+            patients = patients.sort((a, b) => {
+                if (a.requiredAmount - a.collectedAmount < b.requiredAmount - b.collectedAmount) { return 1; }
+                if (a.requiredAmount - a.collectedAmount > b.requiredAmount - b.collectedAmount) { return -1; }
+                return 0;
+            })
+        }
+        if (sortParameter === "moneyincreasing") {
+            patients = patients.sort((a, b) => {
+                if (a.requiredAmount - a.collectedAmount < b.requiredAmount - b.collectedAmount) { return -1; }
+                if (a.requiredAmount - a.collectedAmount > b.requiredAmount - b.collectedAmount) { return 1; }
+                return 0;
+            })
+        }
+
+
+
         if (req.isAuthenticated()) {
             res.render('./pages/sma_listing', { layout: './layout/responsible_layout.ejs', patients });
         }
