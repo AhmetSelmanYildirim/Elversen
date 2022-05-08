@@ -45,6 +45,7 @@ module.exports = function (passport) {
             const newUser = {
                 // id: user.id,
                 email: user.email,
+                level: user.level,
             }
             done(err, newUser);
         })

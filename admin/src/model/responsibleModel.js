@@ -22,6 +22,10 @@ const ResponsibleSchema = new Schema({
     isActive: {
         type: Boolean,
         default: false
+    },
+    isEmailVerified: {
+        type: Boolean,
+        default: false
     }
 
 }, { collection: "responsibles", timestamps: true })

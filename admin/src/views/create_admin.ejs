@@ -1,0 +1,46 @@
+<form class="create-admin-form" action="/a/create-admin" method="post">
+  <input type="text" name="name" placeholder="İsim" />
+  <input type="text" name="surname" placeholder="Soyisim" />
+  <input type="text" name="email" placeholder="Email" />
+  <input type="text" name="password" placeholder="Password" />
+  <input type="number" name="isActive" placeholder="Aktiflik: 0 - 1" />
+  <input type="number" name="level" placeholder="Level" />
+  <button type="submit">Oluştur</button>
+</form>
+
+<div><strong> Admin Listesi </strong></div>
+
+<div class="admin-list">
+  <% admins.forEach((admin,index) => { %>
+  <form class="admin-item-form" action="/a/update-admin" method="post">
+      <div class="admin-form-field-div"><strong>İsim:</strong> <input class="admin-form-field" type="text" name="name"  value="<%- admin.name %>"/></div>
+      <div class="admin-form-field-div"><strong>Soyisim:</strong> <input class="admin-form-field"  type="text" name="surname"  value="<%- admin.surname %>"/></div>
+      <div class="admin-form-field-div"><strong>Email:</strong> <input class="admin-form-field" readonly type="text" name="email" value="<%- admin.email %>" /></div>
+      <div class="admin-form-field-div"><strong>Level:</strong> <input class="admin-form-field" type="number" name="level" value="<%- admin.level %>" /></div>
+      <div class="admin-form-field-div"><strong>Aktif:</strong> <input class="admin-form-field" type="number" name="isActive" value="<%- admin.isActive ? 1 : 0 %>" /></div>
+    
+    <button type="submit"> Güncelle </button>
+    <button class="delete-admin" email="<%- admin.email %>"> Delete </button>
+</form>
+  <% }) %>
+</div>
+
+<script>
+    $(".delete-admin").click(function (e) {
+        e.preventDefault();
+        
+        if(confirm("Silmek istediğinize emin misiniz?") === true){
+            let selectedEmail = $(this).attr("email");
+            data = { email: selectedEmail };
+            fetch("/a/delete-admin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+            });
+            window.location.reload();
+        }
+  });
+    
+</script>

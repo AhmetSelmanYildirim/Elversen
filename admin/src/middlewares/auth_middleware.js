@@ -15,4 +15,13 @@ const notLoggedIn = function(req,res,next){
         res.redirect('/')
     }
 }
-module.exports = {loggedIn,notLoggedIn}
+const isSuperAdmin = function(req,res,next){
+    if(req.user.level === 10){
+        return next();
+    }
+    else{
+        req.flash('error',['You are not authorized to access this page']);
+        res.redirect('/')
+    }
+}
+module.exports = {loggedIn,notLoggedIn,isSuperAdmin}

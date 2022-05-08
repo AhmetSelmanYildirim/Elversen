@@ -74,9 +74,11 @@ app.set('views', path.resolve(__dirname, './src/views'));
 const mainRouter = require("./src/routers/mainRouter");
 const patientRouter = require("./src/routers/patientRouter");
 const responsibleRouter = require("./src/routers/responsibleRouter");
+const adminRouter = require("./src/routers/adminRouter");
 
 app.use("/", mainRouter);
 app.use("/p/", patientRouter);
 app.use("/r/", responsibleRouter);
+app.use("/a/", adminRouter);
 
 app.listen(process.env.PORT, () => { console.log(`${'server is' || process.env.PORT} listening`) })

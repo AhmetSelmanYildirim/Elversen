@@ -8,19 +8,35 @@ const Responsible = require("../model/responsibleModel");
 
 
 const showLoginPage = async (req, res, next) => { res.render('login', { layout: './layout/base_layout.ejs' }); }
-const showHomePage = async (req, res, next) => { res.render('homepage', { layout: './layout/admin_layout.ejs' }); }
-
-const showResponsiblesPage = async (req, res, next) => { 
-    const responsibles = await Responsible.find();
-
-    res.render('responsibles', { layout: './layout/admin_layout.ejs', responsibles }); 
+const showHomePage = async (req, res, next) => {
+    if (req.user.level < 10) {
+        res.render('homepage', { layout: './layout/admin_layout.ejs' });
+    }
+    else if (req.user.level >= 10) {
+        res.render('homepage', { layout: './layout/super_admin_layout.ejs' });
+    }
 }
 
-const showPatientsPage = async (req, res, next) => { 
+const showResponsiblesPage = async (req, res, next) => {
+    const responsibles = await Responsible.find();
+    if (req.user.level < 10) {
+        res.render('responsibles', { layout: './layout/admin_layout.ejs', responsibles });
+    }
+    else if (req.user.level >= 10) {
+        res.render('admin_responsibles', { layout: './layout/super_admin_layout.ejs', responsibles });
+    }
+}
+
+const showPatientsPage = async (req, res, next) => {
 
     const patients = await Patient.find();
+    if (req.user.level < 10) {
+        res.render('patients', { layout: './layout/admin_layout.ejs', patients });
+    }
+    else if (req.user.level >= 10) {
+        res.render('admin_patients', { layout: './layout/super_admin_layout.ejs', patients });
+    }
 
-    res.render('patients', { layout: './layout/admin_layout.ejs', patients }); 
 }
 
 const login = async (req, res, next) => {

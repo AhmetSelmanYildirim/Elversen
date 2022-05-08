@@ -126,3 +126,48 @@ body{
 .menuItem:hover .hint {
   visibility: visible;
 }
+
+/* CREATE ADMIN */
+.create-admin-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* UPDATE ADMIN */
+.admin-list{
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start ;
+  flex-wrap: wrap;
+}
+
+.admin-item{
+  padding: 10px 10px;
+  margin: 1px;
+  background-color: gainsboro ;
+  width: 32%;
+  word-wrap: break-word;
+}
+.admin-item-form{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  margin: 1px;
+  background-color: gainsboro ;
+  width: 32%;
+  word-wrap: break-word;
+}
+.admin-form-field{
+  margin-bottom: 2px;
+  margin-left: 2px;
+  width: 100%;
+}
+.admin-form-field-div{
+  display: flex;
+  flex-direction: row;
+}

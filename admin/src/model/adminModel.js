@@ -22,6 +22,10 @@ const AdminSchema = new Schema({
         type: Boolean,
         default: false
     },
+    level:{
+        type: Number,
+        default: 1
+    }
 }, { collection: "admins", timestamps: true })
 
 const Admin = mongoose.model("Admin", AdminSchema);
