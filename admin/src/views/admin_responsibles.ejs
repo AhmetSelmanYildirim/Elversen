@@ -1,0 +1,35 @@
+<div class="patient-list">
+  <% responsibles.forEach((responsible) => { %>
+
+    <form class="patient-item-form" action="/r/update-responsible" method="post">
+      <div class="patient-form-field-div"><strong>İsim:</strong> <input class="patient-form-field" type="text" name="name"  value="<%- responsible.name %>"/></div>
+      <div class="patient-form-field-div"><strong>Email:</strong> <input class="patient-form-field" readonly type="text" name="email"  value="<%- responsible.email %>"/></div>
+      <div class="patient-form-field-div"><strong>Telefon:</strong> <input class="patient-form-field" type="text" name="phone"  value="<%- responsible.phone %>"/></div>
+      <div class="patient-form-field-div"><strong>Email:</strong> <input class="patient-form-field" type="number" name="isEmailVerified"  value="<%- responsible.isEmailVerified ? 1 : 0 %>"/></div>
+      <div class="patient-form-field-div"><strong>Hesap:</strong> <input class="patient-form-field" type="number" name="isActive"  value="<%- responsible.isActive ? 1 : 0 %>"/></div>
+      
+      <button type="submit"> Güncelle </button>
+      <button class="delete-responsible" email="<%- responsible.email %>"> Delete </button>
+    </form>
+
+  <% }) %>
+</div>
+    
+<script>
+$(".delete-responsible").click(function (e) {
+    e.preventDefault();
+    
+    if(confirm("Silmek istediğinize emin misiniz?") === true){
+        let selectedEmail = $(this).attr("email");
+        data = { email: selectedEmail };
+        fetch("/r/delete-responsible", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+        });
+        window.location.reload();
+    }
+});
+</script>

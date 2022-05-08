@@ -26,9 +26,8 @@
             <p><strong>Telefon:</strong> <%- responsible.phone %></p>
           </div>
           <div>
-            <p>
-              <strong>Aktif:</strong> <%- responsible.isActive ? "aktif" : "pasif" %>
-            </p>
+            <p> <strong>Email:</strong> <%- responsible.isEmailVerified ? "aktif" : "pasif" %></p>
+            <p> <strong>Hesap:</strong> <%- responsible.isActive ? "aktif" : "pasif" %></p>
 
             <% if(responsible.isActive) { %>
             <button class="deactivate" email="<%- responsible.email %>">

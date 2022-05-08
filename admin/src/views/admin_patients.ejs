@@ -1,0 +1,67 @@
+<div class="patient-list">
+<% patients.forEach((patient)=>{ %>
+  
+  <form class="patient-item-form" action="/p/update-patient" method="post">
+    <div class="patient-form-field-div"><strong>İsim:</strong> <input class="patient-form-field" type="text" name="name"  value="<%- patient.name %>"/></div>
+    <div class="patient-form-field-div"><strong>Soyisim:</strong> <input class="patient-form-field" type="text" name="surname"  value="<%- patient.surname %>"/></div>
+    <div class="patient-form-field-div"><strong>Ağırlık:</strong> <input class="patient-form-field" type="number" name="weight"  value="<%- patient.weight %>"/></div>
+    <div class="patient-form-field-div"><strong>IBAN:</strong> <input class="patient-form-field" type="text" name="iban"  value="<%- patient.ibanNo %>"/></div>
+    <div class="patient-form-field-div"><strong>Facebook:</strong> <input class="patient-form-field" type="text" name="facebookLink"  value="<%- patient.facebookLink %>"/></div>
+    <div class="patient-form-field-div"><strong>Instagram:</strong> <input class="patient-form-field" type="text" name="instagramLink"  value="<%- patient.instagramLink %>"/></div>
+    <div class="patient-form-field-div"><strong>Gereken:</strong> <input class="patient-form-field" type="text" name="requiredAmount"  value="<%- patient.requiredAmount %>"/></div>
+    <div class="patient-form-field-div"><strong>Toplanan:</strong> <input class="patient-form-field" type="text" name="collectedAmount"  value="<%- patient.collectedAmount %>"/></div>
+    <% 
+    let date=new Date(patient.dateOfBirth).getDate() 
+    let month=new Date(patient.dateOfBirth).getMonth() + 1 
+    let year=new Date(patient.dateOfBirth).getFullYear() 
+    %>
+    <div class="patient-form-field-div"><strong>Doğum Tarihi:</strong> <input class="patient-form-field" type="text" readonly name="dateOfBirth"  value="<%- date+"/"+month+"/"+year %>"/></div>
+    <div class="patient-form-field-div"><strong>Şehir:</strong> <input class="patient-form-field" type="text" name="city"  value="<%- patient.city %>"/></div>
+    <div class="patient-form-field-div"><strong>Sorumlu:</strong> <input class="patient-form-field" type="text" name="responsibleName"  value="<%- patient.responsibleName %>"/></div>
+    <div class="patient-form-field-div"><strong>Telefon:</strong> <input class="patient-form-field" type="text" name="responsiblePhone"  value="<%- patient.responsiblePhone %>"/></div>
+    <div class="patient-form-field-div"><strong>Email:</strong> <input class="patient-form-field" type="text" name="responsibleEmail"  value="<%- patient.responsibleEmail %>"/></div>
+    <div class="patient-form-field-div"><strong>Valilik izni:</strong> <% if(patient.governmentPermit) {
+      %>
+      <a
+        class="patient-form-field"
+        href="https://elversen.com/<%-patient.responsibleEmail%>/<%-patient.governmentPermit%>"
+        target="_blank"
+        rel="noreferrer"
+      >
+        İzni görmek için tıkla
+      </a>
+      <%} else if(!patient.governmentPermit){%>
+      <span>İzin yok</span>
+      <%}%>
+    </div>
+    <div class="patient-form-field-div"><strong>Oluşturma:</strong> <span class="patient-form-field"><%- patient.createdAt %></span></div>
+    <div class="patient-form-field-div"><strong>Güncelleme:</strong> <span class="patient-form-field"><%- patient.updatedAt %></span></div>
+    
+    <div class="patient-form-field-div"><strong>Aktif:</strong> <input class="patient-form-field" type="number" name="isActive" value="<%- patient.isActive ? 1 : 0 %>" /></div>
+  
+    <button type="submit"> Güncelle </button>
+    <button class="delete-patient" email="<%- patient.responsibleEmail %>"> Delete </button>
+  </form>
+  
+<% }) %>
+</div>
+
+
+<script>
+$(".delete-patient").click(function (e) {
+    e.preventDefault();
+    
+    if(confirm("Silmek istediğinize emin misiniz?") === true){
+        let selectedEmail = $(this).attr("email");
+        data = { email: selectedEmail };
+        fetch("/p/delete-patient", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+        });
+        window.location.reload();
+    }
+});
+</script>

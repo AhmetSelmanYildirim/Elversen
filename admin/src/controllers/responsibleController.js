@@ -59,9 +59,44 @@ const deactivateResponsible = async (req, res, next) => {
     }
 }
 
+const updateResponsible = async (req, res, next) => {
+    let accountActivation = req.body.isActive;
+    accountActivation != 0 ? accountActivation = true : accountActivation = false;
+
+    let emailActivation = req.body.isEmailVerified;
+    emailActivation != 0 ? emailActivation = true : emailActivation = false;
+
+    try {
+        //Updating responsible
+        const responsible = await Responsible.findOne({email: req.body.email})
+
+        responsible.name = req.body.name;
+        responsible.phone = req.body.phone;
+        responsible.isActive = accountActivation;
+        responsible.isEmailVerified = emailActivation;
+        responsible.save()
+        
+    } catch (error) {
+        console.log(error);
+    }
+    res.redirect('/responsibles')    
+}
+
+const deleteResponsible = async (req, res, next) => {
+    try {
+        //Deleting responsible
+        const responsible = await Responsible.findOne({email: req.body.email})
+        responsible.remove()
+    } catch (error) {
+        console.log(error);
+    }
+    res.redirect('/responsibles')
+}
 
 
 module.exports = {
     activateResponsible,
     deactivateResponsible,
+    updateResponsible,
+    deleteResponsible
 }

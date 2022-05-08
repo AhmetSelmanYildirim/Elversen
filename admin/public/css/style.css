@@ -171,3 +171,40 @@ body{
   display: flex;
   flex-direction: row;
 }
+
+/* SUPER ADMIN UPDATE PATIENT */
+/* UPDATE ADMIN */
+.patient-list{
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start ;
+  flex-wrap: wrap;
+}
+
+.patient-item{
+  padding: 10px 10px;
+  margin: 1px;
+  background-color: gainsboro ;
+  width: 32%;
+  word-wrap: break-word;
+}
+.patient-item-form{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  margin: 1px;
+  background-color: gainsboro ;
+  width: 32%;
+  word-wrap: break-word;
+}
+.patient-form-field{
+  margin-bottom: 2px;
+  margin-left: 2px;
+  width: 100%;
+}
+.patient-form-field-div{
+  display: flex;
+  flex-direction: row;
+}

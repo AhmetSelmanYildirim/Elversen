@@ -24,10 +24,16 @@
           <div>
             <p><strong>Ağırlık:</strong> <%- patient.weight %></p>
             <p><strong>IBAN:</strong> <%- patient.ibanNo %></p>
-            <p><strong>Facebook:</strong> <%- patient.facebookLink %></p>
-            <p><strong>Instagram:</strong> <%- patient.instagramLink %></p>
+            <p><strong>Facebook:</strong> <a href="<%- patient.facebookLink %>"><%- patient.facebookLink %></a> </p>
+            <p><strong>Instagram:</strong> <a href="<%- patient.instagramLink %>"><%- patient.instagramLink %></a> </p>
+
             <p><strong>Gereken:</strong> <%- patient.requiredAmount %></p>
             <p><strong>Toplanan:</strong> <%- patient.collectedAmount %></p>
+            <% 
+            let date=new Date(patient.dateOfBirth).getDate() 
+            let month=new Date(patient.dateOfBirth).getMonth() + 1 
+            let year=new Date(patient.dateOfBirth).getFullYear() %>
+            <p><strong>Doğum Tarihi:</strong> <%- date+"/"+month+"/"+year %></p>
           </div>
           <div>
             <p><strong>Şehir:</strong> <%- patient.city %></p>
@@ -49,6 +55,8 @@
               <%}%>
             </p>
 
+            <p><strong>Oluşturulma:</strong> <%- patient.createdAt %></p>
+            <p><strong>Güncellenme:</strong> <%- patient.updatedAt %></p>
             <p>
               <strong>Aktif:</strong> <%- patient.isActive ? "aktif" : "pasif"
               %>
