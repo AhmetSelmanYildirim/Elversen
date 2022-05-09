@@ -562,7 +562,7 @@ const updatePatientPhoto = async (req, res, next) => {
 }
 
 const updatePatientInfo = async (req, res, next) => {
-    console.log("updatePatientInfo", req.body)
+    // console.log("updatePatientInfo", req.body)
     const errors = validationResult(req);
     // console.log(errors.array());
     if (!errors.isEmpty()) {

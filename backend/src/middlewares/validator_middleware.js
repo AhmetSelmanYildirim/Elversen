@@ -359,7 +359,7 @@ const validateContactForm = () => {
             .trim()
             .notEmpty().withMessage('Eposta boş bırakılamaz')
             .isLength({ min: 2 }).withMessage('Eposta 2 karakterden az olamaz.')
-            .isLength({ max: 30 }).withMessage('Eposta 50 karakterden fazla olamaz.')
+            .isLength({ max: 50 }).withMessage('Eposta 50 karakterden fazla olamaz.')
             .isEmail().withMessage('Lütfen geçerli bir eposta adresi giriniz.'),
         body('subject')
             .trim()
